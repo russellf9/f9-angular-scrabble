@@ -25,7 +25,7 @@
 
 ## Description
 
-A Ionic Seed Project
+An Ionic Seed Project
 
 ## Version
 
