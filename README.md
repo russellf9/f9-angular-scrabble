@@ -1,4 +1,4 @@
-# f9-ionic-webrtc
+# f9-ionic-seed
 
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -102,7 +102,7 @@ $ ionic platform ios
 $ ionic build ios
 
 # modify as per instructions
-
+```
 
 ## Gulp Commands
 
