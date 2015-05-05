@@ -31,7 +31,7 @@ An Ionic Seed Project
 
 The current version of the app is:
 
-**0.0.1**
+**0.0.2**
 
 
 
@@ -69,7 +69,9 @@ v0.12.0
 ## Cordova
 
 ```
-# Not sure if I need this - the bower/node updates might be enough?
+# To create the initial www folder structure
+# (Avoids the `Current working directory is not a Cordova-based project.` error)
+
 $ cordova platform add ios
 
 ```
