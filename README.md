@@ -51,19 +51,6 @@ $ npm update
 # update bower dependencies
 $ bower update
 
-# to update node
-node -v
-v0.10.33
-
-#  use n
-npm install -g n
-
-# For the latest stable version:
-sudo n stable
-
-node -v
-v0.12.0
-
 ```
 
 ## Cordova
@@ -76,11 +63,13 @@ $ cordova platform add ios
 
 ```
 
-## The new build process
+## The Ionic Workflow
 
-Now attempting to use the _Browser Platform_
+I've created an `app` folder as a distinct folder from the `www` folder.
 
-See: [Browser as a platform for your PhoneGap/Cordova apps](http://www.raymondcamden.com/2014/09/24/Browser-as-a-platform-for-your-PhoneGapCordova-apps)
+The project files are created and modified here and can be distributed to a `tmp` to be viewed and tested, or to the `www` for further Ionic tasks.
+ 
+I've also added the _Browser Platform_, see: [Browser as a platform for your PhoneGap/Cordova apps](http://www.raymondcamden.com/2014/09/24/Browser-as-a-platform-for-your-PhoneGapCordova-apps)
 
 
 ```
@@ -190,7 +179,24 @@ $ gulp branch
 1. [x] Make a TODO list!.
 1. [ ] Make the tree using `tree`
 2. [ ] Build Process - Rationalise
-3. [ ] Rationalise Dependancies
+3. [ ] Rationalise Dependencies
+
+## Updating Node
+
+```
+# to update node
+node -v
+v0.10.33
+
+#  use n
+npm install -g n
+
+# For the latest stable version:
+sudo n stable
+
+node -v
+v0.12.0
+```
 
 
 ## Project Tree
