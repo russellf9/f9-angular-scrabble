@@ -183,8 +183,10 @@ $ gulp branch
 
 ## TODO
 
-1. [ ] Make a TODO list!.
+1. [x] Make a TODO list!.
 1. [ ] Make the tree using `tree`
+2. [ ] Build Process - Rationalise
+3. [ ] Rationalise Dependancies
 
 
 ## Project Tree
