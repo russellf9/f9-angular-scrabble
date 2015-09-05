@@ -65,11 +65,40 @@ $ cordova platform add ios
 
 ## The Ionic Workflow
 
-I've created an `app` folder as a distinct folder from the `www` folder.
+In the original Ionic app, source files were located in the _www_ folder. I've separated the `dev` and `build` modes, so that the source files are within an _app_ folder. 
 
 The project files are created and modified here and can be distributed to a `tmp` to be viewed and tested, or to the `www` for further Ionic tasks.
  
-I've also added the _Browser Platform_, see: [Browser as a platform for your PhoneGap/Cordova apps](http://www.raymondcamden.com/2014/09/24/Browser-as-a-platform-for-your-PhoneGapCordova-apps)
+I've also added the _Browser Platform_, see: [Browser as a platform for your PhoneGap/Cordova apps](http://www.raymondcamden.com/2014/09/24/Browser-as-a-platform-for-your-PhoneGapCordova-apps).
+
+
+# Development
+
+ * Files are served from the .tmp folder
+ * Files are not minified
+
+```
+# dev runs the 'dev' build and starts the server
+$ gulp
+
+# Open `http://localhost:9000/`
+
+```
+
+# Build
+
+ * Files are placed in the .www folder
+ * Files are minified and concatenated.
+ * This build is not served - (Use the `cordova run browser` task to view the www folder.)  
+
+```
+# build
+$ gulp --build
+# or
+$ gulp -b
+
+```
+
 
 
 ```
@@ -101,7 +130,7 @@ I've spent considerable effort making the gulp tasks as modular as possible. Eac
 
 I've added a new set of commands based from [ionic-gulp-seed](https://github.com/tmaximini/ionic-gulp-seed).
 
-In the original Ionic app, source files were located in the _www_ folder. I've separated the `dev` and `build` modes, so that the source files are within an _app_ folder. Gulp tasks have been set up to either test with a _.tmp_ location or distribute from the _www_ location.
+Gulp tasks have been set up to either test with a _.tmp_ location or distribute from the _www_ location.
 
 **dev**
  * Files are served from the .tmp folder
