@@ -11,8 +11,8 @@ gulp.task('clean', function(cb) {
     var build = gulp.args.build || gulp.args.emulate || gulp.args.run,
         targetDir = path.resolve(build ? './www' : './.tmp');
 
-    gulp.src(targetDir)
-        .pipe(gulp.plugins.clean({force: true, read: false})).on('error', errorHandler);
+    return gulp.src(targetDir, {read: false})
+        .pipe(gulp.plugins.clean({force: true})).on('error', errorHandler);
     cb();
 });
 

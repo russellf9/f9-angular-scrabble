@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence').use(gulp);
 
 // Run all tasks needed for a build
 // the 'clean' task completes first,
@@ -27,7 +27,7 @@ gulp.task('build', function(cb) {
     }
 
     runSequence('clean',
-        ['jshint', 'scripts', 'vendor', 'styles', 'images', 'fonts'],
+        ['images', 'jshint', 'scripts', 'vendor', 'styles',  'fonts'],
         'index', 'partials',
         build ? 'noop' : 'watchers',
         build ? 'noop' : 'serve',
