@@ -122,6 +122,8 @@ In the original Ionic app, source files were located in the _www_ folder. I've s
 # dev runs the 'dev' build and starts the server
 $ gulp
 
+# Open `http://localhost:9000/`
+
 ```
 
 **build**
@@ -180,6 +182,7 @@ $ gulp branch
 
 ## Known Issues:
 
+1. [ ] Dev build clean task is perhaps running simultaneously and causing an error.
 
 ## TODO
 
