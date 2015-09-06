@@ -38,8 +38,7 @@ An Ionic Seed Project
 
 The current version of the app is:
 
-**0.0.2**
-
+version="0.0.6"
 
 
 ## Project Objectives
@@ -64,7 +63,7 @@ $ bower update
 
 ```
 
-Other dependancies, I'm assuming Xcode is required.
+Other dependencies, I'm assuming Xcode is required.
 
 ## Cordova
 
@@ -85,7 +84,7 @@ The project files are created and modified here and can be distributed to a `tmp
 I've also added the _Browser Platform_, see: [Browser as a platform for your PhoneGap/Cordova apps](http://www.raymondcamden.com/2014/09/24/Browser-as-a-platform-for-your-PhoneGapCordova-apps).
 
 
-# Development
+## Development
 
  * Files are served from the .tmp folder
  * Files are not minified
@@ -98,7 +97,7 @@ $ gulp
 
 ```
 
-# Build
+### Build
 
  * Files are placed in the .www folder
  * Files are minified and concatenated.
@@ -112,7 +111,7 @@ $ gulp -b
 
 ```
 
-# Browser platform
+### Browser platform
 
 ```
 # to add the Browser platform
@@ -128,9 +127,6 @@ $ gulp --build
 # to run again
 $ cordova run browser
 
-
-
-## modify as per instructions
 ```
 
 ### Ionic
@@ -138,16 +134,16 @@ $ cordova run browser
 Once the app has been tested locally and the files have been distributed to the  _www_ folder, we can start testing on mobile devices.
 
 
-### add platform
+#### add platform
 $ ionic platform ios
 
-## rebuild
+### rebuild
 $ ionic build ios
 
 ```
-### emulate ios
+# emulate ios
 $ gulp -emulate
-### or
+# or
 $ gulp -e
 
 ```
@@ -160,8 +156,7 @@ $ gulp -r
 ```
 
 
-
-# Gulp Commands
+## Gulp Commands
 
 I've spent considerable effort making the gulp tasks as modular as possible. Each task is within its own file and I'm using [require-dir](https://www.npmjs.com/package/require-dir) to keep the tasks DRY.
 
@@ -170,7 +165,7 @@ I've added a new set of commands based from [ionic-gulp-seed](https://github.com
 Gulp tasks have been set up to either test with a _.tmp_ location or distribute from the _www_ location.
 
 
-## Gulp utilities
+### Gulp utilities
 
 * [gulp-bump](https://www.npmjs.com/package/gulp-bump), increments the version numbers in the _package.json_ and _bower.json_.
 
@@ -188,7 +183,7 @@ $ gulp version-major
 
 
 # This have to be run as a distinct task afterwards:
-# Copies the latest version number to the Cordova.xml file
+# Copies the latest version number to the Cordova.xml file and this README file.
 $ gulp version-config
 ```
 

@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     bowerJSON = config.json.bower,
     packageJSONFile = require('../../../package.json'),
     cordovaConfig = config.paths.ionicConfig,
+    readme = config.paths.readme,
     json = [packageJSON, bowerJSON];
 
 
@@ -41,7 +42,8 @@ gulp.task('version-major', function() {
 // updates the Cordova `config.xml` Version Number to match the Version in the `package.json`
 // Note: Can`t be run in series, so has to be run as a separate task, after the version-* task.
 gulp.task('version-config', function() {
-    return bumpConfig();
+    bumpConfig();
+    bumpReadme();
 });
 // @see `version-config`
 var bumpConfig = function() {
@@ -57,4 +59,16 @@ var bumpConfig = function() {
     .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
     .pipe(gulp.dest('./'));
 };
+// @see `version-config`
+var bumpReadme = function() {
+  // get the current version number
+  var version = packageJSONFile.version;
+
+  // creates the replacement string
+  var newVersion = 'version="' + version + '"';
+
+  return gulp.src(readme)
+    .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
+    .pipe(gulp.dest('./'));
+}
 

@@ -18,7 +18,8 @@ module.exports = {
         partials: app + '/partials/**/*.html',
         index: app + '/index.html',
         images: app + '/img/**/*.*',
-        ionicConfig: 'config.xml'
+        ionicConfig: 'config.xml',
+        readme: 'README.md'
     },
     json: {
         package: './package.json',
