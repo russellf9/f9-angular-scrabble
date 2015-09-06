@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('f9-ionic-seed', ['ionic', 'ngDragDrop', 'angular.filter', 'btford.socket-io'])
+angular.module('f9-ionic-seed', ['ionic', 'ngDragDrop', 'angular.filter'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 

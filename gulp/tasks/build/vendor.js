@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
     config = require('../../config'),
+    sourcemaps = require('gulp-sourcemaps'),
     path = require('path');
 
 // performs all required operations to distribute the vendor js files
@@ -12,9 +13,11 @@ gulp.task('vendor', function() {
 
     return gulp.src(gulp.vendorFiles,
         {base: 'bower_components/'})
+        .pipe(sourcemaps.init())
         .pipe(gulp.plugins.concat('vendor.js'))
         .pipe(gulp.plugins.if(build, gulp.plugins.uglify())
             //.pipe(gulp.plugins.if(build, plugins.rev())) // could do this
+        .pipe(sourcemaps.write())
             .pipe(gulp.dest(path.join(targetDir, 'js')))
             .on('error', errorHandler));
 });

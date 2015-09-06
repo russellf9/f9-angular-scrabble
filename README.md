@@ -197,6 +197,15 @@ $ gulp branch
 
 ```
 
+## Additional Features
+
+I've added a few useful Angular packages to the seed:
+
+• [angular-filter](https://github.com/a8m/angular-filter)
+• [lodash](https://lodash.com) - I've adapted from Ben Nadal - [Creating And Extending A Lodash / Underscore Service In AngularJS](http://www.bennadel.com/blog/2720-creating-and-extending-a-lodash-underscore-service-in-angularjs.htm)
+• [ngDragDrop](https://github.com/codef0rmer/angular-dragdrop)
+
+(I've a few more bower and node packages which I'm currently sorting through.) 
 
 ## Known Issues:
 

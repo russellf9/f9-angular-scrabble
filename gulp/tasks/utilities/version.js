@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     packageJSONFile = require('../../../package.json'),
     cordovaConfig = config.paths.ionicConfig,
     readme = config.paths.readme,
-    json = [packageJSON, bowerJSON];
+    json = [packageJSON, bowerJSON],
+    gulpConfig = config.paths.gulpConfig;
 
 
 // implements semantic a `patch` increment
@@ -44,6 +45,7 @@ gulp.task('version-major', function() {
 gulp.task('version-config', function() {
     bumpConfig();
     bumpReadme();
+    bumpGulpConfig();
 });
 // @see `version-config`
 var bumpConfig = function() {
@@ -70,5 +72,26 @@ var bumpReadme = function() {
   return gulp.src(readme)
     .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
     .pipe(gulp.dest('./'));
-}
+};
+
+
+gulp.task('version-gulp-config', function() {
+  bumpGulpConfig();
+});
+// @see `version-config`
+// Note I can't get this to work...
+var bumpGulpConfig = function() {
+  // get the current version number
+  var version = packageJSONFile.version;
+
+  // creates the replacement string
+  var newVersion = 'version: "' + version + '"';
+
+  //  version: '0.1.6'
+  //  version = '0.1.6';
+
+  return gulp.src(gulpConfig)
+    .pipe(replace(/version = "\d+\.\d+\.\d+"/, newVersion))
+    .pipe(gulp.dest('./'));
+};
 

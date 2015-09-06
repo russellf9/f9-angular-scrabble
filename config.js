@@ -1,15 +1,13 @@
 'use strict';
 
-
-
 var src = '/www',
     app = './app',
-    version = '0.1.6';
+    version = '0.0.6';
 
 
 module.exports = {
     pkg: {
-        version: '0.1.6'
+        version: '0.0.6'
     },
     paths: {
         sass: './scss/**/*.{scss, sass}',
@@ -22,7 +20,7 @@ module.exports = {
         images: app + '/img/**/*.*',
         ionicConfig: 'config.xml',
         readme: 'README.md',
-        gulpConfig: '/gulp/config.js'
+        gulpConfig: './gulp/config.js'
     },
     json: {
         package: './package.json',
