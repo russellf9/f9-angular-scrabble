@@ -5,19 +5,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Description](#description)
-- [Version](#version)
-- [Project Objectives](#project-objectives)
-- [Installation](#installation)
-- [Cordova](#cordova)
-- [The new build process](#the-new-build-process)
-- [Instructions for Xcode set up](#instructions-for-xcode-set-up)
-- [Gulp Commands](#gulp-commands)
-- [Known Issues:](#known-issues)
-- [TODO](#todo)
-- [Project Tree](#project-tree)
-- [Developed By](#developed-by)
-- [License](#license)
+- [Development](#development)
+- [Build](#build)
+- [Browser platform](#browser-platform)
+- [Ionic](#ionic)
+- [add platform](#add-platform)
+- [rebuild](#rebuild)
+- [Gulp utilities](#gulp-utilities)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
