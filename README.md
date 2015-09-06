@@ -138,7 +138,7 @@ $ cordova run browser
 Once the app has been tested locally and the files have been distributed to the  _www_ folder, we can start testing on mobile devices.
 
 
-#¢ add platform
+## add platform
 $ ionic platform ios
 
 ## rebuild
@@ -173,6 +173,7 @@ Gulp tasks have been set up to either test with a _.tmp_ location or distribute 
 ## Gulp utilities
 
 * [gulp-bump](https://www.npmjs.com/package/gulp-bump), increments the version numbers in the _package.json_ and _bower.json_.
+
 Using **MAJOR.MINOR.PATCH**, [semantic versioning](http://semver.org).
 
 ```
@@ -189,8 +190,13 @@ $ gulp version-major
 # This have to be run as a distinct task afterwards:
 # Copies the latest version number to the Cordova.xml file
 $ gulp version-config
+```
 
+* [gulp-git](https://www.npmjs.com/package/gulp-git)
 
+I've added a rudimentary git task.
+
+```
 # creates a new git branch in the format 'dev-{YYMMDD}' from the current date
 $ gulp branch
 
