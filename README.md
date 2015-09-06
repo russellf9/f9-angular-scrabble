@@ -130,24 +130,24 @@ $ cordova run browser
 
 
 
-# modify as per instructions
+## modify as per instructions
 ```
 
-# Ionic
+### Ionic
 
 Once the app has been tested locally and the files have been distributed to the  _www_ folder, we can start testing on mobile devices.
 
 
-## add platform
+### add platform
 $ ionic platform ios
 
 ## rebuild
 $ ionic build ios
 
 ```
-## emulate ios
+### emulate ios
 $ gulp -emulate
-# or
+### or
 $ gulp -e
 
 ```
