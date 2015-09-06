@@ -5,26 +5,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-  - [Description](#description)
-  - [Version](#version)
-  - [Project Objectives](#project-objectives)
-  - [Installation](#installation)
-  - [Cordova](#cordova)
-  - [The Ionic Workflow](#the-ionic-workflow)
 - [Development](#development)
 - [Build](#build)
 - [Browser platform](#browser-platform)
 - [Ionic](#ionic)
 - [add platform](#add-platform)
 - [rebuild](#rebuild)
-  - [Gulp Commands](#gulp-commands)
 - [Gulp utilities](#gulp-utilities)
-  - [Known Issues:](#known-issues)
-  - [TODO](#todo)
-  - [Updating Node](#updating-node)
-  - [Project Tree](#project-tree)
-  - [Developed By](#developed-by)
-  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
