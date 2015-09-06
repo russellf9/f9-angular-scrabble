@@ -17,7 +17,8 @@ module.exports = {
         vendor: './vendor.json',
         partials: app + '/partials/**/*.html',
         index: app + '/index.html',
-        images: app + '/img/**/*.*'
+        images: app + '/img/**/*.*',
+        ionicConfig: 'config.xml'
     },
     json: {
         package: './package.json',

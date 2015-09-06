@@ -37,7 +37,11 @@ The current version of the app is:
 
 ## Project Objectives
 
-Attempting to create a definitive seed app.
+Attempting to create a definitive seed app, using best practise for Gulp, Ionic, Angular and SASS.
+
+Also to document the complete Ionic Workflow.
+
+
 
 
 ## Installation
@@ -52,6 +56,8 @@ $ npm update
 $ bower update
 
 ```
+
+Other dependancies, I'm assuming Xcode is required.
 
 ## Cordova
 
@@ -99,7 +105,7 @@ $ gulp -b
 
 ```
 
-
+# Browser platform
 
 ```
 # to add the Browser platform
@@ -115,49 +121,21 @@ $ gulp --build
 # to run again
 $ cordova run browser
 
+
+
+# modify as per instructions
+```
+
+# Ionic
+
+Once the app has been tested locally and the files have been distributed to the  _www_ folder, we can start testing on mobile devices.
+
+
 # add platform
 $ ionic platform ios
 
 # rebuild
 $ ionic build ios
-
-# modify as per instructions
-```
-
-## Gulp Commands
-
-I've spent considerable effort making the gulp tasks as modular as possible. Each task is within its own file and I'm using [require-dir](https://www.npmjs.com/package/require-dir) to keep the tasks DRY.
-
-I've added a new set of commands based from [ionic-gulp-seed](https://github.com/tmaximini/ionic-gulp-seed).
-
-Gulp tasks have been set up to either test with a _.tmp_ location or distribute from the _www_ location.
-
-**dev**
- * Files are served from the .tmp folder
- * Files are not minified
-
-```
-# dev runs the 'dev' build and starts the server
-$ gulp
-
-# Open `http://localhost:9000/`
-
-```
-
-**build**
- * Files are placed in the .www folder
- * Files are minified and concatenated.
- * This build is not served - (Use the `cordova run browser` task to view the www folder.)  
-
-```
-# build
-$ gulp --build
-# or
-$ gulp -b
-
-```
-
-**ionic CLI wrappers**
 
 ```
 # emulate ios
@@ -174,7 +152,18 @@ $ gulp -run
 $ gulp -r
 ```
 
-**gulp utilities**
+
+
+## Gulp Commands
+
+I've spent considerable effort making the gulp tasks as modular as possible. Each task is within its own file and I'm using [require-dir](https://www.npmjs.com/package/require-dir) to keep the tasks DRY.
+
+I've added a new set of commands based from [ionic-gulp-seed](https://github.com/tmaximini/ionic-gulp-seed).
+
+Gulp tasks have been set up to either test with a _.tmp_ location or distribute from the _www_ location.
+
+
+# Gulp utilities
 
 * [gulp-bump](https://www.npmjs.com/package/gulp-bump), increments the version numbers in the _package.json_ and _bower.json_.
 Using **MAJOR.MINOR.PATCH**, [semantic versioning](http://semver.org).
@@ -192,6 +181,10 @@ $ gulp version-major
 
 **Note:** The widget.version in the config.xml needs to be updated as well.
 
+This have to be run as a distinct task afterwards:
+
+$ gulp version-config
+
 
 # creates a new git branch in the format 'dev-{YYMMDD}' from the current date
 $ gulp branch
@@ -201,7 +194,7 @@ $ gulp branch
 
 ## Known Issues:
 
-1. [ ] Dev build clean task is perhaps running simultaneously and causing an error.
+1. [x] Dev build clean task is perhaps running simultaneously and causing an error.
 
 ## TODO
 
@@ -236,7 +229,7 @@ v0.12.0
 
 ## Developed By
 
-* Russell Wenban
+* Russell Wenban - russell@factornine.co.uk
 
 
 ## License

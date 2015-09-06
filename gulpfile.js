@@ -28,6 +28,7 @@ gulp.args = args;
 // assign the list of all library js files
 gulp.vendorFiles = require('./vendor.json');
 
+
 // shared error handler
 gulp.errorHandler = function(task, error) {
     gulp.plugins.util.log('Gulp - ', task, ' - error: ', error);
