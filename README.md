@@ -138,14 +138,14 @@ $ cordova run browser
 Once the app has been tested locally and the files have been distributed to the  _www_ folder, we can start testing on mobile devices.
 
 
-# add platform
+#¢ add platform
 $ ionic platform ios
 
-# rebuild
+## rebuild
 $ ionic build ios
 
 ```
-# emulate ios
+## emulate ios
 $ gulp -emulate
 # or
 $ gulp -e
@@ -161,7 +161,7 @@ $ gulp -r
 
 
 
-## Gulp Commands
+# Gulp Commands
 
 I've spent considerable effort making the gulp tasks as modular as possible. Each task is within its own file and I'm using [require-dir](https://www.npmjs.com/package/require-dir) to keep the tasks DRY.
 
@@ -170,13 +170,13 @@ I've added a new set of commands based from [ionic-gulp-seed](https://github.com
 Gulp tasks have been set up to either test with a _.tmp_ location or distribute from the _www_ location.
 
 
-# Gulp utilities
+## Gulp utilities
 
 * [gulp-bump](https://www.npmjs.com/package/gulp-bump), increments the version numbers in the _package.json_ and _bower.json_.
 Using **MAJOR.MINOR.PATCH**, [semantic versioning](http://semver.org).
 
 ```
-# implements a semantic 'patch' increment
+#implements a semantic 'patch' increment
 $ gulp version-patch
 
 # implements semantic a 'minor' increment
@@ -186,10 +186,8 @@ $ gulp version-minor
 $ gulp version-major
 
 
-**Note:** The widget.version in the config.xml needs to be updated as well.
-
-This have to be run as a distinct task afterwards:
-
+# This have to be run as a distinct task afterwards:
+# Copies the latest version number to the Cordova.xml file
 $ gulp version-config
 
 
