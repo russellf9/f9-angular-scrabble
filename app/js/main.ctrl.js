@@ -1,9 +1,12 @@
-angular.module('f9-ionic-seed')
+(function() {
 
-    .controller('MainCtrl',
-        function($scope) {
-            $scope.data = {};
-            $scope.loading = false;
+    'use strict';
 
-            console.log('main 21:28!');
-        });
+    angular.module('f9-ionic-seed')
+        .controller('MainCtrl', mainController);
+
+    function mainController($scope) {
+        $scope.data = {};
+        $scope.loading = false;
+    }
+})();
