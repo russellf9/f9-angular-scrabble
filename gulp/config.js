@@ -3,7 +3,7 @@
 
 
 var src = '/www',
-    app = './app',
+    app = 'app',
     version = '0.1.6';
 
 
@@ -13,7 +13,7 @@ module.exports = {
     },
     paths: {
         sass: './scss/**/*.{scss, sass}',
-        fonts: app + '/fonts/**',
+        fonts: 'app/fonts/**/*.*',
         appJs: app + '/js/app.js',
         scripts: app + '/js/**/*.js',
         vendor: './vendor.json',

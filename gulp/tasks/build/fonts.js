@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+    config  = require('../../config'),
     path = require('path');
 
 // simply moves the fonts to the distribution directory
@@ -10,7 +11,7 @@ gulp.task('fonts', function(cb) {
         targetDir = path.resolve(build ? 'www' : '.tmp'),
         fontDir = targetDir + '/fonts';
 
-    gulp.src(['app/fonts/*.*', 'bower_components/ionic/fonts/*.*'])
+    gulp.src([config.paths.fonts, 'bower_components/ionic/fonts/*.*'])
         .pipe(gulp.dest(fontDir))
         .on('error', errorHandler);
     cb();
@@ -20,5 +21,3 @@ gulp.task('fonts', function(cb) {
 var errorHandler = function(error) {
     gulp.plugins.util.log('Gulp - fonts - error: ', error);
 };
-
-
