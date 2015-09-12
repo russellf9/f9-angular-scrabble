@@ -79,16 +79,13 @@ gulp.task('version-gulp-config', function() {
   bumpGulpConfig();
 });
 // @see `version-config`
-// Note I can't get this to work...
+// updates the ionic version number
 var bumpGulpConfig = function() {
   // get the current version number
   var version = packageJSONFile.version;
 
   // creates the replacement string
   var newVersion = 'version: "' + version + '"';
-
-  //  version: '0.1.6'
-  //  version = '0.1.6';
 
   return gulp.src(gulpConfig)
     .pipe(replace(/version = "\d+\.\d+\.\d+"/, newVersion))

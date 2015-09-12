@@ -38,7 +38,7 @@ An Ionic Seed Project
 
 The current version of the app is:
 
-version="0.0.6"
+version="0.0.7"
 
 
 ## Project Objectives
