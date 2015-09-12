@@ -46,7 +46,7 @@ gulp.task('index', function(cb) {
 
 // Handle errors
 function errorHandler(error) {
-    console.log('Gulp index Error: ', error.toString());
+    gulp.plugins.util.log('Gulp index Error: ', error.toString());
     /*jshint validthis:true */
     this.emit('end');
 }

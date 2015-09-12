@@ -38,7 +38,7 @@ gulp.task('styles', function() {
 
 // Handle errors
 function errorHandler(error) {
-    console.log('Gulp Styles Error: ', error.toString());
+    gulp.plugins.util.log('Gulp Styles Error: ', error.toString());
     /*jshint validthis:true */
     this.emit('end');
 }

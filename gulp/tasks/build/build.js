@@ -27,7 +27,7 @@ gulp.task('build', function(cb) {
     }
 
     runSequence('clean',
-        ['images', 'jshint', 'scripts', 'vendor', 'styles',  'fonts'],
+        ['images', 'jshint', 'jscs', 'scripts', 'vendor', 'styles',  'fonts'],
         'index', 'partials', 'templates',
         build ? 'noop' : 'watchers',
         build ? 'noop' : 'serve',

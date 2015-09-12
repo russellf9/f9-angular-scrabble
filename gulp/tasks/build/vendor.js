@@ -24,7 +24,7 @@ gulp.task('vendor', function() {
 
 // Handle errors
 function errorHandler(error) {
-    console.log('Gulp Vendor Error: ', error.toString());
+    gulp.plugins.util.log('Gulp Vendor Error: ', error.toString());
     /*jshint validthis:true */
     this.emit('end');
 }
