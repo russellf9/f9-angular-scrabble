@@ -6,9 +6,6 @@ var gulp = require('gulp'),
 
 gulp.task('watchers', function() {
 
-    var build = gulp.args.build || gulp.args.emulate || gulp.args.run,
-        targetDir = path.resolve(build ? 'www' : '.tmp');
-
     gulp.watch(config.paths.sass, ['styles']);
 
     // TODO not working...
@@ -17,9 +14,8 @@ gulp.task('watchers', function() {
     // TODO
     // gulp.watch('app/icons/**', ['iconfont']);
 
-    // TODO
-    // gulp.watch('app/images/**', ['images'])
-
+    gulp.watch(config.paths.images, ['images']);
+    gulp.watch(config.paths.templates, ['templates']);
     gulp.watch(config.paths.scripts, ['jshint', 'scripts', 'index']);
     gulp.watch(config.paths.vendor, ['vendor']);
     gulp.watch(config.paths.partials, ['scripts', 'index', 'partials']);
