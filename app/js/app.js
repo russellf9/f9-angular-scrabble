@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('f9-ionic-seed', ['ionic', 'ngDragDrop', 'angular.filter'])
+angular.module('f9-ionic-seed', ['ionic', 'ngDragDrop', 'angular.filter', 'templates', 'f9-magic-square'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 

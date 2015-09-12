@@ -22,7 +22,8 @@ module.exports = {
         images: app + '/img/**/*.*',
         ionicConfig: 'config.xml',
         readme: 'README.md',
-        gulpConfig: '/gulp/config.js'
+        gulpConfig: '/gulp/config.js',
+        templates: app + '/js/**/*.html'
     },
     json: {
         package: './package.json',

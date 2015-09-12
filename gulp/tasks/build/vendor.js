@@ -16,10 +16,9 @@ gulp.task('vendor', function() {
         .pipe(sourcemaps.init())
         .pipe(gulp.plugins.concat('vendor.js'))
         .pipe(gulp.plugins.if(build, gulp.plugins.uglify())
-            //.pipe(gulp.plugins.if(build, plugins.rev())) // could do this
         .pipe(sourcemaps.write())
-            .pipe(gulp.dest(path.join(targetDir, 'js')))
-            .on('error', errorHandler));
+        .pipe(gulp.dest(path.join(targetDir, 'js')))
+        .on('error', errorHandler));
 });
 
 

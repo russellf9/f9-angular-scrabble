@@ -1,10 +1,36 @@
 <ion-view title="Main">
-  <i class="icon ion-loading-c progress-bar-icon" ng-if="loading"></i>
+    <i class="icon ion-loading-c progress-bar-icon" ng-if="loading"></i>
 
-  <ion-content>
-    <div class="list" ng-hide="loading">
-      <p>The starting or main page.</p>
-    </div>
+    <ion-content>
+        <div class="list" ng-hide="loading">
+            <p>The starting or main page.</p>
 
-  </ion-content>
+
+        </div>
+
+        <div>
+            <p>Simple Inline - The template is here...</p>
+
+            <div ng-include src="'template1.html'"></div>
+            <div ng-include="'template1.html'"></div>
+        </div>
+
+        <br>
+
+        <div>
+            <p>Using the "gulp-angular-templatecache"</p>
+
+            <div ng-include src="'modules/magic-square-link/magicSquareLink.html'"></div>
+        </div>
+
+
+        <div>
+            <p>Using the Directive!</p>
+            <div f9-magic-square-link></div>
+        </div>
+    </ion-content>
 </ion-view>
+
+<script type="text/ng-template" id="template1.html">
+    Content of template1.html
+</script>
