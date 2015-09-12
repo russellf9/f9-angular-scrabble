@@ -11,14 +11,17 @@ gulp.task('vendor', function() {
     var build = gulp.args.build || gulp.args.emulate || gulp.args.run,
         targetDir = path.resolve(build ? './www/' : './.tmp/');
 
+    console.log('vendor | build: ', build);
+
     return gulp.src(gulp.vendorFiles,
         {base: 'bower_components/'})
         .pipe(sourcemaps.init())
         .pipe(gulp.plugins.concat('vendor.js'))
-        .pipe(gulp.plugins.if(build, gulp.plugins.uglify())
+        //.pipe(gulp.plugins.if(build, gulp.plugins.uglify()))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.join(targetDir, 'js')))
-        .on('error', errorHandler));
+        .pipe(gulp.plugins.if(build, gulp.plugins.rename({extname: '.min.js'})))
+        .pipe(gulp.dest(targetDir + '/js'))
+        .on('error', errorHandler);
 });
 
 
