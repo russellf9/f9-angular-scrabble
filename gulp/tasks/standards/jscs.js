@@ -13,7 +13,7 @@ gulp.task('jscs', function() {
 
 // Handle errors
 function errorHandler(error) {
-    gulp.plugins.util.log('Gulp jsHint Error: ' + error.toString()  );
+    gulp.plugins.util.log('Gulp jsHint Error: ' + error.toString());
     /*jshint validthis:true */
     this.emit('end');
 }

@@ -7,10 +7,6 @@ var gulp = require('gulp'),
 // injects the path of the js and css files into the `target` html file
 gulp.task('index', function(cb) {
 
-    //plugins.log('stuff happened', 'Really it did', plugins.colors.magenta('123'));
-    //gutil.log('plugins: ',plugins);
-    gulp.plugins.util.log('Index - I`m working! build: ', gulp.args.build);
-
     var build = gulp.args.build || gulp.args.emulate || gulp.args.run,
     // define the src and target
         src = './app/index.html',
@@ -18,7 +14,7 @@ gulp.task('index', function(cb) {
 
     // define the path for each build
         cssPath = path.resolve(build ? 'www/styles/main.css' : '.tmp/styles/main.css'),
-        vendorPath = path.resolve(build ? 'www/js/vendor.js' : '.tmp/js/vendor.js'),
+        vendorPath = path.resolve(build ? 'www/js/vendor.min.js' : '.tmp/js/vendor.js'),
         appPath = path.resolve(build ? 'www/js/app.min.js' : '.tmp/js/app.js'),
 
     // define the stream for each build

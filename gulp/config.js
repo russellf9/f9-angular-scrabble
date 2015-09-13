@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 var src = '/www',
     app = 'app',
     version = '0.1.6';

@@ -17,7 +17,7 @@ gulp.task('jshint', function() {
 
 // Handle errors
 function errorHandler(error) {
-    console.log('Gulp jsHint Error: ', error.toString());
+    gulp.plugins.util.log('Gulp jsHint Error: ', error.toString());
     /*jshint validthis:true */
     this.emit('end');
 }

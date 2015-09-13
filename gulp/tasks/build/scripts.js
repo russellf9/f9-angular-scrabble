@@ -21,12 +21,12 @@ gulp.task('scripts', function() {
         .pipe(gulp.plugins.if(build, gulp.plugins.uglify(
             {
                 mangle: false,
-                compress:{
-                    pure_funcs: [ 'console.log' ]
+                compress: {
+                    pure_funcs: ['console.log']
                 }
             }
-          )))
-      .pipe(sourcemaps.write())
+        )))
+        .pipe(sourcemaps.write())
         .pipe(gulp.plugins.header(config.build.closureStart))
         .pipe(gulp.plugins.footer(config.build.closureEnd))
         .pipe(gulp.plugins.if(build, gulp.plugins.rename({extname: '.min.js'})))

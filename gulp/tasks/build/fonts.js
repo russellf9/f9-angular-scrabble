@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-    config  = require('../../config'),
+    config = require('../../config'),
     path = require('path');
 
 // simply moves the fonts to the distribution directory

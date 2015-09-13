@@ -47,7 +47,7 @@ gulp.task('serve', function() {
         _targetDir = path.resolve(build ? 'www' : '.tmp'),
 
     // set up the express server
-    app = express();
+        app = express();
     app.use(require('connect-livereload')());
     app.use(express.static(_targetDir));
     app.listen(port);

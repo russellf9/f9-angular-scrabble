@@ -15,7 +15,7 @@ gulp.task('styles', function() {
     options.style = build ? 'compressed' : 'expanded';
 
     var cssPaths = ['./bower_components/ionic/css/ionic.min.css',
-        './bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css'],
+            './bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css'],
         sassStream = gulp.plugins.rubySass(config.sass.rubySrc, options)
             .pipe(gulp.plugins.autoprefixer(config.sass.autoprefixer))
             .on('error', errorHandler),

@@ -1,7 +1,7 @@
 'use strict';
 
 /* A task to `bump` the apps version number using
-    MAJOR.MINOR.PATCH
+ MAJOR.MINOR.PATCH
  * */
 
 var gulp = require('gulp'),
@@ -19,9 +19,9 @@ var gulp = require('gulp'),
 
 // implements semantic a `patch` increment
 gulp.task('version-patch', function() {
-  return gulp.src(json)
-    .pipe(gulp.plugins.bump({type: 'patch'}))
-    .pipe(gulp.dest('./'));
+    return gulp.src(json)
+        .pipe(gulp.plugins.bump({type: 'patch'}))
+        .pipe(gulp.dest('./'));
 });
 
 // implements semantic a `minor` increment
@@ -39,7 +39,6 @@ gulp.task('version-major', function() {
 });
 
 
-
 // updates the Cordova `config.xml` Version Number to match the Version in the `package.json`
 // Note: Can`t be run in series, so has to be run as a separate task, after the version-* task.
 gulp.task('version-config', function() {
@@ -49,46 +48,46 @@ gulp.task('version-config', function() {
 });
 // @see `version-config`
 var bumpConfig = function() {
-  // get the current version number
-  var version = packageJSONFile.version;
+    // get the current version number
+    var version = packageJSONFile.version;
 
-  // creates the replacement string
-  var newVersion = 'version="' + version + '"';
+    // creates the replacement string
+    var newVersion = 'version="' + version + '"';
 
-  gulp.plugins.util.log('Bumped \'' + gulp.plugins.util.colors.cyan(cordovaConfig) + '\' to: ' + gulp.plugins.util.colors.cyan(version));
+    gulp.plugins.util.log('Bumped \'' + gulp.plugins.util.colors.cyan(cordovaConfig) + '\' to: ' + gulp.plugins.util.colors.cyan(version));
 
-  return gulp.src(cordovaConfig)
-    .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
-    .pipe(gulp.dest('./'));
+    return gulp.src(cordovaConfig)
+        .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
+        .pipe(gulp.dest('./'));
 };
 // @see `version-config`
 var bumpReadme = function() {
-  // get the current version number
-  var version = packageJSONFile.version;
+    // get the current version number
+    var version = packageJSONFile.version;
 
-  // creates the replacement string
-  var newVersion = 'version="' + version + '"';
+    // creates the replacement string
+    var newVersion = 'version="' + version + '"';
 
-  return gulp.src(readme)
-    .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
-    .pipe(gulp.dest('./'));
+    return gulp.src(readme)
+        .pipe(replace(/version="\d+\.\d+\.\d+"/, newVersion))
+        .pipe(gulp.dest('./'));
 };
 
 
 gulp.task('version-gulp-config', function() {
-  bumpGulpConfig();
+    bumpGulpConfig();
 });
 // @see `version-config`
 // updates the ionic version number
 var bumpGulpConfig = function() {
-  // get the current version number
-  var version = packageJSONFile.version;
+    // get the current version number
+    var version = packageJSONFile.version;
 
-  // creates the replacement string
-  var newVersion = 'version: "' + version + '"';
+    // creates the replacement string
+    var newVersion = 'version: "' + version + '"';
 
-  return gulp.src(gulpConfig)
-    .pipe(replace(/version = "\d+\.\d+\.\d+"/, newVersion))
-    .pipe(gulp.dest('./'));
+    return gulp.src(gulpConfig)
+        .pipe(replace(/version = "\d+\.\d+\.\d+"/, newVersion))
+        .pipe(gulp.dest('./'));
 };
 

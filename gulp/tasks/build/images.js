@@ -1,8 +1,8 @@
 'use strict';
 
-var gulp    = require('gulp'),
-    config  = require('../../config'),
-    path    = require('path');
+var gulp = require('gulp'),
+    config = require('../../config'),
+    path = require('path');
 
 
 // copy images
