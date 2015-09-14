@@ -42,13 +42,4 @@ function errorHandler(error) {
     /*jshint validthis:true */
     this.emit('end');
 }
-/**
- TODO;
 
- add notify
- .pipe(notify({
-        title: 'SASS',
-        message: 'SASS completed.  New CSS created!',
-        sound: 'Pop'
-    }));
- */
