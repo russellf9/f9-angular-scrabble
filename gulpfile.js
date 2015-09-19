@@ -28,6 +28,9 @@ gulp.args = args;
 // assign the list of all library js files
 gulp.vendorFiles = require('./vendor.json');
 
+// assign the list of all the js files where we want a CDN option
+gulp.cdnFiles = require('./cdn.json');
+
 
 // shared error handler
 gulp.errorHandler = function(task, error) {

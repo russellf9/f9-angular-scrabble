@@ -22,7 +22,8 @@ module.exports = {
         ionicConfig: 'config.xml',
         readme: 'README.md',
         gulpConfig: '/gulp/config.js',
-        templates: app + '/js/**/*.html'
+        templates: app + '/js/**/*.html',
+        cdnVendor: app + '/vendor'
     },
     json: {
         package: './package.json',

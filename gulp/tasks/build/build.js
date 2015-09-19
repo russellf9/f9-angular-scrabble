@@ -27,8 +27,9 @@ gulp.task('build', function(cb) {
     }
 
     runSequence('clean',
-        ['images', 'jshint', 'jscs', 'scripts', 'vendor', 'styles', 'fonts'],
+        ['images', 'jshint', 'jscs', 'scripts', 'vendor', 'styles', 'fonts', 'cdn'],
         'index', 'partials', 'templates',
+        'cdnify',
         build ? 'noop' : 'watchers',
         build ? 'noop' : 'serve',
         emulate ? 'ionic:emulate' : 'noop',
