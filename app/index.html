@@ -23,14 +23,18 @@
 
     <script>
         function load() {
-            console.log("load event detected!");
+            //console.log("load event detected!");
             for(var key in window) { // all properties
                 console.log('key: ',key)
             }
             function globals() { return this; }
             var names = "";
             for(var name in globals()) { names += name + ","; }
-            console.log('names: ', names)
+            //console.log('names: ', names)
+            for(var value in window.jQuery) { // all properties
+                console.log('value: ',value)
+            }
+
         }
         window.onload = load;
     </script>
