@@ -23,7 +23,8 @@ module.exports = {
         readme: 'README.md',
         gulpConfig: '/gulp/config.js',
         templates: app + '/js/**/*.html',
-        cdnVendor: app + '/vendor'
+        cdnVendor: app + '/vendor',
+        cdn: './cdn.json'
     },
     json: {
         package: './package.json',
