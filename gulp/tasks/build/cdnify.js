@@ -23,8 +23,8 @@ gulp.task('cdnify', function(cb) {
             files: [{
                 file: 'bower_components/jquery/dist/jquery.min.js',
                 package: 'jquery',
-                test: 'window.jquery',
-                cdn: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'
+                test: 'window.jQuery', // Note the test with capital Q!
+                cdn: 'http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'
             }]
         }))
         .pipe(gulp.dest(targetDir));
