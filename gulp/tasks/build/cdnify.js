@@ -15,6 +15,7 @@ gulp.task('cdnify', function(cb) {
 
         .pipe(gulp.plugins.debug({title: 'index', minimal: false}))
 
+
         .pipe(cdnizer({
             bowerComponents: 'bower_components/',
 
@@ -30,14 +31,15 @@ gulp.task('cdnify', function(cb) {
                     file: 'bower_components/jquery-ui/jquery-ui.min.js',
                     package: 'jquery-ui',
                     test: 'window.jQuery.ui',
-                    cdn: 'https://ajax.googleapis.com/ajax/libs/jqueryu/1.11.4/jquery-ui.min.js'
+                    cdn: 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'
                 },
                 {
                     file: 'bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js',
                     package: 'jqueryui-touch-punch',
                     test: 'window.jQuery.ui',
                     cdn: 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js'
-                }]
+                }
+            ]
         }))
         .pipe(gulp.dest(targetDir));
     cb();
