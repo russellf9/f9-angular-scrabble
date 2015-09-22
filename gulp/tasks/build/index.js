@@ -32,18 +32,6 @@ gulp.task('index', function(cb) {
     vendorOptions.ignorePath = build ? 'www' : '.tmp';
 
     gulp.src(src)
-        // TODO
-        //.pipe(cdnizer({
-        //    bowerComponents: config.paths.cdnVendor,
-        //    allowRev: true,
-        //    allowMin: true,
-        //    files: [{
-        //        file:  config.paths.cdnVendor + '/jquery/dist/jquery.js',
-        //        //package: 'jquery',
-        //        //test: 'window.jquery',
-        //        cdn: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'
-        //    }]
-        //}))
         .pipe(gulp.plugins.inject(cssStream, options))
         .pipe(gulp.plugins.inject(vendorStream, vendorOptions))
         .pipe(gulp.plugins.inject(appStream, options))

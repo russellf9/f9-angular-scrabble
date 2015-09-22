@@ -4,17 +4,17 @@ var gulp = require('gulp'),
     config = require('../../config'),
     path = require('path');
 
-
-gulp.task('cdn', function(cb) {
+/**
+ * A task which distriutes a list of files to a specified location
+ */
+gulp.task('dist-bower', function(cb) {
 
     var build = gulp.args.build || gulp.args.emulate || gulp.args.run,
         targetDir = path.resolve(build ? 'www' : '.tmp');
 
-
-    return gulp.src(gulp.cdnFiles, {base: 'bower_components/'})
+    return gulp.src(gulp.bowerDistFiles, {base: 'bower_components/'})
         .pipe(gulp.dest(targetDir + '/bower_components'))
         .on('error', errorHandler);
-
 });
 
 // Handle errors

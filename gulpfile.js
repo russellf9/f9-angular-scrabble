@@ -29,7 +29,7 @@ gulp.args = args;
 gulp.vendorFiles = require('./vendor.json');
 
 // assign the list of all the js files where we want a CDN option
-gulp.cdnFiles = require('./cdn.json');
+gulp.bowerDistFiles = require('./bower-dist.json');
 
 
 // shared error handler

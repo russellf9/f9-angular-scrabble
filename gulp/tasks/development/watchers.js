@@ -12,8 +12,8 @@ gulp.task('watchers', function() {
     gulp.watch(config.paths.scripts, ['jshint', 'jscs', 'scripts', 'index']);
     gulp.watch(config.paths.vendor, ['vendor']);
     gulp.watch(config.paths.partials, ['scripts', 'index', 'partials']);
-    gulp.watch(config.paths.index, ['index', 'cdn', 'cdnify']);
-    gulp.watch(config.paths.cdn, ['cdn', 'cdnify']);
+    gulp.watch(config.paths.index, ['index']);
+    gulp.watch(config.paths.bowerDist, ['cdn']);
 });
 
 

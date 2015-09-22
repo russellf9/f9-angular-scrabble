@@ -38,7 +38,7 @@ An Ionic Seed Project
 
 The current version of the app is:
 
-version="0.0.7"
+version="0.0.8"
 
 
 ## Project Objectives
@@ -185,6 +185,8 @@ $ gulp version-major
 # This have to be run as a distinct task afterwards:
 # Copies the latest version number to the Cordova.xml file and this README file.
 $ gulp version-config
+
+# Note the versions in the `gulp version-config` are, as yet are not being updated by this Gulp task.
 ```
 
 * [gulp-git](https://www.npmjs.com/package/gulp-git)
