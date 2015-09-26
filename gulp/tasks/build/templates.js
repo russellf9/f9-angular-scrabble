@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ *
+ * TODO - If there are no Directives something breaks with this task.
+ * @type {Gulp|exports|module.exports}
+ */
+
 var gulp = require('gulp'),
     config = require('../../config'),
     path = require('path'),

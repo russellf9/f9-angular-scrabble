@@ -28,6 +28,8 @@
 
 An Angular Scrabble Game
 
+For the model, I'm using Flux. See - [ng-flux](https://github.com/JustinWinthers/ng-flux)
+
 ## Version
 
 The current version of the app is:
