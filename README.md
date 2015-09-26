@@ -38,7 +38,7 @@ An Ionic Seed Project
 
 The current version of the app is:
 
-version="0.0.9"
+version="0.1.0"
 
 
 ## Project Objectives
@@ -218,7 +218,12 @@ I've added a few useful Angular packages to the seed:
 1. [x] Make a TODO list!.
 1. [ ] Make the tree using `tree`
 2. [ ] Build Process - Rationalise
-3. [ ] Rationalise Dependencies
+3. [x] Rationalise Dependencies
+4. [ ] Replace Gulp-clean with gulp-rimraf
+5. [ ] Use gulp-htmlmin for the partials
+6. [ ] Use gulp-strip-debug in the Scripts task - Might be done by `uglify` anyway?
+7. [ ] `gulp -emulate` builds as well, either update the docs or modify tasks
+8. [ ] Modify the module.exports config properties with the `version-config` task
 
 ## Updating Node
 

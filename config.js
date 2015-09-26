@@ -2,12 +2,12 @@
 
 var src = '/www',
     app = './app',
-    version = '0.0.6';
+    version = '0.1.0';
 
 
 module.exports = {
     pkg: {
-        version: '0.0.6'
+        version: '0.1.0'
     },
     paths: {
         sass: './scss/**/*.{scss, sass}',
