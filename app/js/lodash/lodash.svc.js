@@ -5,7 +5,7 @@
     /**
      * A factory which extends the underscore / lodash lib
      */
-    angular.module('f9-ionic-seed').factory('_', ['$window', function($window) {
+    angular.module('f9-angular-scrabble').factory('_', ['$window', function($window) {
 
         // Get a local handle on the global lodash reference.
         var _ = $window._;

@@ -1,30 +1,24 @@
-# f9-ionic-seed
+# f9-angular-scrabble
 
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-  - [Description](#description)
-  - [Version](#version)
-  - [Project Objectives](#project-objectives)
-  - [Installation](#installation)
-  - [Cordova](#cordova)
-  - [The Ionic Workflow](#the-ionic-workflow)
+- [Description](#description)
+- [Version](#version)
+- [Project Objectives](#project-objectives)
+- [Installation](#installation)
+- [Cordova](#cordova)
+- [The Ionic Workflow](#the-ionic-workflow)
 - [Development](#development)
-- [Build](#build)
-- [Browser platform](#browser-platform)
-- [Ionic](#ionic)
-- [add platform](#add-platform)
-- [rebuild](#rebuild)
-  - [Gulp Commands](#gulp-commands)
-- [Gulp utilities](#gulp-utilities)
-  - [Known Issues:](#known-issues)
-  - [TODO](#todo)
-  - [Updating Node](#updating-node)
-  - [Project Tree](#project-tree)
-  - [Developed By](#developed-by)
-  - [License](#license)
+- [Gulp Commands](#gulp-commands)
+- [Additional Features](#additional-features)
+- [Known Issues:](#known-issues)
+- [TODO](#todo)
+- [Project Tree](#project-tree)
+- [Developed By](#developed-by)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -32,28 +26,24 @@
 
 ## Description
 
-An Ionic Seed Project
+An Angular Scrabble Game
 
 ## Version
 
 The current version of the app is:
 
-version="0.1.0"
+version="0.0.1"
 
 
 ## Project Objectives
 
-Attempting to create a definitive seed app, using best practise for Gulp, Ionic, Angular and SASS.
-
-Also to document the complete Ionic Workflow.
-
-
+Make a game related to Scrabble
 
 
 ## Installation
 
 ```
-$ git clone git@github.com:russellf9/f9-ionic-seed && cd f9-ionic-seed
+$ git clone https://github.com/russellf9/f9-angular-scrabble.git && cd f9-angular-scrabble
 
 # update node dependencies
 $ npm update
@@ -211,36 +201,12 @@ I've added a few useful Angular packages to the seed:
 
 ## Known Issues:
 
-1. [x] Dev build clean task is perhaps running simultaneously and causing an error.
+1. [ ]
 
 ## TODO
 
-1. [x] Make a TODO list!.
+1. [ ] Make a TODO list!.
 1. [ ] Make the tree using `tree`
-2. [ ] Build Process - Rationalise
-3. [x] Rationalise Dependencies
-4. [ ] Replace Gulp-clean with gulp-rimraf
-5. [ ] Use gulp-htmlmin for the partials
-6. [ ] Use gulp-strip-debug in the Scripts task - Might be done by `uglify` anyway?
-7. [ ] `gulp -emulate` builds as well, either update the docs or modify tasks
-8. [ ] Modify the module.exports config properties with the `version-config` task
-
-## Updating Node
-
-```
-# to update node
-node -v
-v0.10.33
-
-#  use n
-npm install -g n
-
-# For the latest stable version:
-sudo n stable
-
-node -v
-v0.12.0
-```
 
 
 ## Project Tree

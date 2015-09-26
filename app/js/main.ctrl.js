@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('f9-ionic-seed')
+    angular.module('f9-angular-scrabble')
         .controller('MainCtrl', mainController);
 
     function mainController($scope) {

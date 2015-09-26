@@ -17,9 +17,6 @@
 - [specific language governing permissions and limitations](#specific-language-governing-permissions-and-limitations)
 - [under the License.](#under-the-license)
 - [Cordova Hooks](#cordova-hooks)
-  - [Hook Directories](#hook-directories)
-  - [Script Interface](#script-interface)
-  - [Writing hooks](#writing-hooks)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
