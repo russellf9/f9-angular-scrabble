@@ -15,7 +15,7 @@
         // without injecting it. It's an easy mistake to make, and one that won't
         // throw an error (since the core library is globally accessible).
         // ALSO: See .run() block above.
-        delete($window._);
+        //delete($window._);
 
         // ---
         // CUSTOM LODASH METHODS.

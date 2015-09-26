@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     path = require('path');
 
 /**
- * A task which distriutes a list of files to a specified location
+ * A task which distributes a list of files to a specified location
  */
 gulp.task('dist-bower', function(cb) {
 
