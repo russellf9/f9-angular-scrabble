@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('f9-angular-scrabble', ['ionic', 'ngDragDrop', 'angular.filter', 'templates', 'Scrabble'])
+angular.module('f9-angular-scrabble', ['ionic', 'ngDragDrop', 'angular.filter', 'templates', 'Dictionary', 'Scrabble'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 

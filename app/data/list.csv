@@ -1,9 +1,4 @@
-var corpus = [
-
-
-
-
-    'AA',
+'AA',
 'AAH',
 'AAHED',
 'AAHING',
@@ -178694,6 +178689,3 @@ var corpus = [
 'ZYZZYVA',
 'ZYZZYVAS',
 'ZZZ'
-
-
-]

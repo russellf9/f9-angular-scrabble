@@ -5,7 +5,7 @@
     angular.module('f9-angular-scrabble')
         .controller('MainCtrl', mainController);
 
-    function mainController($scope, $log, WordFinderService, _) {
+    function mainController($scope, $log, WordFinderService, _, DictionaryService) {
         $scope.data = {};
         $scope.loading = false;
 
