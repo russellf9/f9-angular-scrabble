@@ -19,6 +19,7 @@ module.exports = {
         partials: app + '/partials/**/*.html',
         index: app + '/index.html',
         images: app + '/img/**/*.*',
+        data: app + '/data/**/*.*',
         ionicConfig: 'config.xml',
         readme: 'README.md',
         gulpConfig: '/gulp/config.js',

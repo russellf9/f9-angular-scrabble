@@ -6,20 +6,27 @@
         .controller('MainCtrl', mainController);
 
     function mainController($scope, $log, WordFinderService, _, DictionaryService) {
-        $scope.data = {};
-        $scope.loading = false;
-
 
         // do a very quick hack to test here...
         $log.info('MainCtrl');
 
-        var wordList = ["EAT", "AT", "ATE", "TEA", "TEE", "TA"];
-
         var hand = ["E", "A", "T"];
 
-        var result = WordFinderService.makeWordFinder(hand, wordList);
+        DictionaryService.getDictionary()
+            .then(function() {
+                $scope.wordList = DictionaryService.dictionary;
+                _makeWord();
+            });
 
-        $log.info('OK result: ', result);
+
+        function _makeWord() {
+
+            var result = WordFinderService.makeWordFinder(hand, $scope.wordList);
+
+            $log.info('21:06 - OK result: ', result);
+
+        }
+
 
     }
 })();

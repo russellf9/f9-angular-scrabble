@@ -1,32 +1,29 @@
 (function() {
     'use strict';
 
-    angular.module('Dictionary', [])
+    angular.module('Dictionary', ['dataApi'])
 
-        .service('DictionaryService', dictionaryService);
+        .factory('DictionaryService', dictionaryService);
 
-    function dictionaryService(_, $http) {
+    function dictionaryService(dataApi) {
 
         var service = {};
 
-        service.getDictionary = _getDictionary;
+        service.dictionary = [];
 
-        service.data = "";
+        // instantiates the dictionary
+        service.getDictionary = function() {
+            return dataApi.getData()
+                .success(function(result) {
+                    service.dictionary = result.split(',');
+                })
+                .error(function(error) {
+                    // TODO
+                });
 
-        // var array = string.split(',');
-
-
-        // TODO move to api file
-        $http.get('data/list.csv').success(function(data) {
-            service.dataArray = data.split(',');
-        });
-
-
+        };
         return  service;
     }
 
-    function _getDictionary() {
-
-    }
 
 })();
