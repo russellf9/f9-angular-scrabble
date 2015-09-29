@@ -3,7 +3,7 @@
 
     angular.module('Dictionary', ['dataApi'])
 
-        .factory('DictionaryService', dictionaryService);
+        .service('DictionaryService', dictionaryService);
 
     function dictionaryService(dataApi) {
 
@@ -11,7 +11,7 @@
 
         service.dictionary = [];
 
-        // instantiates the dictionary
+        // coverts the dictionary data into an array of words
         service.getDictionary = function() {
             return dataApi.getData()
                 .success(function(result) {
