@@ -5,14 +5,20 @@
 
         .service('ScrabbleService', scrabbleService);
 
+
+    /**
+     * @name scrabbleService
+     * @description A Service for Scrabble operations
+     * @param dataApi
+     * @param _
+     * @returns {{}}
+     */
+
     function scrabbleService(dataApi, _) {
 
         var service = {};
 
-        var test = 'Russell';
-
         service.language = 'English';
-
 
         // data from: https://github.com/hanshuebner/html-scrabble/blob/master/client/javascript/scrabble.js
 
@@ -29,100 +35,22 @@
 
         };
 
-        service.getTileScore = function(letter) {
-            var tile = _.find(letterDistribution, function(tile) {
-                return tile.letter === letter;
-            });
+        // TODO find a way of triggering this automatically
+        // also, use the return to set a value
+        service.createLetterBag = _createLetterBag;
 
-            return tile.score;
-        };
+        service.getTileScore = _getTileScore;
 
-        service.getWordScore = function(word) {
-            var score = 0;
-            for(var i = 0, j = word.length; i < j; i++) {
-                score += service.getTileScore(word[i]);
-            }
-            return score;
-        };
+        service.getWordScore = _getWordScore;
 
-        service.findBestWord = function(words) {
+        service.findBestWord = _findBestWord;
 
-            var word,
-                bestWord = '',
-                bestScore = 0,
-                score;
+        service.getHand = _getHand;
 
-            for(var i = 0, j = words.length; i < j; i++) {
-                word = words[i];
-                score = service.getWordScore(word);
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestWord = word;
-                    // TODO add repeats
-                }
-            }
-
-            return {word:bestWord, score: bestScore}
-
-        };
-
-        service.createLetterBag = function() {
-
-            service.letterBag = {};
-
-            service.letterBag.tiles = [];
-
-            console.log('ScrabbleService:: service: ', service);
-
-            console.log('ScrabbleService::createLetterBag | letterDistribution: ', letterDistribution)
+        service.shake = _shake;
 
 
-            for (var i = 0; i < letterDistribution.length; ++i) {
-                var letterDefinition = letterDistribution[i];
-
-                var tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
-                if (letterDefinition.letter) {
-                    service.letterBag.legalLetters += letterDefinition.letter;
-                }
-
-                for (var n = 0; n < letterDefinition.count; ++n) {
-                    var tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
-                    service.letterBag.tiles.push(tile);
-                }
-            }
-
-            return service.letterBag;
-        };
-
-        service.getHand = function(number) {
-
-            var hand = [];
-
-            for (var i = 0; i < number; i++) {
-                hand.push(service.letterBag.tiles.pop())
-            }
-
-            return hand;
-
-        };
-
-        // randomises the order of the tiles
-        service.shake = function() {
-
-            var count = service.letterBag.tiles.length;
-            for (var i = 0; i < count * 3; i++) {
-                var a = Math.floor(Math.random() * count);
-                var b = Math.floor(Math.random() * count);
-                var tmp = service.letterBag.tiles[b];
-                service.letterBag.tiles[b] = service.letterBag.tiles[a];
-                service.letterBag.tiles[a] = tmp;
-            }
-        };
-
-        function Tile(letter, score) {
-            this.letter = letter;
-            this.score = score;
-        }
+        // Objects
 
         var letterDistribution =
             [{letter: "E", score: 1, count: 12},
@@ -156,11 +84,139 @@
                 {letter: "X", score: 8, count: 1},
 
                 {letter: "Q", score: 10, count: 1},
-                {letter: "Z", score: 10, count: 1}]
+                {letter: "Z", score: 10, count: 1}];
 
 
         return service;
+
+
+        function Tile(letter, score) {
+            this.letter = letter;
+            this.score = score;
+        }
+
+
+
+        // map of functions
+
+
+        /**
+         * @name _createLetterBag
+         * @description Creates a complete set of Scrabble Tiles
+         * @returns {Object}
+         * @private
+         */
+        function _createLetterBag() {
+            service.letterBag = {};
+
+            service.letterBag.tiles = [];
+
+            var tile;
+
+            for (var i = 0; i < letterDistribution.length; ++i) {
+                var letterDefinition = letterDistribution[i];
+
+                tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
+                if (letterDefinition.letter) {
+                    service.letterBag.legalLetters += letterDefinition.letter;
+                }
+
+                for (var n = 0; n < letterDefinition.count; ++n) {
+                    tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
+                    service.letterBag.tiles.push(tile);
+                }
+            }
+
+            return service.letterBag;
+        }
+
+        /**
+         * @name _getHand
+         * @description Returns an Array of Scrabble tiles
+         * @param number The maximum number of tiles to pick
+         * @returns {Array} An Array of type Tile
+         * @private
+         */
+        function _getHand(number) {
+            var hand = [];
+
+            for (var i = 0; i < number; i++) {
+                hand.push(service.letterBag.tiles.pop());
+            }
+            return hand;
+        }
+
+        /**
+         * @name _getTileScore
+         * @description Returns the value of the supplied letter
+         * @param letter
+         * @returns {Number}
+         * @private
+         */
+        function _getTileScore(letter) {
+            var tile = _.find(letterDistribution, function(tile) {
+                return tile.letter === letter;
+            });
+
+            return tile.score;
+        }
+
+        /**
+         * @name _getWordScore
+         * @description Returns the total value of all the tiles in the supplied word
+         * @param word
+         * @returns {number}
+         * @private
+         */
+        function _getWordScore(word) {
+            var score = 0;
+            for(var i = 0, j = word.length; i < j; i++) {
+                score += service.getTileScore(word[i]);
+            }
+            return score;
+        }
+
+        /**
+         * @name _findBestWord
+         * @description Finds the word ( or words ) with the highest Scrabble score in the Supplied set
+         * @param words
+         * @returns {{word: string, score: number}}
+         * @private
+         */
+        function _findBestWord(words) {
+            var word,
+                bestWord = '',
+                bestScore = 0,
+                score;
+
+            for(var i = 0, j = words.length; i < j; i++) {
+                word = words[i];
+                score = service.getWordScore(word);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestWord = word;
+                    // TODO add repeats
+                }
+            }
+            // TODO make new Object type?
+            return {word:bestWord, score: bestScore};
+        }
+
+
+        /**
+         * @name _shake
+         * @description Randomises the order of the tiles
+         * @private
+         */
+        function _shake() {
+            var count = service.letterBag.tiles.length;
+            for (var i = 0; i < count * 3; i++) {
+                var a = Math.floor(Math.random() * count);
+                var b = Math.floor(Math.random() * count);
+                var tmp = service.letterBag.tiles[b];
+                service.letterBag.tiles[b] = service.letterBag.tiles[a];
+                service.letterBag.tiles[a] = tmp;
+            }
+        }
     }
-
-
 })();

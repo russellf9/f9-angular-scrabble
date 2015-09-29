@@ -21,7 +21,7 @@
         $log.info('letterBag: ', ScrabbleService.letterBag);
 
         // an array of Tiles
-        var hand = ScrabbleService.getHand(7);
+        hand = ScrabbleService.getHand(7);
 
         console.log('hand: ', hand);
 
@@ -82,7 +82,7 @@
 
             var bestWord = ScrabbleService.findBestWord(result);
 
-            $log.info('The highest scoring word is ', bestWord.word, ' with a score of ', bestWord.score)
+            $log.info('The highest scoring word is ', bestWord.word, ' with a score of ', bestWord.score);
 
 
         }
