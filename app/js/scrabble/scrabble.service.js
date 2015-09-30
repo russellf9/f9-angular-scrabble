@@ -10,10 +10,9 @@
      * @name scrabbleService
      * @description A Service for Scrabble operations
      * @param dataApi
-     * @param _
+     * @param _ Lo-Dash Dependency
      * @returns {{}}
      */
-
     function scrabbleService(dataApi, _) {
 
         var service = {};
@@ -50,7 +49,7 @@
         service.shake = _shake;
 
 
-        // Objects
+        // == OBJECTS ========
 
         var letterDistribution =
             [{letter: "E", score: 1, count: 12},
@@ -90,14 +89,15 @@
         return service;
 
 
+        // == TILE OBJECT ========
+
         function Tile(letter, score) {
             this.letter = letter;
             this.score = score;
         }
 
 
-
-        // map of functions
+    // == MAP OF FUNCTIONS ========
 
 
         /**
