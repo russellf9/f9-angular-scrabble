@@ -1,0 +1,21 @@
+@import "../modules/flex";
+@import "../modules/colors";
+
+.game-container {
+  @extend .flex-container;
+
+  width: 90%;
+  margin: auto;
+
+  border: solid 1px $green;
+
+}
+
+.tiles-container {
+  @extend .flex-container;
+
+  width: 450px;
+  height: 50px;
+
+  border: solid 1px $green;
+}

@@ -7,7 +7,8 @@ angular.module('f9-angular-scrabble', ['ionic',
                                         'templates',
                                         'Dictionary',
                                         'Scrabble',
-                                        'ScrabbleService'])
+                                        'ScrabbleService',
+                                        'f9tiles'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 
