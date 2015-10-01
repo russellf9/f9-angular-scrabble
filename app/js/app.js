@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('f9-angular-scrabble', ['ionic',
-                                        'ngDragDrop',
-                                        'angular.filter',
-                                        'dataApi',
-                                        'templates',
-                                        'Dictionary',
-                                        'Scrabble',
-                                        'ScrabbleService',
-                                        'f9tiles'])
+    'flux',
+    'ngDragDrop',
+    'angular.filter',
+    'dataApi',
+    'templates',
+    'Dictionary',
+    'Scrabble',
+    'ScrabbleService',
+    'f9tiles'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 
@@ -28,6 +29,33 @@ angular.module('f9-angular-scrabble', ['ionic',
         $urlRouterProvider.otherwise('/app/main');
     })
 
+    .store('MyStore', function() {
+        return {
+            tiles: [],
+            handlers: {
+                'addTile': 'addTile'
+            },
+            addTile: function(tile) {
+                this.tiles.push(tile);
+                this.emitChange();
+            },
+            exports: {
+                getTiles: function() {
+                    return this.tiles;
+                },
+                get tiles() {
+                    return this.tiles;
+                }
+            }
+        };
+    })
+
+    .factory('Stores', function(flux) {
+        return {
+            'StoreA': flux.createStore('StoreA', {}),
+            'StoreB': flux.createStore('StoreB', {})
+        }
+    })
 
     .run(function(_, $ionicPlatform) {
         $ionicPlatform.ready(function() {

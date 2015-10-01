@@ -19,3 +19,17 @@
 
   border: solid 1px $green;
 }
+
+$tile-dimension : 40px;
+
+.tile {
+  @extend .flex-container;
+  width: $tile-dimension;
+  height: $tile-dimension;
+  border: solid 1px $green;
+
+  .p {
+    height: 100%;
+    line-height: $tile-dimension;
+  }
+}

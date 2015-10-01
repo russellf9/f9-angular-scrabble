@@ -5,76 +5,89 @@
     angular.module('f9-angular-scrabble')
         .controller('MainCtrl', mainController);
 
-    function mainController($scope, $log, WordFinderService, _, DictionaryService, ScrabbleService) {
+    function mainController($timeout, $scope, $log, WordFinderService, _, DictionaryService, ScrabbleService, MyStore, flux) {
 
-        // do a very quick hack to test here...
-        $log.info('MainCtrl');
+        $timeout(_setUp, 5000);
 
-        var hand = ["E", "A", "T"];
+        function _setUp() {
+            // do a very quick hack to test here...
+            $log.info('MainCtrl');
 
-        var letterBag = ScrabbleService.createLetterBag();
+            var hand = ["E", "A", "T"];
 
-        $log.info('letterBag: ', letterBag);
+            var letterBag = ScrabbleService.createLetterBag();
 
-        ScrabbleService.shake();
+            $log.info('letterBag: ', letterBag);
 
-        $log.info('letterBag: ', ScrabbleService.letterBag);
+            ScrabbleService.shake();
 
-        // an array of Tiles
-        hand = ScrabbleService.getHand(7);
+            $log.info('letterBag: ', ScrabbleService.letterBag);
 
-        console.log('hand: ', hand);
+            // an array of Tiles
+            hand = ScrabbleService.getHand(7);
 
-        // get the letters from the hand
-        //
+            console.log('hand: ', hand);
 
-        var letters = [];
+            // set the model here
+            for(var i = 0, j = hand.length;  i < j; i++) {
 
-        var tile;
+                $log.info('Dispatch!!!')
+                flux.dispatch('addTile', hand[i]);
+            }
+
+            // get the letters from the hand
+            //
+
+            var letters = [];
+
+            var tile;
 
 
-        for(var i = 0; i < hand.length; i++) {
-            tile = hand[i];
-            console.log('tile: ', tile);
-            letters.push(tile.letter);
+            for(var i = 0; i < hand.length; i++) {
+                tile = hand[i];
+                console.log('tile: ', tile);
+                letters.push(tile.letter);
+            }
+
+
+            // test the tile value
+            var value = ScrabbleService.getTileScore('E');
+
+            $log.info('The value if E is: ', value);
+
+
+            value = ScrabbleService.getTileScore('X');
+
+            $log.info('The value if X is: ', value);
+
+
+
+
+            var score = ScrabbleService.getWordScore('ANT');
+
+            $log.info('ANT is worth ',score);
+
+            score = ScrabbleService.getWordScore('ZIT');
+
+            $log.info('ZIT is worth ',score);
+
+            // The highest scoring word is VAUNTIE  with a score of  10
+
+            score = ScrabbleService.getWordScore('VAUNTIE');
+
+            $log.info('VAUNTIE is worth ',score);
+
+            DictionaryService.getDictionary()
+                .then(function() {
+                    $scope.wordList = DictionaryService.dictionary;
+                    _makeWords(letters);
+                });
+
         }
 
 
-        // test the tile value
-        var value = ScrabbleService.getTileScore('E');
 
-        $log.info('The value if E is: ', value);
-
-
-        value = ScrabbleService.getTileScore('X');
-
-        $log.info('The value if X is: ', value);
-
-
-
-
-        var score = ScrabbleService.getWordScore('ANT');
-
-        $log.info('ANT is worth ',score);
-
-        score = ScrabbleService.getWordScore('ZIT');
-
-        $log.info('ZIT is worth ',score);
-
-        // The highest scoring word is VAUNTIE  with a score of  10
-
-        score = ScrabbleService.getWordScore('VAUNTIE');
-
-        $log.info('VAUNTIE is worth ',score);
-
-        DictionaryService.getDictionary()
-            .then(function() {
-                $scope.wordList = DictionaryService.dictionary;
-                _makeWords();
-            });
-
-
-        function _makeWords() {
+        function _makeWords(letters) {
 
             var result = WordFinderService.makeWordFinder(letters, $scope.wordList);
 

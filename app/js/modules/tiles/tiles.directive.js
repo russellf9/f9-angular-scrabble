@@ -9,15 +9,27 @@
         return {
             restrict: 'AE',
             scope: {
-                tiles: '='
             },
             controller: tilesController,
-            controllerAs: 'vm',
+            //controllerAs: 'vm',
+            //bindToController: true, // because the scope is isolated
             template: $templateCache.get('modules/tiles/tiles.html'),
             link: tilesLink
         };
 
-        function tilesController($scope) {
+        function tilesController($scope, $log, MyStore) {
+
+            var vm = this;
+
+            $log.info('Tiles setting up Store event!');
+            $scope.tiles = MyStore.tiles;
+
+            $scope.$listenTo(MyStore, function () {
+
+                $log.info('Store event!');
+                $scope.tiles = MyStore.tiles;
+            });
+
 
         }
 

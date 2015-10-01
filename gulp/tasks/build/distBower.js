@@ -19,7 +19,7 @@ gulp.task('dist-bower', function(cb) {
 
 // Handle errors
 function errorHandler(error) {
-    gulp.plugins.util.log('Gulp CDN Error: ', error.toString());
+    gulp.plugins.util.log('Gulp Distribution Error: ', error.toString());
     /*jshint validthis:true */
     this.emit('end');
 }

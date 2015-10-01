@@ -6,6 +6,5 @@
   "./bower_components/lodash/lodash.js",
   "./bower_components/angular-filter/dist/angular-filter.js",
   "./bower_components/angular-socket-io/socket.js",
-  "./bower_components/angular-ui-router/release/angular-ui-router.js",
-  "./bower_components/ng-flux/src/ng-flux.js"
+  "./bower_components/angular-ui-router/release/angular-ui-router.js"
 ]

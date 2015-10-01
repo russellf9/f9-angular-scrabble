@@ -13,7 +13,7 @@ gulp.task('watchers', function() {
     gulp.watch(config.paths.vendor, ['vendor']);
     gulp.watch(config.paths.partials, ['scripts', 'index', 'partials']);
     gulp.watch(config.paths.index, ['index']);
-    gulp.watch(config.paths.bowerDist, ['cdn']);
+    gulp.watch(config.paths.bowerDist, ['dist-bower']);
 });
 
 
