@@ -13,7 +13,10 @@ angular.module('f9-angular-scrabble', ['ionic',
     'GameService',
     'f9tiles',
     'f9BestWord',
-    'f9Controls'])
+    'f9Controls',
+    'f9TimerService',
+    'f9Timer'
+])
 
     .config(function($stateProvider, $urlRouterProvider) {
 

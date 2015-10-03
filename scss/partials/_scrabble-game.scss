@@ -62,6 +62,14 @@ $tile-margin: 2px;
 
 }
 
+.timer-container {
+  width: 450px;
+  height: 100px;
+  margin: $container-margin;
+
+  border: solid 1px $green;
+}
+
 .button {
   margin: $container-margin;
 }

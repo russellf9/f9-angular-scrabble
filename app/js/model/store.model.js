@@ -6,10 +6,12 @@
             return {
                 tiles: [],
                 bestWord: '',
+                time: '',
                 handlers: {
                     'addTile': 'addTile',
                     'clearTiles': 'clearTiles',
-                    'setBestWord': 'setBestWord'
+                    'setBestWord': 'setBestWord',
+                    'setTime': 'setTime'
                 },
                 addTile: function(tile) {
                     this.tiles.push(tile);
@@ -23,6 +25,10 @@
                     this.bestWord = word;
                     this.emit('bestword.set');
                 },
+                setTime: function(time) {
+                    this.time = time;
+                    this.emit('time.set');
+                },
                 exports: {
                     getTiles: function() {
                         return this.tiles;
@@ -35,6 +41,9 @@
                     },
                     get bestWord() {
                         return this.bestWord;
+                    },
+                    get time() {
+                        return this.time;
                     }
                 }
             };

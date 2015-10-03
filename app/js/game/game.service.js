@@ -109,7 +109,7 @@
             flux.dispatch('setBestWord', '' );
 
             // clear the tiles
-            flux.dispatch('clearTiles')
+            flux.dispatch('clearTiles');
 
         }
 
