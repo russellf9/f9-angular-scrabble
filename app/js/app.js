@@ -9,7 +9,8 @@ angular.module('f9-angular-scrabble', ['ionic',
     'Dictionary',
     'Scrabble',
     'ScrabbleService',
-    'f9tiles'])
+    'f9tiles',
+    'f9BestWord'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 
@@ -32,11 +33,17 @@ angular.module('f9-angular-scrabble', ['ionic',
     .store('MyStore', function() {
         return {
             tiles: [],
+            bestWord: '',
             handlers: {
-                'addTile': 'addTile'
+                'addTile': 'addTile',
+                'setBestWord': 'setBestWord'
             },
             addTile: function(tile) {
                 this.tiles.push(tile);
+                this.emitChange();
+            },
+            setBestWord: function(word) {
+                this.bestWord = word;
                 this.emitChange();
             },
             exports: {
@@ -45,6 +52,12 @@ angular.module('f9-angular-scrabble', ['ionic',
                 },
                 get tiles() {
                     return this.tiles;
+                },
+                getBestWord: function() {
+                    return this.bestWord;
+                },
+                get bestWord() {
+                    return this.bestWord;
                 }
             }
         };

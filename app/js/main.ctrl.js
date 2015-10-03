@@ -7,7 +7,7 @@
 
     function mainController($timeout, $scope, $log, WordFinderService, _, DictionaryService, ScrabbleService, MyStore, flux) {
 
-        $timeout(_setUp, 5000);
+        $timeout(_setUp, 100);
 
         function _setUp() {
             // do a very quick hack to test here...
@@ -30,7 +30,6 @@
 
             // set the model here
             for(var i = 0, j = hand.length;  i < j; i++) {
-
                 $log.info('Dispatch!!!')
                 flux.dispatch('addTile', hand[i]);
             }
@@ -94,6 +93,8 @@
             $log.info('21:06 - OK result: ', result);
 
             var bestWord = ScrabbleService.findBestWord(result);
+
+            flux.dispatch('setBestWord', bestWord );
 
             $log.info('The highest scoring word is ', bestWord.word, ' with a score of ', bestWord.score);
 
