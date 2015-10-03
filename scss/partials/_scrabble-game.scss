@@ -21,15 +21,24 @@
 }
 
 $tile-dimension : 40px;
+$tile-margin: 2px;
 
 .tile {
   @extend .flex-container;
   width: $tile-dimension;
   height: $tile-dimension;
+  margin-left: $tile-margin;
+  margin-right: $tile-margin;
   border: solid 1px $green;
 
   .p {
     height: 100%;
     line-height: $tile-dimension;
   }
+}
+
+.score {
+  @extend .flex-container;
+  margin-left: $tile-margin;
+  margin-right: $tile-margin;
 }

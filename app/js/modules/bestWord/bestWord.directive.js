@@ -26,6 +26,7 @@
                 if (MyStore.bestWord) {
                     vm.best = MyStore.bestWord;
                     vm.wordArray = vm.best.word.split('');
+                    vm.score = vm.best.score;
                 }
             });
         }
