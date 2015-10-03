@@ -80,21 +80,16 @@
                 tile = hand[i];
                 letters.push(tile.letter);
             }
-
-
             return WordFinderService.makeWordFinder(letters, service.wordList);
         }
 
         function _generate() {
             var hand =  service.getHand(7);
-
             var result = service.getResult(hand);
-
             var bestWord = ScrabbleService.findBestWord(result);
 
             flux.dispatch('setBestWord', bestWord );
         }
-
     }
 
 
