@@ -1,8 +1,19 @@
 @import "../modules/flex";
 @import "../modules/colors";
 
-.game-container {
+$container-margin: 5px;
+
+.container {
   @extend .flex-container;
+
+  border: solid 1px $green;
+  margin: $container-margin;
+
+
+}
+
+.game-container {
+  @extend .container;
 
   width: 90%;
   margin: auto;
@@ -12,7 +23,7 @@
 }
 
 .tiles-container {
-  @extend .flex-container;
+  @extend .container;
 
   width: 450px;
   height: 50px;
@@ -41,4 +52,16 @@ $tile-margin: 2px;
   @extend .flex-container;
   margin-left: $tile-margin;
   margin-right: $tile-margin;
+}
+
+.controls-container {
+  @extend .container ;
+
+  width: 450px;
+  height: 200px;
+
+}
+
+.button {
+  margin: $container-margin;
 }

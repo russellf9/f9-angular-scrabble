@@ -26,6 +26,10 @@
                     vm.best = MyStore.bestWord;
                     vm.wordArray = vm.best.word.split('');
                     vm.score = vm.best.score;
+                } else {
+                    vm.best = '';
+                    vm.wordArray = [];
+                    vm.score = 0;
                 }
             });
         }

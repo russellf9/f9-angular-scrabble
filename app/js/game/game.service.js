@@ -14,6 +14,8 @@
 
         service.letterBag = undefined;
 
+        service.currentHand = undefined;
+
         service.isReady = false;
 
         service.init = _init;
@@ -24,7 +26,13 @@
 
         service.getResult = _getResult;
 
+        service.reset = _reset;
+
         service.generate = _generate;
+
+        service.play = _play;
+
+        service.showBestWord = _showBestWord;
 
 
         return service;
@@ -89,6 +97,36 @@
             var bestWord = ScrabbleService.findBestWord(result);
 
             flux.dispatch('setBestWord', bestWord );
+        }
+
+        function _reset() {
+
+            // clear the current hand
+            // TODO might be unrequired if we stick to the model?
+            service.currentHand = undefined;
+
+            // clear the bestWord
+            flux.dispatch('setBestWord', '' );
+
+            // clear the tiles
+            flux.dispatch('clearTiles')
+
+        }
+
+        function _play() {
+            service.currentHand =  service.getHand(7);
+        }
+
+        function _showBestWord() {
+            if (!service.currentHand) {
+                $log.error('GameService.showBestWord | no currentHand');
+                return;
+            }
+            var result = service.getResult(service.currentHand);
+            var bestWord = ScrabbleService.findBestWord(result);
+
+            flux.dispatch('setBestWord', bestWord);
+
         }
     }
 

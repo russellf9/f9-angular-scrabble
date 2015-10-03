@@ -8,11 +8,16 @@
                 bestWord: '',
                 handlers: {
                     'addTile': 'addTile',
+                    'clearTiles': 'clearTiles',
                     'setBestWord': 'setBestWord'
                 },
                 addTile: function(tile) {
                     this.tiles.push(tile);
                     this.emit('tile.add');
+                },
+                clearTiles: function() {
+                    this.tiles = [];
+                    this.emit('tile.delete');
                 },
                 setBestWord: function(word) {
                     this.bestWord = word;
