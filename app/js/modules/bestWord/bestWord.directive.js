@@ -10,18 +10,17 @@
             restrict: 'AE',
             scope: {
             },
-            controller: bestWordController,
+            controller: BestWordController,
             controllerAs: 'vm',
             bindToController: true, // because the scope is isolated
             template: $templateCache.get('modules/bestWord/best-word.html')
         };
 
-
-        function bestWordController($scope, $log, MyStore) {
+        function BestWordController($scope, $log, MyStore) {
 
             var vm = this;
 
-            $scope.$listenTo(MyStore, function () {
+            $scope.$listenTo(MyStore, 'bestword.*', function () {
 
                 if (MyStore.bestWord) {
                     vm.best = MyStore.bestWord;

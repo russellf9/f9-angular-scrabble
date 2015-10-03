@@ -12,7 +12,7 @@
 
         var service = {};
 
-        service.letterBag;
+        service.letterBag = undefined;
 
         service.isReady = false;
 

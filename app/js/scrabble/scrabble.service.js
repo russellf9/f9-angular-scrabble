@@ -29,7 +29,7 @@
                     service.dictionary = result.split(',');
                 })
                 .error(function(error) {
-                    $log.error('Service error', error)
+                    $log.error('Service error', error);
                 });
 
         };

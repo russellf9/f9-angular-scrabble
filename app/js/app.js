@@ -8,6 +8,7 @@ angular.module('f9-angular-scrabble', ['ionic',
     'templates',
     'Dictionary',
     'Scrabble',
+    'store',
     'ScrabbleService',
     'GameService',
     'f9tiles',
@@ -29,46 +30,6 @@ angular.module('f9-angular-scrabble', ['ionic',
                 templateUrl: 'partials/main.html'
             });
         $urlRouterProvider.otherwise('/app/main');
-    })
-
-    .store('MyStore', function() {
-        return {
-            tiles: [],
-            bestWord: '',
-            handlers: {
-                'addTile': 'addTile',
-                'setBestWord': 'setBestWord'
-            },
-            addTile: function(tile) {
-                this.tiles.push(tile);
-                this.emitChange();
-            },
-            setBestWord: function(word) {
-                this.bestWord = word;
-                this.emitChange();
-            },
-            exports: {
-                getTiles: function() {
-                    return this.tiles;
-                },
-                get tiles() {
-                    return this.tiles;
-                },
-                getBestWord: function() {
-                    return this.bestWord;
-                },
-                get bestWord() {
-                    return this.bestWord;
-                }
-            }
-        };
-    })
-
-    .factory('Stores', function(flux) {
-        return {
-            'StoreA': flux.createStore('StoreA', {}),
-            'StoreB': flux.createStore('StoreB', {})
-        }
     })
 
     .run(function(_, $ionicPlatform) {
