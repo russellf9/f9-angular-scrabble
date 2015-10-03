@@ -9,6 +9,7 @@ angular.module('f9-angular-scrabble', ['ionic',
     'Dictionary',
     'Scrabble',
     'ScrabbleService',
+    'GameService',
     'f9tiles',
     'f9BestWord'])
 

@@ -13,7 +13,7 @@
      * @param _ Lo-Dash Dependency
      * @returns {{}}
      */
-    function scrabbleService(dataApi, _) {
+    function scrabbleService($log, dataApi, _) {
 
         var service = {};
 
@@ -29,12 +29,11 @@
                     service.dictionary = result.split(',');
                 })
                 .error(function(error) {
-                    // TODO
+                    $log.error('Service error', error)
                 });
 
         };
 
-        // TODO find a way of triggering this automatically
         // also, use the return to set a value
         service.createLetterBag = _createLetterBag;
 
