@@ -11,6 +11,8 @@
                     'addTile': 'addTile',
                     'clearTiles': 'clearTiles',
                     'setBestWord': 'setBestWord',
+                    'startTimer': 'startTimer',
+                    'stopTimer': 'stopTimer',
                     'setTime': 'setTime'
                 },
                 addTile: function(tile) {
@@ -24,6 +26,12 @@
                 setBestWord: function(word) {
                     this.bestWord = word;
                     this.emit('bestword.set');
+                },
+                startTimer: function() {
+                    this.emit('timer.start');
+                },
+                stopTimer: function() {
+                    this.emit('timer.stop');
                 },
                 setTime: function(time) {
                     this.time = time;
@@ -47,6 +55,18 @@
                     }
                 }
             };
+        })
+
+        .config(function (fluxProvider) {
+
+            // Globally
+            fluxProvider.setMaxListeners(20);
+
+            // Or on each store
+            fluxProvider.setMaxListeners({
+                'MyStore': 25
+                //'MyOtherStore': 20
+            })
         })
 
         .factory('Stores', function(flux) {

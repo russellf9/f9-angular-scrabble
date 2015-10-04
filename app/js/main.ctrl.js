@@ -18,8 +18,6 @@
         function _setUp() {
             $log.info('MainCtrl From Promise!!!');
 
-            GameService.generate();
-
         }
     }
 })();

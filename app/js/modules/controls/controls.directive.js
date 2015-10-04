@@ -24,17 +24,26 @@
 
         var vm = this;
 
-        vm.reset = function() {
-            $log.info('RESET!');
-            GameService.reset();
+        vm.deal = function() {
+            $log.info('DEAL!');
+            GameService.getHand();
         };
 
         vm.play = function() {
-            GameService.play();
+            GameService.start();
+        };
+
+        vm.stop = function() {
+            GameService.stop();
         };
 
         vm.showBestWord = function() {
             GameService.showBestWord();
+        };
+
+        vm.reset = function() {
+            $log.info('RESET!');
+            GameService.reset();
         };
     }
 })();

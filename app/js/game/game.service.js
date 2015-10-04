@@ -30,7 +30,9 @@
 
         service.generate = _generate;
 
-        service.play = _play;
+        service.start = _start;
+
+        service.stop = _stop;
 
         service.showBestWord = _showBestWord;
 
@@ -61,11 +63,13 @@
         }
 
         function _getHand(number) {
+            number = number || 7;
             var hand = ScrabbleService.getHand(number);
 
             for (var i = 0, j = hand.length; i < j; i++) {
                 flux.dispatch('addTile', hand[i]);
             }
+            service.currentHand = hand;
             return hand;
         }
 
@@ -102,7 +106,7 @@
         function _reset() {
 
             // clear the current hand
-            // TODO might be unrequired if we stick to the model?
+            // TODO might be unrequited if we stick to the model?
             service.currentHand = undefined;
 
             // clear the bestWord
@@ -113,11 +117,18 @@
 
         }
 
-        function _play() {
-            service.currentHand =  service.getHand(7);
+        // starts the game by staring the timer
+        function _start() {
+            flux.dispatch('startTimer');
+        }
+
+        // ends the game
+        function _stop() {
+            flux.dispatch('stopTimer');
         }
 
         function _showBestWord() {
+
             if (!service.currentHand) {
                 $log.error('GameService.showBestWord | no currentHand');
                 return;
