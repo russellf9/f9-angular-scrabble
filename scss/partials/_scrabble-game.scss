@@ -8,8 +8,6 @@ $container-margin: 5px;
 
   border: solid 1px $green;
   margin: $container-margin;
-
-
 }
 
 .game-container {
@@ -63,11 +61,17 @@ $tile-margin: 2px;
 }
 
 .timer-container {
+  @extend .flex-container;
   width: 450px;
   height: 100px;
   margin: $container-margin;
 
   border: solid 1px $green;
+  input {
+    width: 125px;
+    text-align: center;
+    font-size: 42px;
+  }
 }
 
 .button {
