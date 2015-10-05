@@ -24,12 +24,8 @@
 
         var vm = this;
 
-        vm.deal = function() {
-            $log.info('DEAL!');
-            GameService.getHand();
-        };
-
         vm.play = function() {
+            GameService.getHand();
             GameService.start();
         };
 

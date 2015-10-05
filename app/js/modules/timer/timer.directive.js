@@ -17,20 +17,11 @@
         };
     }
 
-    function TimerController($log, $scope, $timeout, MyStore, GameService, f9TimerService) {
-        $log.info('TimerController');
+    function TimerController($log, $scope, $timeout, MyStore, f9TimerService) {
 
         var vm = this;
 
         f9TimerService.initTimer();
-
-        vm.startTimer = function() {
-            f9TimerService.startTimer();
-        };
-
-        vm.stopTimer = function() {
-            f9TimerService.stopTimer();
-        };
 
         $scope.$listenTo(MyStore, 'time.*', function () {
             $timeout(function() {
@@ -39,7 +30,6 @@
         });
 
         $scope.$listenTo(MyStore, 'timer.start', function () {
-
             $timeout(function() {
                 f9TimerService.startTimer();
             }, 40);
