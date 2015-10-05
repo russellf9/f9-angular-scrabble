@@ -6,7 +6,7 @@
 
         .service('GameService', GameService);
 
-    function GameService($log, $q, flux, DictionaryService, ScrabbleService, WordFinderService, _) {
+    function GameService($log, $q, flux, actions, DictionaryService, ScrabbleService, WordFinderService, _) {
 
         $log.info('GameService');
 
@@ -67,7 +67,7 @@
             var hand = ScrabbleService.getHand(number);
 
             for (var i = 0, j = hand.length; i < j; i++) {
-                flux.dispatch('addTile', hand[i]);
+                flux.dispatch(actions.TILE_ADD, hand[i]);
             }
             service.currentHand = hand;
             return hand;
@@ -110,21 +110,21 @@
             service.currentHand = undefined;
 
             // clear the bestWord
-            flux.dispatch('setBestWord', '' );
+            flux.dispatch(actions.BESTWORD_SET, '' );
 
             // clear the tiles
-            flux.dispatch('clearTiles');
+            flux.dispatch(actions.TILE_DELETE);
 
         }
 
         // starts the game by staring the timer
         function _start() {
-            flux.dispatch('startTimer');
+            flux.dispatch(actions.TIMER_START);
         }
 
         // ends the game
         function _stop() {
-            flux.dispatch('stopTimer');
+            flux.dispatch(actions.TIMER_STOP);
         }
 
         function _showBestWord() {

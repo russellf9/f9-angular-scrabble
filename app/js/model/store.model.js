@@ -2,6 +2,14 @@
     'use strict';
 
     angular.module('store', [])
+        .constant('actions', {
+            'TILE_ADD': 'addTile',
+            'TILE_DELETE': 'clearTiles',
+            'BESTWORD_SET': 'setBestWord',
+            'TIMER_START' : 'startTimer',
+            'TIMER_STOP' : 'stopTimer',
+            'TIME_SET': 'setTime'
+        })
         .store('MyStore', function() {
             return {
                 tiles: [],
