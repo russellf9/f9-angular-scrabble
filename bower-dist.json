@@ -3,5 +3,6 @@
   "./bower_components/jquery-ui/jquery-ui.min.js",
   "./bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js",
   "./bower_components/flux-angular/release/flux-angular.js",
-  "./bower_components/tock/tock.min.js"
+  "./bower_components/tock/tock.min.js",
+  "./jakesgordon/state-machine.js"
 ]
