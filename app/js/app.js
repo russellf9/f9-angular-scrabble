@@ -15,7 +15,8 @@ angular.module('f9-angular-scrabble', ['ionic',
     'f9BestWord',
     'f9Controls',
     'f9TimerService',
-    'f9Timer'
+    'f9Timer',
+    'fsm'
 ])
 
     .config(function($stateProvider, $urlRouterProvider) {
@@ -31,6 +32,7 @@ angular.module('f9-angular-scrabble', ['ionic',
             .state('app.main', {
                 url: '/main',
                 controller: 'MainCtrl',
+                controllerAs: 'main',
                 templateUrl: 'partials/main.html'
             });
         $urlRouterProvider.otherwise('/app/main');

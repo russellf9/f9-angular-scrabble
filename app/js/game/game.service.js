@@ -6,7 +6,7 @@
 
         .service('GameService', GameService);
 
-    function GameService($log, $q, flux, actions, DictionaryService, ScrabbleService, WordFinderService, _) {
+    function GameService($log, $q, flux, actions, StateMachineService, DictionaryService, ScrabbleService, WordFinderService, _) {
 
         $log.info('GameService');
 
@@ -41,6 +41,7 @@
 
         function _init() {
 
+
             var deferred = $q.defer();
 
             service.letterBag = ScrabbleService.createLetterBag();
@@ -51,6 +52,9 @@
                     service.wordList = DictionaryService.dictionary;
                     service.isReady = true;
                     deferred.resolve('OK');
+                    StateMachineService.makeReady();
+
+                    $log.info('STATE ', StateMachineService.current())
                 }, function(error) {
                     deferred.reject('Error ' + error);
                 });
@@ -59,10 +63,16 @@
         }
 
         function _getLetterBag() {
+
+
             return service.letterBag;
         }
 
         function _getHand(number) {
+
+            $log.info('GET HAND!');
+
+
             number = number || 7;
             var hand = ScrabbleService.getHand(number);
 
@@ -74,6 +84,8 @@
         }
 
         function _getResult(hand) {
+
+            $log.info('GET RESULT!');
 
             if (!hand || !hand.length) {
                 $log.error('GameService.getResult - No Hand supplied!');
@@ -105,6 +117,10 @@
 
         function _reset() {
 
+            $log.info('GET RESET!');
+            StateMachineService.reset();
+            $log.info('STATE ', StateMachineService.current());
+
             // clear the current hand
             // TODO might be unrequited if we stick to the model?
             service.currentHand = undefined;
@@ -115,19 +131,40 @@
             // clear the tiles
             flux.dispatch(actions.TILE_DELETE);
 
+            // TODO perhaps call when this has been confirmned
+            StateMachineService.initialise();
+            $log.info('STATE ', StateMachineService.current());
+            StateMachineService.makeReady();
+            $log.info('STATE ', StateMachineService.current());
+
         }
 
         // starts the game by staring the timer
         function _start() {
+
+
+            $log.info('GET START!');
+
+            StateMachineService.play();
+            $log.info('STATE ', StateMachineService.current());
+
             flux.dispatch(actions.TIMER_START);
         }
 
         // ends the game
         function _stop() {
+            $log.info('GET STOP!');
+            StateMachineService.stop();
+            $log.info('STATE ', StateMachineService.current());
             flux.dispatch(actions.TIMER_STOP);
         }
 
         function _showBestWord() {
+
+            $log.info('SHOW BEST WORD!');
+            StateMachineService.finish();
+            $log.info('STATE ', StateMachineService.current());
+
 
             if (!service.currentHand) {
                 $log.error('GameService.showBestWord | no currentHand');
