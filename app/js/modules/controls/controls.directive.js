@@ -20,9 +20,13 @@
         };
     }
 
-    function ControlsController($log, $scope, GameService) {
+    function ControlsController($log, $scope, GameService, StateMachineService) {
 
         var vm = this;
+
+        vm.stateData = StateMachineService.data;
+
+        vm.state = vm.stateData.state;
 
         vm.play = function() {
             GameService.getHand();

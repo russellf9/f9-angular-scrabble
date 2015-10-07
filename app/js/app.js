@@ -33,6 +33,7 @@ angular.module('f9-angular-scrabble', ['ionic',
                 url: '/main',
                 controller: 'MainCtrl',
                 controllerAs: 'main',
+                bindToController: true,
                 templateUrl: 'partials/main.html'
             });
         $urlRouterProvider.otherwise('/app/main');

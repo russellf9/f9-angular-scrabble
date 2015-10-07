@@ -33,22 +33,27 @@
             ],
             callbacks: {
                 onmakeReady: function(event, from, to, msg) {
-                    $log.info('FSM -> make ready ' + msg);
+                    $log.info('FSM -> make ready ' + msg);  _setState();
                 },
                 onplay: function(event, from, to, msg) {
                     $log.info('FSM ->  play ' + msg);
+                    _setState();
                 },
                 onstop: function(event, from, to) {
                     $log.info('FSM ->  onstop')
+                    _setState();
                 },
                 onfinish: function(event, from, to) {
                     $log.info('FSM ->  onfinish')
+                    _setState();
                 },
                 onreset: function(event, from, to) {
                     $log.info('FSM ->  onreset')
+                    _setState();
                 },
                 oninitialise: function(event, from, to) {
                     $log.info('FSM ->  oninitialise')
+                    _setState();
                 }
             }
         });
@@ -70,6 +75,9 @@
         service.initialise = _initialise;
 
         service.current = _current;
+
+        // must use an object for the binding...
+        service.data = { state: ''};
 
 
         return service;
@@ -100,6 +108,11 @@
 
         function _current() {
             return fsm.current;
+        }
+
+        function _setState() {
+            $log.info('set state!', _current());
+            service.data.state = _current();
         }
 
     }
