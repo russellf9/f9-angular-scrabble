@@ -1,18 +1,19 @@
 <div>
     <p>State: {{vm.stateData.state}}</p>
     <p>From main: {{main.test}}</p>
+    <p>{{vm.stateData.state=='ready'}}</p>
 </div>
 <div class="controls-container">
-    <button class="button button-stable" ng-click="vm.play()">
+    <button class="button button-stable" ng-disabled="vm.stateData.state!=='ready'" ng-click="vm.play()">
         play
     </button>
-    <button class="button button-stable" ng-click="vm.stop()">
+    <button class="button button-stable" ng-disabled="vm.stateData.state!=='playing'" ng-click="vm.stop()">
         stop
     </button>
-    <button class="button button-stable" ng-click="vm.showBestWord()">
+    <button class="button button-stable" ng-disabled="vm.stateData.state!=='paused'" ng-click="vm.showBestWord()">
         show best
     </button>
-    <button class="button button-stable" ng-click="vm.reset()">
+    <button class="button button-stable" ng-disabled="vm.stateData.state!=='done'" ng-click="vm.reset()">
         reset
     </button>
 </div>
