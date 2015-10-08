@@ -6,8 +6,8 @@
             'TILE_ADD': 'addTile',
             'TILE_DELETE': 'clearTiles',
             'BESTWORD_SET': 'setBestWord',
-            'TIMER_START' : 'startTimer',
-            'TIMER_STOP' : 'stopTimer',
+            'TIMER_START': 'startTimer',
+            'TIMER_STOP': 'stopTimer',
             'TIME_SET': 'setTime'
         })
         .store('MyStore', function() {
@@ -65,7 +65,7 @@
             };
         })
 
-        .config(function (fluxProvider) {
+        .config(function(fluxProvider) {
 
             // Globally
             fluxProvider.setMaxListeners(20);
@@ -74,7 +74,7 @@
             fluxProvider.setMaxListeners({
                 'MyStore': 25
                 //'MyOtherStore': 20
-            })
+            });
         })
 
         .factory('Stores', function(flux) {

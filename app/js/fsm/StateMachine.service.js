@@ -33,27 +33,34 @@
             ],
             callbacks: {
                 onmakeReady: function(event, from, to, msg) {
-                    $log.info('FSM -> make ready ' + msg);  _setState();
+                    $log.info('FSM -> make ready ' + msg);
+                    _setState();
                 },
                 onplay: function(event, from, to, msg) {
                     $log.info('FSM ->  play ' + msg);
                     _setState();
                 },
                 onstop: function(event, from, to) {
-                    $log.info('FSM ->  onstop')
+                    $log.info('FSM ->  onstop');
                     _setState();
                 },
                 onfinish: function(event, from, to) {
-                    $log.info('FSM ->  onfinish')
+                    $log.info('FSM ->  onfinish');
                     _setState();
                 },
                 onreset: function(event, from, to) {
-                    $log.info('FSM ->  onreset')
+                    $log.info('FSM ->  onreset');
                     _setState();
                 },
                 oninitialise: function(event, from, to) {
-                    $log.info('FSM ->  oninitialise')
+                    $log.info('FSM ->  oninitialise');
                     _setState();
+                },
+                onleavestate: function() {
+                    _onLeave();
+                },
+                onenterstate: function() {
+                    _onEnter();
                 }
             }
         });
@@ -76,14 +83,14 @@
 
         service.current = _current;
 
-        // must use an object for the binding...
-        service.data = { state: ''};
+// must use an object for the binding...
+        service.data = {state: ''};
 
 
         return service;
 
         function _makeReady() {
-            fsm.makeReady()
+            fsm.makeReady();
         }
 
         function _play() {
@@ -115,6 +122,14 @@
             service.data.state = _current();
         }
 
+        function _onEnter() {
+            console.log('ON ENTER!');
+        }
+        function _onLeave() {
+            console.log('ON LEAVE!');
+        }
+
     }
 
-})();
+})
+();

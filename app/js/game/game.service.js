@@ -54,7 +54,7 @@
                     deferred.resolve('OK');
                     StateMachineService.makeReady();
 
-                    $log.info('STATE ', StateMachineService.current())
+                    $log.info('STATE ', StateMachineService.current());
                 }, function(error) {
                     deferred.reject('Error ' + error);
                 });

@@ -3,9 +3,9 @@
     'use strict';
 
     angular.module('f9-angular-scrabble')
-        .controller('MainCtrl', mainController);
+        .controller('MainCtrl', MainController);
 
-    function mainController($log, GameService, StateMachineService) {
+    function MainController($log, GameService, StateMachineService) {
 
 
         this.stateData = StateMachineService.data;
