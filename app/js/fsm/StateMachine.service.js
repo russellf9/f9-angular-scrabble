@@ -7,18 +7,15 @@
 
     function _stateMachine($log) {
 
-        $log.info('StateMachine ');
-
-
         /**
          * States
          *
-         * 1. initial -> makeReady
-         * 2. ready -> play
-         * 3. playing ->
-         * 4. paused ( show best word )
-         * 5. done -> reset
-         * 6. resetting -> initialise
+         * 1. initial -> makeReady()
+         * 2. ready -> play()
+         * 3. playing -> stop()
+         * 4. paused ( show best word ) -> finish()
+         * 5. done -> reset()
+         * 6. resetting -> initialise()
          */
 
         var fsm = StateMachine.create({
@@ -33,28 +30,16 @@
             ],
             callbacks: {
                 onmakeReady: function(event, from, to, msg) {
-                    $log.info('FSM -> make ready ' + msg);
-                    _setState();
                 },
                 onplay: function(event, from, to, msg) {
-                    $log.info('FSM ->  play ' + msg);
-                    _setState();
                 },
                 onstop: function(event, from, to) {
-                    $log.info('FSM ->  onstop');
-                    _setState();
                 },
                 onfinish: function(event, from, to) {
-                    $log.info('FSM ->  onfinish');
-                    _setState();
                 },
                 onreset: function(event, from, to) {
-                    $log.info('FSM ->  onreset');
-                    _setState();
                 },
                 oninitialise: function(event, from, to) {
-                    $log.info('FSM ->  oninitialise');
-                    _setState();
                 },
                 onleavestate: function() {
                     _onLeave();
@@ -64,8 +49,6 @@
                 }
             }
         });
-
-        $log.info('StateMachine |fsm: ', fsm);
 
         var service = {};
 
@@ -83,9 +66,8 @@
 
         service.current = _current;
 
-// must use an object for the binding...
+        // must use an object for the binding...
         service.data = {state: ''};
-
 
         return service;
 
@@ -114,22 +96,24 @@
         }
 
         function _current() {
-            return fsm.current;
+            return (fsm && fsm.current) ? fsm.current : 'initial';
         }
 
         function _setState() {
-            $log.info('set state!', _current());
+            if(!service) {
+                $log.error('service not yet defined!');
+                return;
+            }
             service.data.state = _current();
         }
 
         function _onEnter() {
-            console.log('ON ENTER!');
+            _setState();
         }
+
         function _onLeave() {
-            console.log('ON LEAVE!');
+            _setState();
         }
-
     }
-
 })
 ();

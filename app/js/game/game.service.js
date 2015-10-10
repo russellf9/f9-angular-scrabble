@@ -63,15 +63,12 @@
         }
 
         function _getLetterBag() {
-
-
             return service.letterBag;
         }
 
         function _getHand(number) {
 
             $log.info('GET HAND!');
-
 
             number = number || 7;
             var hand = ScrabbleService.getHand(number);
@@ -142,11 +139,10 @@
         // starts the game by staring the timer
         function _start() {
 
-
             $log.info('GET START!');
 
             StateMachineService.play();
-            $log.info('STATE ', StateMachineService.current());
+
 
             flux.dispatch(actions.TIMER_START);
         }
@@ -155,6 +151,7 @@
         function _stop() {
             $log.info('GET STOP!');
             StateMachineService.stop();
+
             $log.info('STATE ', StateMachineService.current());
             flux.dispatch(actions.TIMER_STOP);
         }

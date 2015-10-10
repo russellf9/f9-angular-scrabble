@@ -16,9 +16,13 @@
             template: $templateCache.get('modules/bestWord/best-word.html')
         };
 
-        function BestWordController($scope, $log, MyStore) {
+        function BestWordController($scope, $log, StateMachineService,  MyStore) {
 
             var vm = this;
+
+            vm.stateData = StateMachineService.data;
+
+            vm.state = vm.stateData.state;
 
             $scope.$listenTo(MyStore, 'bestword.*', function () {
 
