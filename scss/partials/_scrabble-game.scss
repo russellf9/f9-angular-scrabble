@@ -10,22 +10,40 @@ $container-margin: 5px;
   margin: $container-margin;
 }
 
-.game-container {
-  @extend .container;
-
-  width: 90%;
-  margin: auto;
-
-  border: solid 1px $green;
-
+.container-full-width {
+  border: solid 1px $red;
+  margin: 0;
 }
 
-.tiles-container {
+/* the container for the whole game */
+.game-container {
   @extend .container;
+  width: 90%;
+  margin: auto;
+  border: solid 1px $green;
+}
 
+/* A taller container for both the drag and drop tiles */
+.drag-drop-container {
+  @extend .container-full-width !optional;
+  width: 450px;
+  height: 120px;
+
+  border: solid 1px $blue;
+}
+
+.drop-container {
+  @extend .flex-container-horizontal;
   width: 450px;
   height: 50px;
+  border: solid 1px black !important;
+}
 
+/* a short container for a single row of tiles */
+.tiles-container {
+  @extend .container;
+  width: 450px;
+  height: 50px;
   border: solid 1px $green;
 }
 
