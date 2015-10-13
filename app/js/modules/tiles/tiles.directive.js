@@ -57,32 +57,40 @@
 
             dragDrop.list2 = [];
 
+            dragDrop.list1 = {title: 'A'};
+            dragDrop.list2 = {};
 
 
             // drag functions
             dragDrop.startCallback = function(event, obj, tile, index) {
-
                 dragDrop.currentDragItem = tile;
             };
 
+            dragDrop.overCallback = function(event) {
+                $log.info('dragDrop.overCallback: ', arguments)
+            };
+
             dragDrop.dragCallback = function(event, obj, tile, index) {
-               // $log.info('** dragDrop.onDrag | tile: ', tile)
+               $log.info('** dragDrop.onDrag | tile: ', tile)
             };
 
             dragDrop.stopCallback = function(event, obj, tile, index) {
                // $log.info('** dragDrop.onStop | tile: ', tile);
             };
 
+            dragDrop.outCallback = function(event) {
+
+            };
+
 
             // drop functions
             dragDrop.dropCallback = function(event, obj, tile, index) {
-                //$log.info('A dragDrop.dropCallback| tile: ', arguments);
+                $log.info('A dragDrop.dropCallback| tile: ', arguments);
                 //$log.info('B dragDrop.dropCallback| tile: ', tile);
                 //$log.info('B dragDrop.dropCallback| currentDragItem: ', dragDrop.currentDragItem);
 
                 _showItems();
 
-                _addToDropItems(dragDrop.currentDragItem)
             };
 
             function _addToDropItems(item) {

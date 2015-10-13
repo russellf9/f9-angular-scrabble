@@ -64,6 +64,13 @@ $tile-margin: 2px;
   }
 }
 
+.tile-border {
+  @extend .flex-container;
+  width: $tile-dimension;
+  height: $tile-dimension;
+  border: solid 2px brown
+}
+
 .score {
   @extend .flex-container;
   margin-left: $tile-margin;
