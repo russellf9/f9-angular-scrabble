@@ -75,7 +75,7 @@
             };
 
             dragDrop.stopCallback = function(event, obj, tile, index) {
-               // $log.info('** dragDrop.onStop | tile: ', tile);
+               $log.info('** dragDrop.onStop | tile: ', tile);
             };
 
             dragDrop.outCallback = function(event) {
@@ -89,7 +89,7 @@
                 //$log.info('B dragDrop.dropCallback| tile: ', tile);
                 //$log.info('B dragDrop.dropCallback| currentDragItem: ', dragDrop.currentDragItem);
 
-                _showItems();
+               // _showItems();
 
             };
 

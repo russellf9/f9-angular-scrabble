@@ -3,15 +3,14 @@
     <div class="tiles-container" style="border: solid 2px purple">
         <div class="tile-border"
              data-drop="true"
-             data-jqyoui-options="{revert: 'valid', onDrop: 'dragDrop.dropCallback()'}"
+             data-jqyoui-options="{revert: 'valid'}"
              ng-model="dragDrop.list1"
-             jqyoui-droppable
-                >
+             jqyoui-droppable="{onDrop: 'dragDrop.dropCallback()'}">
             <div class="tile"
                  data-drag="true"
-                 data-jqyoui-options="{revert: 'invalid', onDrop: 'dragDrop.dropCallback()'}"
+                 data-jqyoui-options="{revert: 'invalid'}"
                  ng-model="dragDrop.list1"
-                 jqyoui-draggable="{animate:true}"
+                 jqyoui-draggable="{animate:true, onStop: 'dragDrop.stopCallback()'}"
                  ng-hide="!dragDrop.list1.title"
                  >
                 <p>{{dragDrop.list1.title}}</p>
@@ -23,13 +22,13 @@
     <div class="tiles-container" style="border: solid 2px blue">
         <div class="tile-border"
              data-drop="true"
-             data-jqyoui-options="{revert: 'valid', onDrop: 'dragDrop.dropCallback()'}"
+             data-jqyoui-options="{revert: 'valid'}"
              ng-model="dragDrop.list2"
-             jqyoui-droppable>
+             jqyoui-droppable="{onDrop: 'dragDrop.dropCallback(item)'}">
             <div class="tile"
                  data-drag="true"
                  ng-model="dragDrop.list2"
-                 jqyoui-draggable
+                 jqyoui-draggable="{animate:true,  onStop: 'dragDrop.stopCallback()'}"
                  ng-hide="!dragDrop.list2.title">
                 <p>{{dragDrop.list2.title}}<p>
             </div>
