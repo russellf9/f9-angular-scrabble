@@ -93,6 +93,7 @@
         function Tile(letter, score) {
             this.letter = letter;
             this.score = score;
+            this.drag = true;
         }
 
 
