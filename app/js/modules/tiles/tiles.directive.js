@@ -45,20 +45,24 @@
 
 
             dragDrop.list5 = [
-                { 'title': 'Item 1', 'drag': true },
-                { 'title': 'Item 2', 'drag': true },
-                { 'title': 'Item 3', 'drag': true },
-                { 'title': 'Item 4', 'drag': true },
-                { 'title': 'Item 5', 'drag': true },
-                { 'title': 'Item 6', 'drag': true },
-                { 'title': 'Item 7', 'drag': true },
-                { 'title': 'Item 8', 'drag': true }
+                { 'title': 'A', 'drag': true },
+                { 'title': 'B', 'drag': true },
+                { 'title': 'C', 'drag': true },
+
+                { 'title': 'D', 'drag': true },
+                { 'title': 'E', 'drag': true },
+                { 'title': 'F', 'drag': true },
+
+                { 'title': 'G', 'drag': true },
+                { 'title': 'H', 'drag': true }
             ];
 
-            dragDrop.list2 = [];
+            dragDrop.list2 = [,,, ,,, ,,];
+
+            dragDrop.list3 = [];
 
             dragDrop.list1 = {title: 'A'};
-            dragDrop.list2 = {};
+
 
 
             // drag functions
@@ -85,11 +89,11 @@
 
             // drop functions
             dragDrop.dropCallback = function(event, obj, tile, index) {
-                $log.info('A dragDrop.dropCallback| tile: ', arguments);
+                $log.info('A dragDrop.dropCallback| args: ', arguments);
                 //$log.info('B dragDrop.dropCallback| tile: ', tile);
                 //$log.info('B dragDrop.dropCallback| currentDragItem: ', dragDrop.currentDragItem);
 
-               // _showItems();
+               _showItems();
 
             };
 
@@ -106,10 +110,11 @@
 
             function _showItems() {
 
-                $log.info('------------- SHOW ITEMS ------------\n')
+                $log.info('------------- SHOW ITEMS ------------\n');
 
-                $log.info('drag: ',dragDrop.dragItems);
-                $log.info('drop: ', dragDrop.dropItems);
+                $log.info('dragItems: ',dragDrop.dragItems);
+                $log.info('dragItems: ',dragDrop.list3);
+                //$log.info('drop: ', dragDrop.dropItems);
 
             }
         }

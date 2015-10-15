@@ -1,62 +1,36 @@
 <div class="drag-drop-container">
     <!--  TEST DRAG ZONE -->
     <div class="tiles-container" style="border: solid 2px purple">
-        <div class="tile-border"
+        <div class="tile-border" ng-repeat="tile in dragDrop.list5 track by $index"
              data-drop="true"
-             data-jqyoui-options="{revert: 'valid'}"
-             ng-model="dragDrop.list1"
-             jqyoui-droppable="{onDrop: 'dragDrop.dropCallback()'}">
+             data-jqyoui-options="{}"
+             ng-model="dragDrop.list5"
+             jqyoui-droppable="{index: {{$index}}}">
             <div class="tile"
-                 data-drag="true"
-                 data-jqyoui-options="{revert: 'invalid'}"
-                 ng-model="dragDrop.list1"
-                 jqyoui-draggable="{animate:true, onStop: 'dragDrop.stopCallback()'}"
-                 ng-hide="!dragDrop.list1.title"
-                 >
-                <p>{{dragDrop.list1.title}}</p>
+                 data-drag="{{tile.drag}}"
+                 data-jqyoui-options="{revert: 'valid'}"
+                 ng-model="dragDrop.list5"
+                 jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)', onDrop: 'dragDrop.dropCallback(tile)'}"
+                  ng-hide="!tile.title">
+                <p>{{tile.title}}</p>
             </div>
         </div>
     </div>
 
-    <!-- TEST DROP ZONE -->
-    <div class="tiles-container" style="border: solid 2px blue">
-        <div class="tile-border"
-             data-drop="true"
-             data-jqyoui-options="{revert: 'valid'}"
-             ng-model="dragDrop.list2"
-             jqyoui-droppable="{onDrop: 'dragDrop.dropCallback(item)'}">
-            <div class="tile"
-                 data-drag="true"
-                 ng-model="dragDrop.list2"
-                 jqyoui-draggable="{animate:true,  onStop: 'dragDrop.stopCallback()'}"
-                 ng-hide="!dragDrop.list2.title">
-                <p>{{dragDrop.list2.title}}<p>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <p>test: {{dragDrop.list1}}</p>
-        <p>test: {{dragDrop.list2}}</p>
-    </div>
-
-    <!-- DROP ZONE -->
-    <div ng-if="false" class="tiles-container" style="border: solid 1px orange"
+    <!-- MULTIPLE TEST DROP ZONE -->
+    <div class="tiles-container" style="border: solid 4px green"
          data-drop="true"
+         ng-model='dragDrop.list3'
          data-jqyoui-options="{}"
-         jqyoui-droppable="{index: 0,  }"
-         ng-model='dragDrop.list2'>
-            <div class="tile" style="border: solid 1px red" ng-hide="!dragDrop.tile.letter">
-                <div class="tile" ng-repeat="tile in dragDrop.list2"
-                     ng-show="item.title" data-drag="{{tile.drag}}"
-                     data-jqyoui-options="{revert: 'invalid', onDrop: 'dragDrop.dropCallback()'}"
-                     ng-model="dragDrop.list2" jqyoui-draggable="{index: {{$index}},animate:true}"
-                     ng-hide="!tile.letter"
-                     >
-                    <p>{{tile.letter}}<p></p>
-                </div>
+         jqyoui-droppable="{multiple:true}">
+            <div class="tile" ng-repeat="tile in dragDrop.list3"
+                 ng-show="tile.title"
+                 data-drag="{{tile.drag}}"
+                 data-jqyoui-options="{revert: 'invalid', onDrop: 'dragDrop.dropCallback(tile)'}"
+                 ng-model="dragDrop.list3"
+                 jqyoui-draggable="{index: {{$index}}, animate:true}">
+                <p>{{tile.title}}</p>
             </div>
-        </div>
     </div>
 
 </div>
