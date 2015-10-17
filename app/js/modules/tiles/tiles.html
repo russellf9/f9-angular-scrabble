@@ -1,5 +1,5 @@
 <div class="drag-drop-container">
-    <!--  TEST DRAG ZONE -->
+    <!-- DRAG ZONE -->
     <div class="tiles-container">
         <div class="tile-border" ng-repeat="tile in dragDrop.tiles track by $index"
              data-drop="true"
@@ -10,28 +10,30 @@
                  data-drag="{{tile.drag}}"
                  data-jqyoui-options="{revert: 'valid'}"
                  ng-model="dragDrop.tiles"
-                 jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)', onDrop: 'dragDrop.dropCallback(tile)'}"
+                 jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)'}"
                   ng-hide="!tile.letter">
                 <p>{{tile.letter}}</p>
             </div>
         </div>
     </div>
 
-    <!-- MULTIPLE TEST DROP ZONE -->
+    <!-- MULTIPLE DROP ZONE -->
     <div class="tiles-container"
          data-drop="true"
          ng-model='dragDrop.dropItems'
          data-jqyoui-options="{}"
-         jqyoui-droppable="{multiple:true}">
+         jqyoui-droppable="{multiple:true,
+                            onDrop:'dragDrop.dropCallback($index)',
+                            onOut: 'dragDrop.outCallback($index)'}">
             <div class="tile" ng-repeat="tile in dragDrop.dropItems"
                  ng-show="tile.letter"
                  data-drag="{{tile.drag}}"
-                 data-jqyoui-options="{revert: 'invalid', onDrop: 'dragDrop.dropCallback(tile)'}"
+                 data-jqyoui-options="{revert: 'invalid'}"
                  ng-model="dragDrop.dropItems"
                  jqyoui-draggable="{index: {{$index}}, animate:true}">
                 <p>{{tile.letter}}</p>
             </div>
-        <div class="score" ng-if="dragDrop.stateData.state === 'done' || dragDrop.stateData.state === 'paused'">
+        <div class="score" ng-if="dragDrop.stateData.state === 'playing' || dragDrop.stateData.state === 'done' || dragDrop.stateData.state === 'paused'">
             <p>Score: {{dragDrop.score}}</p>
         </div>
     </div>

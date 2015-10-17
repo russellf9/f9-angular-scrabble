@@ -17,7 +17,7 @@
             link: tilesLink
         };
 
-        function TilesController($scope, $log, StateMachineService, MyStore) {
+        function TilesController($scope, $log, StateMachineService, GameService, MyStore) {
 
 
             // '...is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular...'
@@ -29,6 +29,8 @@
             dragDrop.state = dragDrop.stateData.state;
 
             $log.info('Tiles setting up Store event!');
+
+            dragDrop.score = 0;
 
             dragDrop.tiles = MyStore.tiles;
 
@@ -65,16 +67,24 @@
             };
 
             dragDrop.outCallback = function(event) {
+                _update();
             };
 
 
             // drop functions
             dragDrop.dropCallback = function(event, obj, tile, index) {
-                $log.info('A dragDrop.dropCallback| args: ', arguments);
-                //$log.info('B dragDrop.dropCallback| tile: ', tile);
-                //$log.info('B dragDrop.dropCallback| currentDragItem: ', dragDrop.currentDragItem);
-
+                _update();
             };
+
+            function _update() {
+                $log.info('update | dragDrop.dropItems: ', dragDrop.dropItems);
+
+                var result = GameService.calculateUserScore(dragDrop.dropItems);
+
+                $log.info('score is: ', result)
+
+                dragDrop.score = result;
+            }
 
         }
 

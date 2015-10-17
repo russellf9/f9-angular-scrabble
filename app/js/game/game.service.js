@@ -36,6 +36,8 @@
 
         service.showBestWord = _showBestWord;
 
+        service.calculateUserScore = _calculateUserScore;
+
 
         return service;
 
@@ -80,6 +82,7 @@
             return hand;
         }
 
+        // TODO differentiate between the this 'getResult()` and result from the user's set of tiles
         function _getResult(hand) {
 
             $log.info('GET RESULT!');
@@ -97,7 +100,7 @@
             var letters = [],
                 tile;
 
-            for(var i = 0; i < hand.length; i++) {
+            for (var i = 0; i < hand.length; i++) {
                 tile = hand[i];
                 letters.push(tile.letter);
             }
@@ -105,11 +108,11 @@
         }
 
         function _generate() {
-            var hand =  service.getHand(7);
+            var hand = service.getHand(7);
             var result = service.getResult(hand);
             var bestWord = ScrabbleService.findBestWord(result);
 
-            flux.dispatch('setBestWord', bestWord );
+            flux.dispatch('setBestWord', bestWord);
         }
 
         function _reset() {
@@ -123,7 +126,7 @@
             service.currentHand = undefined;
 
             // clear the bestWord
-            flux.dispatch(actions.BESTWORD_SET, '' );
+            flux.dispatch(actions.BESTWORD_SET, '');
 
             // clear the tiles
             flux.dispatch(actions.TILE_DELETE);
@@ -172,6 +175,69 @@
 
             flux.dispatch('setBestWord', bestWord);
 
+        }
+
+        function _getLetters(hand) {
+            var letters = [],
+                tile;
+
+            for (var i = 0; i < hand.length; i++) {
+                tile = hand[i];
+                letters.push(tile.letter);
+            }
+            return letters;
+        }
+
+        function _getWord(tiles) {
+            var word = '',
+                tile,
+                letter;
+            for (var i = 0, j = tiles.length; i < j; i++) {
+                tile = tiles[i];
+
+                word += tile.letter;
+            }
+            return word;
+        }
+
+        function _getScore(tiles) {
+            var score = 0,
+                tile;
+            for (var i = 0, j = tiles.length; i < j; i++) {
+                tile = tiles[i];
+                score += tile.score;
+            }
+            return score
+        }
+
+        function _wordExists(word) {
+            if (typeof word === Array) {
+                $log.info('Woops I`m an array!');
+            }
+            return service.wordList.indexOf(word) >= 0;
+        }
+
+        function _calculateUserScore(tiles) {
+            if (!tiles || !tiles.length) {
+                $log.error('GameService.getResult - No Hand supplied!');
+                return;
+            }
+
+            var word = _getWord(tiles)
+
+            $log.info('Tiles: ', tiles, ' | word: ', word);
+
+            var score = _getScore(tiles);
+
+            // check is valid word
+            var wordExists = _wordExists(word);
+
+            // note dictionary does not include one letter words
+
+            $log.info('That ', word, ' exists is ', wordExists);
+
+
+            return wordExists ? score : 0;
         }
     }
 
