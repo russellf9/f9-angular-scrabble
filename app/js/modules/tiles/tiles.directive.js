@@ -45,6 +45,13 @@
                 dragDrop.dropItems = [];
             });
 
+            $scope.$listenTo(MyStore, 'score.*', function () {
+                $log.info('FROM FLUX!!score');
+                dragDrop.score = MyStore.userScore;
+            });
+
+
+
 
             dragDrop.currentDragItem = undefined;
 
@@ -79,11 +86,7 @@
             function _update() {
                 $log.info('update | dragDrop.dropItems: ', dragDrop.dropItems);
 
-                var result = GameService.calculateUserScore(dragDrop.dropItems);
-
-                $log.info('score is: ', result)
-
-                dragDrop.score = result;
+                GameService.calculateUserScore(dragDrop.dropItems);
             }
 
         }

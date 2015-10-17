@@ -8,20 +8,23 @@
             'BESTWORD_SET': 'setBestWord',
             'TIMER_START': 'startTimer',
             'TIMER_STOP': 'stopTimer',
-            'TIME_SET': 'setTime'
+            'TIME_SET': 'setTime',
+            'SCORE_UPDATE': 'updateScore'
         })
         .store('MyStore', function() {
             return {
                 tiles: [],
                 bestWord: '',
                 time: '',
+                userScore: 0,
                 handlers: {
                     'addTile': 'addTile',
                     'clearTiles': 'clearTiles',
                     'setBestWord': 'setBestWord',
                     'startTimer': 'startTimer',
                     'stopTimer': 'stopTimer',
-                    'setTime': 'setTime'
+                    'setTime': 'setTime',
+                    'updateScore': 'setUserScore'
                 },
                 addTile: function(tile) {
                     this.tiles.push(tile);
@@ -45,6 +48,10 @@
                     this.time = time;
                     this.emit('time.set');
                 },
+                setUserScore: function(score) {
+                    this.userScore = score;
+                    this.emit('score.update');
+                },
                 exports: {
                     getTiles: function() {
                         return this.tiles;
@@ -60,6 +67,9 @@
                     },
                     get time() {
                         return this.time;
+                    },
+                    get userScore() {
+                        return this.userScore;
                     }
                 }
             };

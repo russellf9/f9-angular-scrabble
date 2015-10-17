@@ -131,7 +131,7 @@
             // clear the tiles
             flux.dispatch(actions.TILE_DELETE);
 
-            // TODO perhaps call when this has been confirmned
+            // TODO perhaps call when this has been confirmed
             StateMachineService.initialise();
             $log.info('STATE ', StateMachineService.current());
             StateMachineService.makeReady();
@@ -212,32 +212,33 @@
 
         function _wordExists(word) {
             if (typeof word === Array) {
-                $log.info('Woops I`m an array!');
+                $log.info('Whoops I`m an array!');
             }
             return service.wordList.indexOf(word) >= 0;
         }
 
+
+        // TODO rename
         function _calculateUserScore(tiles) {
             if (!tiles || !tiles.length) {
                 $log.error('GameService.getResult - No Hand supplied!');
                 return;
             }
 
-            var word = _getWord(tiles)
-
-            $log.info('Tiles: ', tiles, ' | word: ', word);
-
             var score = _getScore(tiles);
 
             // check is valid word
+            var word = _getWord(tiles);
+
             var wordExists = _wordExists(word);
 
             // note dictionary does not include one letter words
 
-            $log.info('That ', word, ' exists is ', wordExists);
+            score = wordExists ? score : 0;
 
+            $log.info('That ', word, ' exists is ', wordExists, ' and has a score of ', score);
 
-            return wordExists ? score : 0;
+            flux.dispatch('updateScore', score);
         }
     }
 
