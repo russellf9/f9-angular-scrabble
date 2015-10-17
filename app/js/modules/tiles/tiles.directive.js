@@ -8,8 +8,7 @@
     function tiles($templateCache) {
         return {
             restrict: 'AE',
-            scope: {
-            },
+            scope: {},
             controller: TilesController,
             controllerAs: 'dragDrop',
             bindToController: true, // because the scope is isolated
@@ -19,79 +18,86 @@
 
         function TilesController($scope, $log, StateMachineService, GameService, MyStore) {
 
-
-            // '...is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular...'
             var dragDrop = this;
 
 
-            dragDrop.stateData = StateMachineService.data;
-
-            dragDrop.state = dragDrop.stateData.state;
-
-            $log.info('Tiles setting up Store event!');
-
+            // == SET UP DEFAULT VALUES ========
             dragDrop.score = 0;
 
-            dragDrop.tiles = MyStore.tiles;
+            dragDrop.tiles = [];
+
+            dragDrop.currentDragItem = undefined;
 
 
-            $scope.$listenTo(MyStore, 'tile.*', function () {
+            // == BIND THE STATE VALUE ========
+            // bind the state to the value in the Service
+            dragDrop.stateData = StateMachineService.data;
+            dragDrop.state = dragDrop.stateData.state;
+
+
+            // == REDIRECTION OF BUSINESS LOGIC ========
+
+            // Evaluates when the users score should be shown
+            dragDrop.scoreIsVisible = function() {
+                return GameService.evaluateDisplayUserScore();
+            };
+
+
+            // == FLUX EVENT HANDLERS ========
+
+            // updates to the letter tiles
+            $scope.$listenTo(MyStore, 'tile.*', function() {
                 $log.info('tile.add');
                 dragDrop.tiles = MyStore.tiles;
 
                 // set the list of drag and drop items here...
                 dragDrop.dragItems = angular.copy(dragDrop.tiles);
 
+                // clear the list of drop items each time
                 dragDrop.dropItems = [];
             });
 
-            $scope.$listenTo(MyStore, 'score.*', function () {
-                $log.info('FROM FLUX!!score');
+            // updates to the user's score
+            $scope.$listenTo(MyStore, 'score.*', function() {
                 dragDrop.score = MyStore.userScore;
             });
 
 
-
-
-            dragDrop.currentDragItem = undefined;
-
+            // == DRAG AND DROP HANDLERS ========
 
             // drag functions
             dragDrop.startCallback = function(event, obj, tile, index) {
+                // (currently not used)
                 dragDrop.currentDragItem = tile;
             };
-
             dragDrop.overCallback = function(event) {
-                $log.info('dragDrop.overCallback: ', arguments);
             };
 
-            dragDrop.dragCallback = function(event, obj, tile, index) {
-               $log.info('** dragDrop.onDrag | tile: ', tile);
+            dragDrop.dragCallback = function(event) {
+            };
+            dragDrop.stopCallback = function(event) {
+                dragDrop.currentDragItem = undefined;
             };
 
-            dragDrop.stopCallback = function(event, obj, tile, index) {
-               $log.info('** dragDrop.onStop | tile: ', tile);
+            // drop functions
+            dragDrop.dropCallback = function(event) {
+                _update();
             };
 
             dragDrop.outCallback = function(event) {
                 _update();
             };
 
+            // == SERVICE CALLS ========
 
-            // drop functions
-            dragDrop.dropCallback = function(event, obj, tile, index) {
-                _update();
-            };
-
+            // updates the users selection
             function _update() {
-                $log.info('update | dragDrop.dropItems: ', dragDrop.dropItems);
-
-                GameService.calculateUserScore(dragDrop.dropItems);
+                GameService.updateUserSelection(dragDrop.dropItems);
             }
 
         }
 
-        // link function (currently unused)
+        // Directive link function (currently unused)
         function tilesLink() {
         }
     }

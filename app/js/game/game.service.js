@@ -24,11 +24,7 @@
 
         service.getHand = _getHand;
 
-        service.getResult = _getResult;
-
         service.reset = _reset;
-
-        service.generate = _generate;
 
         service.start = _start;
 
@@ -36,13 +32,15 @@
 
         service.showBestWord = _showBestWord;
 
-        service.calculateUserScore = _calculateUserScore;
+        service.updateUserSelection = _updateUserSelection;
+
+        service.evaluateDisplayUserScore = _evaluateDisplayUserScore;
 
 
         return service;
 
+        // returns a Promise, so we delay the ready state to when the data has been correctly got
         function _init() {
-
 
             var deferred = $q.defer();
 
@@ -64,14 +62,15 @@
             return deferred.promise;
         }
 
+        // == GETTERS ========
+
+        // a collection of Tiles
         function _getLetterBag() {
             return service.letterBag;
         }
 
+        // removes a number of tiles from the collection and returns them
         function _getHand(number) {
-
-            $log.info('GET HAND!');
-
             number = number || 7;
             var hand = ScrabbleService.getHand(number);
 
@@ -82,10 +81,106 @@
             return hand;
         }
 
-        // TODO differentiate between the this 'getResult()` and result from the user's set of tiles
-        function _getResult(hand) {
 
-            $log.info('GET RESULT!');
+        /**
+         * @name _reset
+         * @description Performs a variety of actions to reset the game
+         * @private
+         */
+        function _reset() {
+
+            $log.info('GET RESET!');
+            StateMachineService.reset();
+            $log.info('STATE ', StateMachineService.current());
+
+            // clear the current hand
+            // TODO might be un-required if we stick to the model?
+            service.currentHand = undefined;
+
+            // clear the bestWord
+            flux.dispatch(actions.BESTWORD_SET, '');
+
+            // clear the tiles
+            flux.dispatch(actions.TILE_DELETE);
+
+            // TODO perhaps call when this has been confirmed
+            StateMachineService.initialise();
+
+            StateMachineService.makeReady();
+        }
+
+        // starts the game by staring the timer
+        function _start() {
+            StateMachineService.play();
+
+            flux.dispatch(actions.TIMER_START);
+        }
+
+        // ends the game
+        function _stop() {
+            StateMachineService.stop();
+
+            flux.dispatch(actions.TIMER_STOP);
+        }
+
+        // TODO Rename as we have a side-effect
+        /**
+         * @name _showBestWord
+         * @description Finds the word with the highest score
+         * @private
+         */
+        function _showBestWord() {
+
+            // sets state
+            StateMachineService.finish();
+
+            // guard
+            if (!service.currentHand) {
+                $log.error('GameService.showBestWord | no currentHand');
+                return;
+            }
+            var result = _getResult(service.currentHand);
+
+            var bestWord = ScrabbleService.findBestWord(result);
+
+            flux.dispatch(actions.BESTWORD_SET, bestWord);
+        }
+
+
+        /**
+         * @name _updateUserSelection
+         * @description Performs the necessary operations once the user updatets their selection of tiles
+         * @param tiles
+         * @private
+         */
+        function _updateUserSelection(tiles) {
+            if (!tiles || !tiles.length) {
+                flux.dispatch(actions.SCORE_UPDATE, 0);
+                return;
+            }
+
+            // Note: dictionary does not include one letter words
+            var word = _getWord(tiles);
+
+            // check is valid word and evaluate the score
+            var score = _wordExists(word) ? _getScore(tiles) : 0;
+
+            flux.dispatch(actions.SCORE_UPDATE, score);
+        }
+
+        // == BUSINESS LOGIC ========
+
+        // Evaluates if the user's score field should be visible
+        function _evaluateDisplayUserScore() {
+            return (StateMachineService.current() === 'playing' || StateMachineService.current() === 'done' || StateMachineService.current().state === 'paused' );
+        }
+
+        // == UTILITY FUNCTIONS ========
+
+
+        // TODO differentiate between the this 'getResult()` and result from the user's set of tiles
+        // Returns the highest scoring word from the supplied set of tiles
+        function _getResult(hand) {
 
             if (!hand || !hand.length) {
                 $log.error('GameService.getResult - No Hand supplied!');
@@ -97,109 +192,42 @@
                 return;
             }
 
-            var letters = [],
-                tile;
-
-            for (var i = 0; i < hand.length; i++) {
-                tile = hand[i];
-                letters.push(tile.letter);
-            }
-            return WordFinderService.makeWordFinder(letters, service.wordList);
+            return WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);
         }
 
-        function _generate() {
-            var hand = service.getHand(7);
-            var result = service.getResult(hand);
-            var bestWord = ScrabbleService.findBestWord(result);
-
-            flux.dispatch('setBestWord', bestWord);
-        }
-
-        function _reset() {
-
-            $log.info('GET RESET!');
-            StateMachineService.reset();
-            $log.info('STATE ', StateMachineService.current());
-
-            // clear the current hand
-            // TODO might be unrequited if we stick to the model?
-            service.currentHand = undefined;
-
-            // clear the bestWord
-            flux.dispatch(actions.BESTWORD_SET, '');
-
-            // clear the tiles
-            flux.dispatch(actions.TILE_DELETE);
-
-            // TODO perhaps call when this has been confirmed
-            StateMachineService.initialise();
-            $log.info('STATE ', StateMachineService.current());
-            StateMachineService.makeReady();
-            $log.info('STATE ', StateMachineService.current());
-
-        }
-
-        // starts the game by staring the timer
-        function _start() {
-
-            $log.info('GET START!');
-
-            StateMachineService.play();
-
-
-            flux.dispatch(actions.TIMER_START);
-        }
-
-        // ends the game
-        function _stop() {
-            $log.info('GET STOP!');
-            StateMachineService.stop();
-
-            $log.info('STATE ', StateMachineService.current());
-            flux.dispatch(actions.TIMER_STOP);
-        }
-
-        function _showBestWord() {
-
-            $log.info('SHOW BEST WORD!');
-            StateMachineService.finish();
-            $log.info('STATE ', StateMachineService.current());
-
-
-            if (!service.currentHand) {
-                $log.error('GameService.showBestWord | no currentHand');
-                return;
-            }
-            var result = service.getResult(service.currentHand);
-            var bestWord = ScrabbleService.findBestWord(result);
-
-            flux.dispatch('setBestWord', bestWord);
-
-        }
-
-        function _getLetters(hand) {
-            var letters = [],
-                tile;
-
-            for (var i = 0; i < hand.length; i++) {
-                tile = hand[i];
-                letters.push(tile.letter);
-            }
-            return letters;
-        }
-
+        // gets the word as a String from a given set of tiles
+        // TODO use reduce function
+        // TODO use Tile object
         function _getWord(tiles) {
             var word = '',
-                tile,
-                letter;
+                tile;
             for (var i = 0, j = tiles.length; i < j; i++) {
                 tile = tiles[i];
-
                 word += tile.letter;
             }
             return word;
         }
 
+        /**
+         * @description returns a collection of letter strings from the suppied set of tiles
+         * @param tiles
+         * @returns {Array}
+         * @private
+         */
+        function _getLetters(tiles) {
+            var letters = [],
+                tile;
+
+            for (var i = 0; i < tiles.length; i++) {
+                tile = tiles[i];
+                letters.push(tile.letter);
+            }
+            return letters;
+        }
+
+        // gets the total score from a given set of tiles
+        // TODO use reduce function
+        // TODO use Tile object
         function _getScore(tiles) {
             var score = 0,
                 tile;
@@ -207,40 +235,16 @@
                 tile = tiles[i];
                 score += tile.score;
             }
-            return score
+            return score;
         }
 
+        // evaluates if a word exists in the Dictionary
         function _wordExists(word) {
             if (typeof word === Array) {
                 $log.info('Whoops I`m an array!');
             }
             return service.wordList.indexOf(word) >= 0;
         }
-
-
-        // TODO rename
-        function _calculateUserScore(tiles) {
-            if (!tiles || !tiles.length) {
-                $log.error('GameService.getResult - No Hand supplied!');
-                return;
-            }
-
-            var score = _getScore(tiles);
-
-            // check is valid word
-            var word = _getWord(tiles);
-
-            var wordExists = _wordExists(word);
-
-            // note dictionary does not include one letter words
-
-            score = wordExists ? score : 0;
-
-            $log.info('That ', word, ' exists is ', wordExists, ' and has a score of ', score);
-
-            flux.dispatch('updateScore', score);
-        }
     }
-
 
 })();

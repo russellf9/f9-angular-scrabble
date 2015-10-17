@@ -5,7 +5,7 @@
              data-drop="true"
              data-jqyoui-options="{}"
              ng-model="dragDrop.tiles"
-             jqyoui-droppable="{index: {{$index}}}">
+             jqyoui-droppable="{index: {{$index}},  onDrop:'dragDrop.dropCallback($index)', onOut: 'dragDrop.outCallback($index)'}">
             <div class="tile"
                  data-drag="{{tile.drag}}"
                  data-jqyoui-options="{revert: 'valid'}"
@@ -33,7 +33,7 @@
                  jqyoui-draggable="{index: {{$index}}, animate:true}">
                 <p>{{tile.letter}}</p>
             </div>
-        <div class="score" ng-if="dragDrop.stateData.state === 'playing' || dragDrop.stateData.state === 'done' || dragDrop.stateData.state === 'paused'">
+        <div class="score" ng-if="dragDrop.scoreIsVisible()">
             <p>Score: {{dragDrop.score}}</p>
         </div>
     </div>
