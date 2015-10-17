@@ -47,6 +47,19 @@ Make a game related to Scrabble
 ```
 $ git clone https://github.com/russellf9/f9-angular-scrabble.git && cd f9-angular-scrabble
 
+# Ensure Node is up to date
+
+$ node -v
+  v0.10.33
+  
+#  use n
+npm install -g n
+
+# For the latest stable version:
+$ sudo n stable
+
+
+
 # update node dependencies
 $ npm update
 
