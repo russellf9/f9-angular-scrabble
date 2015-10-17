@@ -106,6 +106,9 @@ $ gulp -b
 ### Browser platform
 
 ```
+# Update the www folder first
+$ gulp -b
+
 # to add the Browser platform
 # this builds from the current state of the www folder
 $ cordova platform add browser --usegit
@@ -125,15 +128,15 @@ $ cordova run browser
 
 Once the app has been tested locally and the files have been distributed to the  _www_ folder, we can start testing on mobile devices.
 
-
-#### add platform
+```
+# add platform
 $ ionic platform ios
 
-### rebuild
+# build (or rebuild)
 $ ionic build ios
 
-```
 # emulate ios
+# (Rebuilds too, previous step might be redundant )
 $ gulp -emulate
 # or
 $ gulp -e
@@ -141,7 +144,7 @@ $ gulp -e
 ```
 
 ```
-# test on device
+# test on device (not working)
 $ gulp -run
 # or
 $ gulp -r
