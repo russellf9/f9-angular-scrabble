@@ -1,8 +1,10 @@
-<div class="tiles-container">
-    <div class="tile" ng-repeat="letter in vm.wordArray track by $index" >
-        <p>{{letter}}</p>
-    </div>
-    <div class="score" ng-if="vm.stateData.state==='done'">
-        <p>Score: {{vm.score}}</p>
+<div class="wrapper-container">
+    <div class="tiles-container">
+        <div class="tile" ng-repeat="letter in vm.wordArray track by $index">
+            <p>{{letter}}</p>
+        </div>
+        <div class="score" ng-if="vm.stateData.state==='done'">
+            <p>Score: {{vm.score}}</p>
+        </div>
     </div>
 </div>

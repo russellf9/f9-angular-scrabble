@@ -1,4 +1,4 @@
-<div class="drag-drop-container">
+<div class="wrapper-container">
     <!-- DRAG ZONE -->
     <div class="tiles-container">
         <div class="tile-border" ng-repeat="tile in dragDrop.tiles track by $index"
@@ -18,7 +18,7 @@
     </div>
 
     <!-- MULTIPLE DROP ZONE -->
-    <div class="tiles-container"
+    <div class="tiles-container drop-container"
          data-drop="true"
          ng-model='dragDrop.dropItems'
          data-jqyoui-options="{}"

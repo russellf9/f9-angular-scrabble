@@ -1,55 +1,114 @@
 @import "../modules/flex";
 @import "../modules/colors";
 
+// == RESPONSIVE SIZES ========
+$iPhone4-width: 640px;
+
+/* Width for portrait */
+$iPad-width: 768px;
+
+// SET A FIXED DEFAULT FOR NOW
+$device-width: $iPad-width;
+
+// == SHARED PROPERTIES ========
+
+$title-height: 55px;
+
 $container-margin: 5px;
+$tile-dimension: 70px;
+$tile-margin: 5px;
 
+$rack-width: 750px;
+$tiles-container-height: 80px;
+$tile-dimension: 70px;
+$tile-margin: 2px;
+
+$score-height: 80px;
+
+$controls-width: 400px;
+$controls-height: 50px;
+
+$timer-width: 350px;
+$timer-height: 100px;
+
+// == CONTAINERS ========
+
+// MULTIPLE ROWS
 .container {
-  @extend .flex-container;
-
-  border: solid 1px $green;
+  @extend .flex-container-multiple-rows;
+ /* border: solid 2px $green; */
   margin: $container-margin;
 }
 
-.container-full-width {
-  border: solid 1px $red;
-  margin: 0;
+// SINGLE ROW
+.container-row {
+  @extend .flex-container-all-row;
+  height: calc(#{$tile-dimension} + (2 * #{$container-margin}));
+  /* border: solid 2px $green; */
+  margin: $container-margin;
 }
 
-/* the container for the whole game */
+/* THE CONTAINER FOR THE WHOLE GAME */
 .game-container {
-  @extend .container;
   width: 90%;
+  max-width: $device-width;
   margin: auto;
-  border: solid 1px $green;
+  border: solid 1px $lightGrey;
 }
 
-/* A taller container for both the drag and drop tiles */
-.drag-drop-container {
-  @extend .container-full-width !optional;
-  width: 450px;
-  height: 120px;
-
-  border: solid 1px $blue;
+/* A CONTAINER FOR MOST OF THE CONTAINERS */
+.wrapper-container {
+  @extend .container;
 }
 
-.drop-container {
-  @extend .flex-container-horizontal;
-  width: 450px;
-  height: 50px;
-  border: solid 1px black !important;
+/* The container which displays the name of the game */
+.title-container {
+  width: $rack-width;
+  height: $title-height;
+  h1 {
+    text-align: center;
+  }
 }
 
-/* a short container for a single row of tiles */
+/* A SHORT CONTAINER FOR A SINGLE ROW OF TILES
+  (Used by the drag and the drop)
+*/
 .tiles-container {
   @extend .container;
-  width: 450px;
-  height: 50px;
-  border: solid 1px $green;
+  width: $rack-width;
+  height: $tiles-container-height;
+
 }
 
-$tile-dimension : 40px;
-$tile-margin: 2px;
+/* The drop container need UI so the user will drag too */
+.drop-container {
+  /* border: dashed 1px brown; */
+  background: lighten(sandybrown, 30);
+}
 
+/* FOR THE GAME CONTROLS */
+.controls-container {
+  @extend .container;
+  width: $controls-width;
+  height: $controls-height;
+}
+
+/* FOR THE TIMER */
+.timer-container {
+  @extend .flex-container;
+  width: $timer-width;
+  height: $timer-height;
+  margin: $container-margin;
+  input {
+    width: 125px;
+    text-align: center;
+    font-size: 42px;
+  }
+}
+
+// == UI ELEMENTS ========
+
+/* Scrabble tile */
 .tile {
   @extend .flex-container;
   width: $tile-dimension;
@@ -58,12 +117,13 @@ $tile-margin: 2px;
   margin-right: $tile-margin;
   border: solid 1px $green;
 
-  .p {
+  p {
     height: 100%;
     line-height: $tile-dimension;
   }
 }
 
+/* UI for the slot */
 .tile-border {
   @extend .flex-container;
   width: $tile-dimension;
@@ -71,34 +131,42 @@ $tile-margin: 2px;
   border: solid 2px brown
 }
 
+/* Element displays the Score */
 .score {
   @extend .flex-container;
-  margin-left: $tile-margin;
-  margin-right: $tile-margin;
-}
+  margin-left: calc(#{$tile-margin} * 3);
+  margin-right:calc(#{$tile-margin} * 3);
 
-.controls-container {
-  @extend .container ;
+  height: $score-height;
+  text-align: center;
 
-  width: 450px;
-  height: 200px;
+  /*border: solid 1px orange;*/
 
-}
-
-.timer-container {
-  @extend .flex-container;
-  width: 450px;
-  height: 100px;
-  margin: $container-margin;
-
-  border: solid 1px $green;
-  input {
-    width: 125px;
-    text-align: center;
-    font-size: 42px;
+  p {
+    line-height: $score-height;
+    font-size: calc(#{$score-height} * 0.4);
+    /*border: solid 1px blue;*/
   }
 }
 
+
+/* The shared button */
 .button {
   margin: $container-margin;
+}
+
+/* align without flex */
+$large-square-dimension: 70px;
+$large-square-margin: 5px;
+
+.large-square {
+  width: $large-square-dimension;
+  height: $large-square-dimension;
+  border: solid 1px red;
+  margin: $large-square-margin;
+  text-align: center;
+  h1 {
+    line-height: $large-square-dimension;
+    font-size: 1.5em;
+  }
 }
