@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "0.0.2",
-  "description": "f9-ionic-seed",
+  "description": "A Scrabble Game",
   "license": "MIT",
   "repository": {
     "type": "git",
