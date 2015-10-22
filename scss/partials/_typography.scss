@@ -18,8 +18,8 @@ $line-height-ratio: 1.2;
  Reset some fonts
  */
 h1, h2, h3, h4, h5, h6 {
-    font-family: $fredoka;
-    color: $text-color;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  color: $text-color;
 }
 
 $ms-base: 1rem 1.25rem;  // Double stranded modular scale

@@ -19,6 +19,10 @@ $offWhite: #EEEEEE;
 
 $warning: #e74c3c;
 
+$tile-color: lighten(rgb(174, 138, 103), 10%);
+
+$holder-color: lighten($tile-color, 20%);
+
 
 $lightGreen : lighten( $green, 40% );
 $darkGreen : darken( $green, 20% );

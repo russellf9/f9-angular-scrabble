@@ -12,13 +12,13 @@
                  ng-model="dragDrop.tiles"
                  jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)'}"
                   ng-hide="!tile.letter">
-                <p>{{tile.letter}}</p>
+                <h2>{{tile.letter}}</h2>
             </div>
         </div>
     </div>
 
     <!-- MULTIPLE DROP ZONE -->
-    <div class="tiles-container drop-container"
+    <div class="tiles-container-fixed"
          data-drop="true"
          ng-model='dragDrop.dropItems'
          data-jqyoui-options="{}"
@@ -31,14 +31,15 @@
                  data-jqyoui-options="{revert: 'invalid'}"
                  ng-model="dragDrop.dropItems"
                  jqyoui-draggable="{index: {{$index}}, animate:true}">
-                <p>{{tile.letter}}</p>
+                <h2>{{tile.letter}}</h2>
             </div>
-        <div class="score" ng-if="dragDrop.scoreIsVisible()">
-            <p>Score: {{dragDrop.score}}</p>
-        </div>
     </div>
-
+    <div class="score" ng-if="dragDrop.scoreIsVisible()">
+        <p>Score: {{dragDrop.score}}</p>
+    </div>
 </div>
+
+
 
 
 

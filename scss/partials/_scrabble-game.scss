@@ -14,16 +14,20 @@ $device-width: $iPad-width;
 
 $title-height: 55px;
 
+
+
 $container-margin: 5px;
 $tile-dimension: 70px;
 $tile-margin: 5px;
 
-$rack-width: 750px;
+$tile-slot-width: calc(#{$tile-dimension} * 8);
+
+$rack-width: 700px;
 $tiles-container-height: 80px;
 $tile-dimension: 70px;
 $tile-margin: 2px;
 
-$score-height: 80px;
+$score-height: 60px;
 
 $controls-width: 400px;
 $controls-height: 50px;
@@ -48,6 +52,10 @@ $timer-height: 100px;
   margin: $container-margin;
 }
 
+.row {
+  border: solid 2px $green;
+}
+
 /* THE CONTAINER FOR THE WHOLE GAME */
 .game-container {
   width: 90%;
@@ -59,6 +67,7 @@ $timer-height: 100px;
 /* A CONTAINER FOR MOST OF THE CONTAINERS */
 .wrapper-container {
   @extend .container;
+  /*border: dashed 1px black;*/
 }
 
 /* The container which displays the name of the game */
@@ -75,15 +84,19 @@ $timer-height: 100px;
 */
 .tiles-container {
   @extend .container;
-  width: $rack-width;
+  width: $tile-slot-width;
   height: $tiles-container-height;
-
+  background: $holder-color;
+  /*border: 1px solid purple;*/
 }
 
-/* The drop container need UI so the user will drag too */
-.drop-container {
-  /* border: dashed 1px brown; */
-  background: lighten(sandybrown, 30);
+/* The drop container UI what the user will drag too */
+.tiles-container-fixed {
+  @extend .container;
+  width: $tile-slot-width;
+  height: $tiles-container-height;
+  background: $holder-color;
+  /*border: solid 1px $lightGrey;*/
 }
 
 /* FOR THE GAME CONTROLS */
@@ -115,9 +128,10 @@ $timer-height: 100px;
   height: $tile-dimension;
   margin-left: $tile-margin;
   margin-right: $tile-margin;
-  border: solid 1px $green;
+  background-color: $tile-color;
+  /*border: solid 1px $green;*/
 
-  p {
+  h2 {
     height: 100%;
     line-height: $tile-dimension;
   }
@@ -128,19 +142,21 @@ $timer-height: 100px;
   @extend .flex-container;
   width: $tile-dimension;
   height: $tile-dimension;
-  border: solid 2px brown
+  /*border: solid 1px $lightGrey; */
 }
 
 /* Element displays the Score */
 .score {
   @extend .flex-container;
+  position: absolute;
+  margin-top: #{$score-height} * 0.5;
   margin-left: calc(#{$tile-margin} * 3);
   margin-right:calc(#{$tile-margin} * 3);
 
   height: $score-height;
   text-align: center;
 
-  /*border: solid 1px orange;*/
+  border: solid 1px orange;
 
   p {
     line-height: $score-height;
