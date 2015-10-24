@@ -24,8 +24,8 @@
 
             vm.state = vm.stateData.state;
 
+            // for the Best Word
             $scope.$listenTo(MyStore, 'bestword.*', function () {
-
                 if (MyStore.bestWord) {
                     vm.best = MyStore.bestWord;
                     vm.wordArray = vm.best.word.split('');

@@ -1,0 +1,14 @@
+<div class="wrapper-container">
+    <div class="scores-container">
+        <!-- BEST WORD SCORE -->
+        <div>
+            <p>
+                <span ng-if="scores.scoreIsVisible()">Your score is {{scores.userScore}}. </span>
+
+                <span ng-if="scores.stateData.state==='done'" >
+                    The best possible score was {{scores.bestWord}}.
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

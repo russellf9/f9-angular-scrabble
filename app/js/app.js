@@ -15,6 +15,7 @@ angular.module('f9-angular-scrabble', ['ionic',
     'f9BestWord',
     'f9Controls',
     'f9TimerService',
+    'f9Scores',
     'f9Timer',
     'fsm'
 ])

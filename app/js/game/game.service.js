@@ -172,7 +172,7 @@
 
         // Evaluates if the user's score field should be visible
         function _evaluateDisplayUserScore() {
-            return (StateMachineService.current() === 'playing' || StateMachineService.current() === 'done' || StateMachineService.current().state === 'paused' );
+            return (StateMachineService.current() === 'playing' || StateMachineService.current() === 'done' || StateMachineService.current().state === 'paused' || StateMachineService.current() === 'paused' );
         }
 
         // == UTILITY FUNCTIONS ========

@@ -105,6 +105,8 @@
                 return;
             }
             service.data.state = _current();
+
+            $log.info('StateMachine | state is now: ', service.data.state);
         }
 
         function _onEnter() {

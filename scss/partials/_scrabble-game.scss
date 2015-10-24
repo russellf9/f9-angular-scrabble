@@ -33,7 +33,10 @@ $controls-width: 400px;
 $controls-height: 50px;
 
 $timer-width: 350px;
-$timer-height: 100px;
+$timer-height: 70px;
+
+$scores-height: 45px;
+$scores-width: 650px;
 
 // == CONTAINERS ========
 
@@ -53,7 +56,7 @@ $timer-height: 100px;
 }
 
 .row {
-  border: solid 2px $green;
+  /*border: solid 2px $green;*/
 }
 
 /* THE CONTAINER FOR THE WHOLE GAME */
@@ -104,6 +107,8 @@ $timer-height: 100px;
   @extend .container;
   width: $controls-width;
   height: $controls-height;
+
+  /*border: solid 1px lawngreen;*/
 }
 
 /* FOR THE TIMER */
@@ -117,7 +122,25 @@ $timer-height: 100px;
     text-align: center;
     font-size: 42px;
   }
+  /*border: solid 1px lightblue;*/
 }
+
+/* FOR THE SCORES */
+.scores-container {
+  @extend .flex-container;
+
+  height: $scores-height;
+  width:  $scores-width;
+  div {
+    display: inline-block;
+  }
+  p {
+    font-size: 200%;
+  }
+
+  /*border: solid 1px orange;*/
+}
+
 
 // == UI ELEMENTS ========
 
