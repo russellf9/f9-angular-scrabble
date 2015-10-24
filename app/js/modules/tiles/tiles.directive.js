@@ -42,6 +42,10 @@
                 return GameService.evaluateDisplayUserScore();
             };
 
+            dragDrop.isDraggable = function() {
+                return GameService.evaluateIsDraggable();
+            };
+
 
             // == FLUX EVENT HANDLERS ========
 

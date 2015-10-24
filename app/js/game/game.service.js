@@ -38,6 +38,8 @@
 
         service.evaluateDisplayTimer = _evaluateDisplayTimer;
 
+        service.evaluateIsDraggable = _evaluateIsDraggable;
+
 
         return service;
 
@@ -177,8 +179,14 @@
             return (StateMachineService.current() === 'playing' || StateMachineService.current() === 'done' || StateMachineService.current().state === 'paused' || StateMachineService.current() === 'paused' );
         }
 
+        // The timer should only be visible when the user is playing the game or has just stopped
         function _evaluateDisplayTimer() {
             return !(StateMachineService.current() === 'ready' || StateMachineService.current() === 'initial' ||StateMachineService.current() ===  'done');
+        }
+
+        // The tiles should onle be draggable when the user is playing the game
+        function _evaluateIsDraggable() {
+            return StateMachineService.current() === 'playing';
         }
 
         // == UTILITY FUNCTIONS ========

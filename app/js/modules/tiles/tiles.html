@@ -7,7 +7,7 @@
              ng-model="dragDrop.tiles"
              jqyoui-droppable="{index: {{$index}},  onDrop:'dragDrop.dropCallback($index)', onOut: 'dragDrop.outCallback($index)'}">
             <div class="tile"
-                 data-drag="{{tile.drag}}"
+                 data-drag="dragDrop.isDraggable()"
                  data-jqyoui-options="{revert: 'valid'}"
                  ng-model="dragDrop.tiles"
                  jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)'}"
@@ -27,7 +27,7 @@
                             onOut: 'dragDrop.outCallback($index)'}">
             <div class="tile" ng-repeat="tile in dragDrop.dropItems"
                  ng-show="tile.letter"
-                 data-drag="{{tile.drag}}"
+                 data-drag="dragDrop.isDraggable()"
                  data-jqyoui-options="{revert: 'invalid'}"
                  ng-model="dragDrop.dropItems"
                  jqyoui-draggable="{index: {{$index}}, animate:true}">
