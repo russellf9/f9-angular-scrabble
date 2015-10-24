@@ -1,9 +1,7 @@
 <div class="wrapper-container">
     <div class="timer-container">
-
-        <div>
-            <input id="clock" ng-model="vm.time" placeholder="00:00">
+        <div ng-if="timer.isVisible()">
+            <input id="clock" ng-model="timer.time" placeholder="00:00">
         </div>
-
     </div>
 </div>

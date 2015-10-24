@@ -11,21 +11,31 @@
             restrict: 'AE',
             scope: {},
             controller:TimerController,
-            controllerAs: 'vm',
+            controllerAs: 'timer',
             bindToController: true,
             template: $templateCache.get('modules/timer/timer.html')
         };
     }
 
-    function TimerController($log, $scope, $timeout, MyStore, f9TimerService) {
+    function TimerController($log, $scope, $timeout, MyStore, f9TimerService, GameService) {
 
-        var vm = this;
+        var timer = this;
 
         f9TimerService.initTimer();
 
+        // == REDIRECTION OF BUSINESS LOGIC ========
+
+        // Evaluates when the users score should be shown
+        timer.isVisible = function() {
+            return GameService.evaluateDisplayTimer();
+        };
+
+
+        // == FLUX EVENT HANDLERS ========
+
         $scope.$listenTo(MyStore, 'time.*', function () {
             $timeout(function() {
-                vm.time = MyStore.time;
+                timer.time = MyStore.time;
             }, 1);
         });
 

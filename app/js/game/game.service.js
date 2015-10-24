@@ -36,6 +36,8 @@
 
         service.evaluateDisplayUserScore = _evaluateDisplayUserScore;
 
+        service.evaluateDisplayTimer = _evaluateDisplayTimer;
+
 
         return service;
 
@@ -173,6 +175,10 @@
         // Evaluates if the user's score field should be visible
         function _evaluateDisplayUserScore() {
             return (StateMachineService.current() === 'playing' || StateMachineService.current() === 'done' || StateMachineService.current().state === 'paused' || StateMachineService.current() === 'paused' );
+        }
+
+        function _evaluateDisplayTimer() {
+            return !(StateMachineService.current() === 'ready' || StateMachineService.current() === 'initial' ||StateMachineService.current() ===  'done');
         }
 
         // == UTILITY FUNCTIONS ========
