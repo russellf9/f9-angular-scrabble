@@ -1,5 +1,6 @@
 @import "../modules/flex";
 @import "../modules/colors";
+@import "../partials/typography";
 
 // == RESPONSIVE SIZES ========
 $iPhone4-width: 640px;
@@ -12,6 +13,7 @@ $device-width: $iPad-width;
 
 // == SHARED PROPERTIES ========
 
+/* TITLE */
 $title-height: 55px;
 
 
@@ -32,9 +34,12 @@ $score-height: 60px;
 $controls-width: 400px;
 $controls-height: 50px;
 
+/* TIMER */
+$timer-input-width: 150px;
 $timer-width: 350px;
 $timer-height: 70px;
 
+/* SCORES */
 $scores-height: 45px;
 $scores-width: 650px;
 
@@ -115,16 +120,23 @@ $scores-width: 650px;
 
 /* FOR THE TIMER */
 .timer-container {
+
+  $timer-font-size: 50px;
   @extend .flex-container;
   width: $timer-width;
   height: $timer-height;
   margin: $container-margin;
   input {
-    width: 125px;
+    width: $timer-input-width;
     text-align: center;
-    font-size: 42px;
+    color: $lime-green;
+    font-size: $timer-font-size;
+    font-family: $digital !important;
+    border-radius: 5px;
+    border: solid 2px $lime-green;
+    background: $light-lime-alpha-color;
   }
-  /*border: solid 1px lightblue;*/
+
 }
 
 /* FOR THE SCORES */

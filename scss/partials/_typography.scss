@@ -1,11 +1,17 @@
 @import "../../bower_components/modular-scale/stylesheets/modular-scale";
 @import "../vendor/responsive";
 @import "../modules/colors";
+@import "../fonts/fredoka";
+@import "../fonts/digital-7";
+
 
 $text-color: $darkGrey;
 
 $fredoka: 'fredoka_oneregular';
+
 $base-font-family: Helvetica, sans-serif;
+
+$digital: 'digital-7regular';
 
 $base-font-size: 16px; // 1rem = 16px
 

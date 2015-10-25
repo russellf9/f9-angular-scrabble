@@ -16,6 +16,7 @@ $green: #22CC11;
 $yellow: #FFFF00;
 $red: #FF2233;
 $offWhite: #EEEEEE;
+$lime-green: limegreen;
 
 $warning: #e74c3c;
 
@@ -32,7 +33,7 @@ $holder-color: lighten($tile-color, 20%);
 $holder-border-color: darken($holder-color, 10%);
 
 
-
+$light-lime-alpha-color: rgba(lighten($lime-green, 20%), 0.25);
 
 $lightGreen : lighten( $green, 40% );
 $darkGreen : darken( $green, 20% );
