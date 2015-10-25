@@ -4,9 +4,13 @@
 
     angular.module('GameService', ['ScrabbleService'])
 
+        .constant('rules', {
+            'BINGO': 7
+        })
+
         .service('GameService', GameService);
 
-    function GameService($log, $q, flux, actions, StateMachineService, DictionaryService, ScrabbleService, WordFinderService, _) {
+    function GameService($log, $q, flux, rules, actions, StateMachineService, DictionaryService, ScrabbleService, WordFinderService, _) {
 
         $log.info('GameService');
 
@@ -101,7 +105,7 @@
             // TODO might be un-required if we stick to the model?
             service.currentHand = undefined;
 
-            // clear the user's score 
+            // clear the user's score
             flux.dispatch(actions.SCORE_UPDATE, 0);
 
             // clear the bestWord
@@ -251,6 +255,11 @@
             for (var i = 0, j = tiles.length; i < j; i++) {
                 tile = tiles[i];
                 score += tile.score;
+            }
+            // check for bingo all letters being used
+            if ( tiles.length=== rules.BINGO) {
+                score = score + 50;
+                $log.info('BINGO!');
             }
             return score;
         }

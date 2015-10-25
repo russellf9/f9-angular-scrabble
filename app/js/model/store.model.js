@@ -83,7 +83,6 @@
             // Or on each store
             fluxProvider.setMaxListeners({
                 'MyStore': 25
-                //'MyOtherStore': 20
             });
         })
 
