@@ -23,6 +23,8 @@ $tile-color: lighten(rgb(174, 138, 103), 10%);
 
 $holder-color: lighten($tile-color, 20%);
 
+$tile-border: darken($tile-color, 10%);
+
 
 $lightGreen : lighten( $green, 40% );
 $darkGreen : darken( $green, 20% );

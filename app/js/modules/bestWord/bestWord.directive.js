@@ -8,34 +8,48 @@
     function bestWord($templateCache) {
         return {
             restrict: 'AE',
-            scope: {
-            },
+            scope: {},
             controller: BestWordController,
-            controllerAs: 'vm',
+            controllerAs: 'bestWord',
             bindToController: true, // because the scope is isolated
             template: $templateCache.get('modules/bestWord/best-word.html')
         };
 
-        function BestWordController($scope, $log, StateMachineService,  MyStore) {
+        function BestWordController($scope, $log, StateMachineService, ScrabbleService, MyStore) {
 
-            var vm = this;
+            var bestWord = this;
 
-            vm.stateData = StateMachineService.data;
+            bestWord.stateData = StateMachineService.data;
 
-            vm.state = vm.stateData.state;
+            bestWord.state = bestWord.stateData.state;
+
+            bestWord.tiles = [];
 
             // for the Best Word
-            $scope.$listenTo(MyStore, 'bestword.*', function () {
+            $scope.$listenTo(MyStore, 'bestword.*', function() {
+                var tile;
                 if (MyStore.bestWord) {
-                    vm.best = MyStore.bestWord;
-                    vm.wordArray = vm.best.word.split('');
-                    vm.score = vm.best.score;
+                    bestWord.best = MyStore.bestWord;
+                    bestWord.wordArray = bestWord.best.word.split('');
+                    bestWord.score = bestWord.best.score;
+                    bestWord.tiles = _createTiles(bestWord.wordArray);
                 } else {
-                    vm.best = '';
-                    vm.wordArray = [];
-                    vm.score = 0;
+                    bestWord.best = '';
+                    bestWord.wordArray = [];
+                    bestWord.score = 0;
                 }
             });
+
+            // Creates the collection of Tiles given an Array of letters
+            function _createTiles(array) {
+                var tiles = [];
+                var tile;
+                for (var i = 0, j = array.length; i < j; i++) {
+                    tile = ScrabbleService.createTile(array[i]);
+                    tiles.push(tile);
+                }
+                return tiles;
+            }
         }
     }
 })();

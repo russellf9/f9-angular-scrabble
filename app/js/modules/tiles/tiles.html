@@ -12,7 +12,7 @@
                  ng-model="dragDrop.tiles"
                  jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)'}"
                   ng-hide="!tile.letter">
-                <h2>{{tile.letter}}</h2>
+                <div f9-tile class="tile-container" the-tile="tile"></div>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                  data-jqyoui-options="{revert: 'invalid'}"
                  ng-model="dragDrop.dropItems"
                  jqyoui-draggable="{index: {{$index}}, animate:true}">
-                <h2>{{tile.letter}}</h2>
+                <div f9-tile class="tile-container" the-tile="tile"></div>
             </div>
     </div>
 </div>

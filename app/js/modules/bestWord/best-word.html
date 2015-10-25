@@ -1,7 +1,7 @@
 <div class="wrapper-container">
     <div class="tiles-container-fixed">
-        <div class="tile" ng-repeat="letter in vm.wordArray track by $index">
-            <h2>{{letter}}</h2>
+        <div class="tile" ng-repeat="tile in bestWord.tiles track by $index">
+            <div f9-tile class="tile-container" the-tile="tile"></div>
         </div>
     </div>
 </div>

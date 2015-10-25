@@ -147,17 +147,63 @@ $scores-width: 650px;
 /* Scrabble tile */
 .tile {
   @extend .flex-container;
+  position: relative;
   width: $tile-dimension;
   height: $tile-dimension;
   margin-left: $tile-margin;
   margin-right: $tile-margin;
   background-color: $tile-color;
-  /*border: solid 1px $green;*/
+  /*border: solid 1px $blue;*/
+  border-bottom: solid 4px $tile-border;
+  .tile-container {
 
-  h2 {
+    /*border: dashed 2px red;*/
+    width: 100%;
     height: 100%;
-    line-height: $tile-dimension;
+
+    text-align: center;
+
+    h2 {
+      margin-left: -6px;
+      line-height: $tile-dimension;
+
+      /*border: solid 1px $green;*/
+    }
   }
+
+  .tile-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: $tile-dimension;
+    height: $tile-dimension;
+  }
+
+  .tile-container-letter {
+    @extend .tile-layer;
+
+    /*border: solid 1px $green;*/
+
+    z-index: 1;
+  }
+
+  .tile-container-score {
+    @extend .tile-layer;
+
+    /*border: solid 1px purple;*/
+    z-index: 2;
+    text-align: left;
+
+    p {
+      position: absolute;
+      font-size: 132%;
+      left: ($tile-dimension * 0.5) + 11px;
+      bottom: -5px;
+      /*border: solid 1px purple;*/
+    }
+  }
+
 }
 
 /* UI for the slot */
@@ -181,11 +227,11 @@ $scores-width: 650px;
 
   border: solid 1px orange;
 
-  p {
-    line-height: $score-height;
-    font-size: calc(#{$score-height} * 0.4);
-    /*border: solid 1px blue;*/
-  }
+    p {
+      line-height: $score-height;
+      font-size: calc(#{$score-height} * 0.4);
+      /*border: solid 1px blue;*/
+    }
 }
 
 

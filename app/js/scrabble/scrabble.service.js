@@ -45,6 +45,8 @@
 
         service.getHand = _getHand;
 
+        service.createTile = _createTile;
+
         service.shake = _shake;
 
 
@@ -200,6 +202,15 @@
             }
             // TODO make new Object type?
             return {word:bestWord, score: bestScore};
+        }
+
+
+        // Finds and returns a Tile Object with the supllied letter
+        function _createTile(letter) {
+            var tile = _.find(letterDistribution, function(tile) {
+                return tile.letter === letter;
+            });
+            return tile;
         }
 
 
