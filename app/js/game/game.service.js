@@ -101,6 +101,9 @@
             // TODO might be un-required if we stick to the model?
             service.currentHand = undefined;
 
+            // clear the user's score 
+            flux.dispatch(actions.SCORE_UPDATE, 0);
+
             // clear the bestWord
             flux.dispatch(actions.BESTWORD_SET, '');
 
