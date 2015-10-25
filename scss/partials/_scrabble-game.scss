@@ -83,13 +83,13 @@ $scores-width: 650px;
 }
 
 /* A SHORT CONTAINER FOR A SINGLE ROW OF TILES
-  (Used by the drag and the drop)
 */
 .tiles-container {
   @extend .container;
   width: $tile-slot-width;
   height: $tiles-container-height;
   background: $holder-color;
+  border-bottom: solid 4px $holder-border-color;
   /*border: 1px solid purple;*/
 }
 
@@ -99,6 +99,8 @@ $scores-width: 650px;
   width: $tile-slot-width;
   height: $tiles-container-height;
   background: $holder-color;
+  border-bottom: solid 4px $holder-border-color;
+
   /*border: solid 1px $lightGrey;*/
 }
 

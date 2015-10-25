@@ -37,6 +37,7 @@
                     bestWord.best = '';
                     bestWord.wordArray = [];
                     bestWord.score = 0;
+                    bestWord.tiles = [];
                 }
             });
 

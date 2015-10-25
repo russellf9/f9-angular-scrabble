@@ -8,7 +8,7 @@ $buttonColor: #5bc0de;
 
 
 $lightGrey: #444444;
-$darkGrey: #222222;
+$darkGrey: rgb(21, 21, 19);
 $flesh: #ffbcaa;
 $blue: #2222DD;
 $pink: #ff77ff;
@@ -19,11 +19,19 @@ $offWhite: #EEEEEE;
 
 $warning: #e74c3c;
 
-$tile-color: lighten(rgb(174, 138, 103), 10%);
+//
+
+// darker tile - rgb(174, 138, 103)
+
+$tile-color: rgb(212, 173, 132);
+
+$tile-border: darken($tile-color, 10%);
 
 $holder-color: lighten($tile-color, 20%);
 
-$tile-border: darken($tile-color, 10%);
+$holder-border-color: darken($holder-color, 10%);
+
+
 
 
 $lightGreen : lighten( $green, 40% );
