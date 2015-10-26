@@ -39,6 +39,8 @@
 
         service.getTileScore = _getTileScore;
 
+        service.getLetterScore = _getLetterScore;
+
         service.getWordScore = _getWordScore;
 
         service.findBestWord = _findBestWord;
@@ -163,6 +165,12 @@
             return tile.score;
         }
 
+        function _getLetterScore(letter) {
+
+
+            return 1;
+        }
+
         /**
          * @name _getWordScore
          * @description Returns the total value of all the tiles in the supplied word
@@ -173,7 +181,7 @@
         function _getWordScore(word) {
             var score = 0;
             for(var i = 0, j = word.length; i < j; i++) {
-                score += service.getTileScore(word[i]);
+                score += _getTileScore(word[i]);
             }
             return score;
         }
@@ -200,8 +208,9 @@
                     // TODO add repeats
                 }
             }
+            return bestWord;
             // TODO make new Object type?
-            return {word:bestWord, score: bestScore};
+           // return {word:bestWord, score: bestScore};
         }
 
 

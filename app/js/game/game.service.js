@@ -5,7 +5,8 @@
     angular.module('GameService', ['ScrabbleService'])
 
         .constant('rules', {
-            'BINGO': 7
+            'BINGO': 7,
+            'BINGO_SCORE': 50
         })
 
         .service('GameService', GameService);
@@ -154,7 +155,15 @@
 
             var bestWord = ScrabbleService.findBestWord(result);
 
-            flux.dispatch(actions.BESTWORD_SET, bestWord);
+
+            var bestScore = _getScoreFromWord(bestWord);
+
+
+            // create a type object
+            // {word:bestWord, score: bestScore}
+
+            flux.dispatch(actions.BESTWORD_SET, {word: bestWord, score: bestScore});
+
         }
 
 
@@ -188,7 +197,7 @@
 
         // The timer should only be visible when the user is playing the game or has just stopped
         function _evaluateDisplayTimer() {
-            return !(StateMachineService.current() === 'ready' || StateMachineService.current() === 'initial' ||StateMachineService.current() ===  'done');
+            return !(StateMachineService.current() === 'ready' || StateMachineService.current() === 'initial' || StateMachineService.current() === 'done');
         }
 
         // The tiles should onle be draggable when the user is playing the game
@@ -257,10 +266,34 @@
                 score += tile.score;
             }
             // check for bingo all letters being used
-            if ( tiles.length=== rules.BINGO) {
-                score = score + 50;
+            if (tiles.length === rules.BINGO) {
+                score = score + rules.BINGO_SCORE;
                 $log.info('BINGO!');
             }
+            return score;
+        }
+
+        // gets the total score from a given word
+        function _getScoreFromWord(word) {
+
+            // create an array
+            var letterArray = word.split('');
+
+            // Nice! -  Use a map and a reduce function
+            var score = letterArray
+                .map(function(letter) {
+                    return ScrabbleService.getTileScore(letter);
+                })
+                .reduce(function(a, b) {
+                    return a + b;
+                });
+
+            // checki if all the maximum number of letters has been used
+            if (letterArray.length === rules.BINGO) {
+                score = score + rules.BINGO_SCORE;
+                $log.info('BINGO!');
+            }
+
             return score;
         }
 
