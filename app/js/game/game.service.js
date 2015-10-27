@@ -155,15 +155,14 @@
 
             var bestWord = ScrabbleService.findBestWord(result);
 
+            // TODO Need to test if a zero score is returned if no best word is possible
+            var bestScore = bestWord ? _getScoreFromWord(bestWord) : 0;
 
-            var bestScore = _getScoreFromWord(bestWord);
 
-
-            // create a type object
+            // TODO create a Class object?
             // {word:bestWord, score: bestScore}
 
             flux.dispatch(actions.BESTWORD_SET, {word: bestWord, score: bestScore});
-
         }
 
 
@@ -209,7 +208,14 @@
 
 
         // TODO differentiate between the this 'getResult()` and result from the user's set of tiles
-        // Returns the highest scoring word from the supplied set of tiles
+        //
+        /**
+         * @description Returns the highest scoring word from the supplied set of tiles
+         * @name _getResult
+         * @param hand A set of Tiles
+         * @returns {*} The Word with the highest possible scores
+         * @private
+         */
         function _getResult(hand) {
 
             if (!hand || !hand.length) {
@@ -288,7 +294,7 @@
                     return a + b;
                 });
 
-            // checki if all the maximum number of letters has been used
+            // check if the maximum number of letters has been used
             if (letterArray.length === rules.BINGO) {
                 score = score + rules.BINGO_SCORE;
                 $log.info('BINGO!');
