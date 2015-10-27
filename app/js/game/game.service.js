@@ -232,45 +232,42 @@
         }
 
         // gets the word as a String from a given set of tiles
-        // TODO use reduce function
-        // TODO use Tile object
         function _getWord(tiles) {
-            var word = '',
-                tile;
-            for (var i = 0, j = tiles.length; i < j; i++) {
-                tile = tiles[i];
-                word += tile.letter;
-            }
+            var word = tiles
+                .map(function(tile) {
+                    return tile.letter;
+                })
+                .reduce(function(a, b) {
+                    return a + b;
+                });
+
             return word;
         }
 
+
         /**
-         * @description returns a collection of letter strings from the suppied set of tiles
+         * @description returns a collection of letter strings from the supplied set of tiles
          * @param tiles
          * @returns {Array}
          * @private
          */
         function _getLetters(tiles) {
-            var letters = [],
-                tile;
-
-            for (var i = 0; i < tiles.length; i++) {
-                tile = tiles[i];
-                letters.push(tile.letter);
-            }
-            return letters;
+            return tiles
+                .map(function(tile) {
+                    return tile.letter;
+                });
         }
 
         // gets the total score from a given set of tiles
-        // TODO use reduce function
-        // TODO use Tile object
         function _getScore(tiles) {
-            var score = 0,
-                tile;
-            for (var i = 0, j = tiles.length; i < j; i++) {
-                tile = tiles[i];
-                score += tile.score;
-            }
+            var score = tiles
+                .map(function(tile) {
+                    return tile.score;
+                })
+                .reduce(function(a, b) {
+                    return a + b;
+                });
+
             // check for bingo all letters being used
             if (tiles.length === rules.BINGO) {
                 score = score + rules.BINGO_SCORE;
