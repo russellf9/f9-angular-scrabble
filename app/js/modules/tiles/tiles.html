@@ -9,6 +9,7 @@
             <div class="tile"
                  data-drag="dragDrop.isDraggable()"
                  data-jqyoui-options="{revert: 'valid'}"
+                 ng-class="{'active':dragDrop.isDraggable()}"
                  ng-model="dragDrop.tiles"
                  jqyoui-draggable="{index: {{$index}}, placeholder:true, animate:true, onStop: 'dragDrop.stopCallback($index)'}"
                   ng-hide="!tile.letter">
@@ -29,6 +30,7 @@
                  ng-show="tile.letter"
                  data-drag="dragDrop.isDraggable()"
                  data-jqyoui-options="{revert: 'invalid'}"
+                 ng-class="{'active':dragDrop.isDraggable()}"
                  ng-model="dragDrop.dropItems"
                  jqyoui-draggable="{index: {{$index}}, animate:true}">
                 <div f9-tile class="tile-container" the-tile="tile"></div>
