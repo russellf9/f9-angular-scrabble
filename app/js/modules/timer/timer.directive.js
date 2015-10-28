@@ -48,5 +48,11 @@
         $scope.$listenTo(MyStore, 'timer.stop', function () {
             f9TimerService.stopTimer();
         });
+
+        $scope.$listenTo(MyStore, 'time.end', function () {
+
+            $log.info('TimerController | time.end');
+            GameService.stop();
+        });
     }
 })();

@@ -1,15 +1,15 @@
 <div class="wrapper-container">
     <div class="controls-container">
-        <button class="button button-stable" ng-disabled="vm.stateData.state!=='ready'" ng-click="vm.play()">
+        <button class="button button-stable" ng-disabled="controls.stateData.state!=='ready'" ng-click="controls.play()">
             play
         </button>
-        <button class="button button-stable" ng-disabled="vm.stateData.state!=='playing'" ng-click="vm.stop()">
+        <button class="button button-stable" ng-disabled="controls.stateData.state!=='playing'" ng-click="controls.stop()">
             stop
         </button>
-        <button class="button button-stable" ng-disabled="vm.stateData.state!=='paused'" ng-click="vm.showBestWord()">
+        <button class="button button-stable" ng-disabled="controls.stateData.state!=='paused'" ng-click="controls.showBestWord()">
             show best
         </button>
-        <button class="button button-stable" ng-disabled="vm.stateData.state!=='done'" ng-click="vm.reset()">
+        <button class="button button-stable" ng-disabled="controls.stateData.state!=='done'" ng-click="controls.reset()">
             reset
         </button>
     </div>

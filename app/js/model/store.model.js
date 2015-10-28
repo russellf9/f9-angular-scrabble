@@ -9,6 +9,7 @@
             'TIMER_START': 'startTimer',
             'TIMER_STOP': 'stopTimer',
             'TIME_SET': 'setTime',
+            'TIME_END': 'endTime',
             'SCORE_UPDATE': 'updateScore'
         })
         .store('MyStore', function() {
@@ -24,6 +25,7 @@
                     'startTimer': 'startTimer',
                     'stopTimer': 'stopTimer',
                     'setTime': 'setTime',
+                    'endTime': 'endTime',
                     'updateScore': 'setUserScore'
                 },
                 addTile: function(tile) {
@@ -47,6 +49,9 @@
                 setTime: function(time) {
                     this.time = time;
                     this.emit('time.set');
+                },
+                endTime: function() {
+                    this.emit('time.end');
                 },
                 setUserScore: function(score) {
                     this.userScore = score;

@@ -131,8 +131,6 @@
         // ends the game
         function _stop() {
             StateMachineService.stop();
-
-            flux.dispatch(actions.TIMER_STOP);
         }
 
         // TODO Rename as we have a side-effect

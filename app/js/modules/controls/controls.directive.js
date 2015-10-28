@@ -14,7 +14,7 @@
 
             },
             controller: ControlsController,
-            controllerAs: 'vm',
+            controllerAs: 'controls',
             bindToController: true, // because the scope is isolated
             template: $templateCache.get('modules/controls/controls.html')
         };
@@ -22,27 +22,26 @@
 
     function ControlsController($log, $scope, GameService, StateMachineService) {
 
-        var vm = this;
+        var controls = this;
 
-        vm.stateData = StateMachineService.data;
+        controls.stateData = StateMachineService.data;
 
-        vm.state = vm.stateData.state;
+        controls.state = controls.stateData.state;
 
-        vm.play = function() {
+        controls.play = function() {
             GameService.getHand();
             GameService.start();
         };
 
-        vm.stop = function() {
+        controls.stop = function() {
             GameService.stop();
         };
 
-        vm.showBestWord = function() {
+        controls.showBestWord = function() {
             GameService.showBestWord();
         };
 
-        vm.reset = function() {
-            $log.info('RESET!');
+        controls.reset = function() {
             GameService.reset();
         };
     }
