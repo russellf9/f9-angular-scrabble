@@ -128,9 +128,15 @@
             flux.dispatch(actions.TIMER_START);
         }
 
-        // ends the game
+        // pauses the game (for when the user wants to stop the timer)
+        // or the Timer has run out of Time
         function _stop() {
+
+            $log.info('GameService stop');
+
             StateMachineService.stop();
+
+            flux.dispatch(actions.TIMER_STOP);
         }
 
         // TODO Rename as we have a side-effect

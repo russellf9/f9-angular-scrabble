@@ -25,7 +25,7 @@
 
         // == REDIRECTION OF BUSINESS LOGIC ========
 
-        // Evaluates when the users score should be shown
+        // Evaluates when the Timer UI should be shown
         timer.isVisible = function() {
             return GameService.evaluateDisplayTimer();
         };
@@ -33,24 +33,28 @@
 
         // == FLUX EVENT HANDLERS ========
 
+        // Handles the `tick` event
         $scope.$listenTo(MyStore, 'time.*', function () {
             $timeout(function() {
                 timer.time = MyStore.time;
             }, 1);
         });
 
+        // Handles the command to start the Timer
         $scope.$listenTo(MyStore, 'timer.start', function () {
             $timeout(function() {
                 f9TimerService.startTimer();
             }, 40);
         });
 
+        // Handles the Command to stop the Timer
         $scope.$listenTo(MyStore, 'timer.stop', function () {
+            $log.info('Time has stopped!');
             f9TimerService.stopTimer();
         });
 
+        // Handles the when Timer has completed
         $scope.$listenTo(MyStore, 'time.end', function () {
-
             $log.info('TimerController | time.end');
             GameService.stop();
         });

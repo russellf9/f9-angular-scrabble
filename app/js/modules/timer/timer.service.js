@@ -33,6 +33,9 @@
         return service;
 
 
+        // == IMPLEMENTATION OF PUBLIC FUNCTIONS ========
+
+
         function _initTimer() {
             // the larger interval of 100 is good for the Angular redraw
             service.timer = new Tock({
@@ -41,19 +44,20 @@
             });
         }
 
-
+        // Starts a countdown with a length of a minute
         function _startTimer() {
-            var test = false;
-            if (test) {
-                service.timer.start(times.FIVE_SECONDS);
-            } else {
-                service.timer.start(times.ONE_MINUTE);
-            }
+            service.timer.start(times.ONE_MINUTE);
         }
 
+        // halts the timer and resets
         function _stopTimer() {
+            $log.info('Timer Service Stop Timer!');
             service.timer.stop();
+            service.timer.reset(); // side-effect of resetting to 0, so the timer will restart correctly
         }
+
+
+        // == IMPLEMENTATION OF TIMER EVENTS ========
 
         function _onTick(event) {
             var currentTime = service.timer.timeToMS(service.timer.lap());
@@ -61,11 +65,13 @@
         }
 
         function _onComplete(event) {
-            $log.info('TIMER COMPLETE!');
             flux.dispatch(actions.TIME_END);
         }
 
-        // returns the time in minutes and seconds
+
+        // == UTILITIES ========
+
+        // A utility function which returns the time in minutes and seconds
         function _returnTimeCode(ms) {
             if (ms <= 0) {
                 return '00:00';
