@@ -1,17 +1,22 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name scrabble.ScrabbleService
+     * @description A Service for Scrabble operations
+     */
+
     angular.module('ScrabbleService', ['dataApi'])
 
         .service('ScrabbleService', scrabbleService);
 
 
     /**
+     * @ngdoc method
      * @name scrabbleService
-     * @description A Service for Scrabble operations
-     * @param dataApi
-     * @param _ Lo-Dash Dependency
-     * @returns {{}}
+     * @methodOf scrabble.ScrabbleService
+     * @description The Constructor
      */
     function scrabbleService($log, dataApi, _) {
 
@@ -22,7 +27,13 @@
         // data from: https://github.com/hanshuebner/html-scrabble/blob/master/client/javascript/scrabble.js
 
 
-        // instantiates the dictionary
+        /**
+         * @ngdoc method
+         * @name getDictionary
+         * @description
+         * Instantiates the dictionary
+         * @methodOf scrabble.ScrabbleService
+         */
         service.getDictionary = function() {
             return dataApi.getData()
                 .success(function(result) {
@@ -105,10 +116,10 @@
 
 
         /**
+         * @ngdoc method
          * @name _createLetterBag
+         * @methodOf scrabble.ScrabbleService
          * @description Creates a complete set of Scrabble Tiles
-         * @returns {Object}
-         * @private
          */
         function _createLetterBag() {
             service.letterBag = {};

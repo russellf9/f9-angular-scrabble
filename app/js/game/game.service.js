@@ -1,7 +1,10 @@
 (function() {
     'use strict';
 
-
+    /**
+     * @name GameService
+     *
+     */
     angular.module('GameService', ['ScrabbleService'])
 
         .constant('rules', {
@@ -10,6 +13,23 @@
         })
 
         .service('GameService', GameService);
+
+    /**
+     * @name GameService
+     * @description A Service for the Game Related operations
+     * @param $log
+     * @param $q
+     * @param flux
+     * @param rules
+     * @param actions
+     * @param StateMachineService
+     * @param DictionaryService
+     * @param ScrabbleService
+     * @param WordFinderService
+     * @param _
+     * @returns {{}}
+     * @constructor
+     */
 
     function GameService($log, $q, flux, rules, actions, StateMachineService, DictionaryService, ScrabbleService, WordFinderService, _) {
 

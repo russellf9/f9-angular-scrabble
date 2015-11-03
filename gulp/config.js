@@ -24,7 +24,8 @@ module.exports = {
         readme: 'README.md',
         gulpConfig: '/gulp/config.js',
         templates: app + '/js/**/*.html',
-        bowerDist: './bower-dist.json'
+        bowerDist: './bower-dist.json',
+        docs: './docs'
     },
     json: {
         package: './package.json',
