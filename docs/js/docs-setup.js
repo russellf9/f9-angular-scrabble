@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations",
-      "keywords": "_createletterbag api complete creates dictionary getdictionary instantiates method operations scrabble scrabbleservice service set tiles"
+      "keywords": "_createletterbag _gethand _gettilescore _getwordscore api array complete creates dictionary evaluate getdictionary instantiates letter method number operations pick score scrabble scrabbleservice service set tile tiles type word"
     }
   ],
   "apis": {

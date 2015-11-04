@@ -1,0 +1,47 @@
+
+  /**
+          * @ngdoc method
+          * @name _getWordScore
+          * @description Returns the total value of all the tiles in the supplied word
+          * @param {string} word The word to get the score value
+          * @returns {number} The supplied word's score
+          * @private
+          */
+
+ /**
+         * @name _findBestWord
+         * @description Finds the word ( or words ) with the highest Scrabble score in the Supplied set
+         * @param {array} words An array of words
+         * @returns {object} An Object {{word: string, score: number}}
+         * @private
+         */
+
+          /**
+                  * @ngdoc method
+                  * @name _getTileScore
+                  * @description Returns the value of the supplied letter
+                  * @param {string} letter The supplied letter
+                  * @returns {number} The letter's score
+                  * @private
+                  */
+
+                  /**
+                           * @ngdoc method
+                           * @name _getHand
+                           * @description Returns an Array of Scrabble tiles
+                           * @param {number} number The maximum number of tiles to pick
+                           * @returns {Array} An Array of type Tile
+                           * @private
+                           */
+
+                            /**
+                                    * @name _shake
+                                    * @description Randomises the order of the tiles
+                                    * @private
+                                    */
+
+
+                                    * @description Returns an Array of Scrabble tiles
+                                             * @param {number} number The maximum number of tiles to pick
+                                             * @returns {array} An Array of type Tile
+                                             * @private

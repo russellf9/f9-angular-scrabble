@@ -145,12 +145,13 @@
             return service.letterBag;
         }
 
+
         /**
+         * @ngdoc method
          * @name _getHand
-         * @description Returns an Array of Scrabble tiles
-         * @param number The maximum number of tiles to pick
-         * @returns {Array} An Array of type Tile
-         * @private
+         * @methodOf scrabble.ScrabbleService
+         * @param {number} number The number of Tiles to pick
+         * @returns {Array} An array of type Tile
          */
         function _getHand(number) {
             var hand = [];
@@ -162,10 +163,11 @@
         }
 
         /**
+         * @ngdoc method
          * @name _getTileScore
-         * @description Returns the value of the supplied letter
-         * @param letter
-         * @returns {Number}
+         * @methodOf scrabble.ScrabbleService
+         * @param {string} letter The letter to evaluate
+         * @returns {number} The letter's score
          * @private
          */
         function _getTileScore(letter) {
@@ -177,33 +179,27 @@
         }
 
         function _getLetterScore(letter) {
-
-
             return 1;
         }
 
         /**
+         * @ngdoc method
          * @name _getWordScore
-         * @description Returns the total value of all the tiles in the supplied word
-         * @param word
-         * @returns {number}
+         * @methodOf scrabble.ScrabbleService
+         * @param {string} word A word
+         * @returns {number} The word's score in Scrabble
          * @private
          */
         function _getWordScore(word) {
             var score = 0;
+            // TODO use map/reduce
             for(var i = 0, j = word.length; i < j; i++) {
                 score += _getTileScore(word[i]);
             }
             return score;
         }
 
-        /**
-         * @name _findBestWord
-         * @description Finds the word ( or words ) with the highest Scrabble score in the Supplied set
-         * @param words
-         * @returns {{word: string, score: number}}
-         * @private
-         */
+
         function _findBestWord(words) {
             var word,
                 bestWord = '',
@@ -234,11 +230,7 @@
         }
 
 
-        /**
-         * @name _shake
-         * @description Randomises the order of the tiles
-         * @private
-         */
+
         function _shake() {
             var count = service.letterBag.tiles.length;
             for (var i = 0; i < count * 3; i++) {
