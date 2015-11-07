@@ -4,34 +4,40 @@
 </div>
 </h1>
 <div><h2 id="description">Description</h2>
-<div class="description"><div class="scrabble-scrabbleservice-page"><p>A Service for Scrabble operations</p>
+<div class="description"><div class="scrabble-scrabbleservice-page"><p>A Service for Scrabble operations  <br><br>
+• Provides a dictionary of legal words  <br>
+• Provides the Scrabble letter distribution and the score for each letter <br>
+• Provides a <code>Letter Bag</code> of Scrabble Tiles  <br>
+• Provides a method to evaluate a word&#39;s score  <br>
+• Provides a method to evaluate the best possible word from a set of Tiles  <br></p>
 </div></div>
 <div class="member method"><h2 id="methods">Methods</h2>
-<ul class="methods"><li><h3 id="methods__createletterbag">_createLetterBag()</h3>
-<div class="_createletterbag"><div class="-createletterbag-page"><p>Creates a complete set of Scrabble Tiles</p>
+<ul class="methods"><li><h3 id="methods_createletterbag">createLetterBag()</h3>
+<div class="createletterbag"><div class="createletterbag-page"><p>Creates a complete set of Scrabble Tiles</p>
 </div></div>
-</li>
-<li><h3 id="methods__gethand">_getHand(number)</h3>
-<div class="_gethand"><h5 id="methods__gethand_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>number</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="-gethand-page"><p>The number of Tiles to pick</p>
-</div></td></tr></tbody></table><h5 id="methods__gethand_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="-gethand-page"><p>An array of type Tile</p>
-</div></td></tr></table></div>
-</li>
-<li><h3 id="methods__gettilescore">_getTileScore(letter)</h3>
-<div class="_gettilescore"><h5 id="methods__gettilescore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>letter</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-gettilescore-page"><p>The letter to evaluate</p>
-</div></td></tr></tbody></table><h5 id="methods__gettilescore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="-gettilescore-page"><p>The letter&#39;s score</p>
-</div></td></tr></table></div>
-</li>
-<li><h3 id="methods__getwordscore">_getWordScore(word)</h3>
-<div class="_getwordscore"><h5 id="methods__getwordscore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>word</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-getwordscore-page"><p>A word</p>
-</div></td></tr></tbody></table><h5 id="methods__getwordscore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="-getwordscore-page"><p>The word&#39;s score in Scrabble</p>
-</div></td></tr></table></div>
 </li>
 <li><h3 id="methods_getdictionary">getDictionary()</h3>
 <div class="getdictionary"><div class="getdictionary-page"><p>Instantiates the dictionary</p>
 </div></div>
 </li>
+<li><h3 id="methods_gethand">getHand(number)</h3>
+<div class="gethand"><div class="gethand-page"><p>Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection I&#39;m not sure what happens! (As the hand will be populated with undefined objects)</p>
+</div><h5 id="methods_gethand_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>number</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="gethand-page"><p>The number of Tiles to pick</p>
+</div></td></tr></tbody></table><h5 id="methods_gethand_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="gethand-page"><p>An array of type Tile</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_gettilescore">getTileScore(letter)</h3>
+<div class="gettilescore"><h5 id="methods_gettilescore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>letter</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettilescore-page"><p>The letter to evaluate</p>
+</div></td></tr></tbody></table><h5 id="methods_gettilescore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="gettilescore-page"><p>The letter&#39;s score</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getwordscore">getWordScore(word)</h3>
+<div class="getwordscore"><h5 id="methods_getwordscore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>word</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getwordscore-page"><p>A word</p>
+</div></td></tr></tbody></table><h5 id="methods_getwordscore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="getwordscore-page"><p>The word&#39;s score in Scrabble</p>
+</div></td></tr></table></div>
+</li>
 <li><h3 id="methods_scrabbleservice">scrabbleService()</h3>
-<div class="scrabbleservice"><div class="scrabbleservice-page"><p>The Constructor</p>
+<div class="scrabbleservice"><div class="scrabbleservice-page"><p>The Constructor <br></p>
 </div></div>
 </li>
 </ul>

@@ -1,12 +1,26 @@
 (function() {
     'use strict';
 
+
     /**
-     * @name GameService
-     *
+     * @name game.GameService
+     * @ngdoc service
+     * @description A Service for the Game Related operations
+     * @requires scrabble.ScrabbleService
      */
     angular.module('GameService', ['ScrabbleService'])
 
+    /**
+     * @ngdoc object
+     * @name game.rules
+     * @description
+     *  A constant which holds 'Game values'
+     * <pre>
+     *  if (tiles.length === rules.BINGO) {
+     *      score = score + rules.BINGO_SCORE;
+     *  }
+     * </pre>
+     */
         .constant('rules', {
             'BINGO': 7,
             'BINGO_SCORE': 50
@@ -14,23 +28,14 @@
 
         .service('GameService', GameService);
 
+
     /**
+     * @ngdoc method
      * @name GameService
-     * @description A Service for the Game Related operations
-     * @param $log
-     * @param $q
-     * @param flux
-     * @param rules
-     * @param actions
-     * @param StateMachineService
-     * @param DictionaryService
-     * @param ScrabbleService
-     * @param WordFinderService
-     * @param _
-     * @returns {{}}
+     * @methodOf game.GameService
+     * @description The constructor
      * @constructor
      */
-
     function GameService($log, $q, flux, rules, actions, StateMachineService, DictionaryService, ScrabbleService, WordFinderService, _) {
 
         $log.info('GameService');
@@ -98,7 +103,16 @@
             return service.letterBag;
         }
 
-        // removes a number of tiles from the collection and returns them
+        /**
+         * @ngdoc method
+         * @methodOf game.GameService
+         * @name getHand
+         * @description
+            Removes a number of Tiles from the collection and returns them as an Array
+         * @param {number} number The amount of Tiles to get
+         * @returns {Array} an Array of Tiles
+         * @private
+         */
         function _getHand(number) {
             number = number || 7;
             var hand = ScrabbleService.getHand(number);
@@ -112,9 +126,10 @@
 
 
         /**
-         * @name _reset
+         * @ngdoc method
+         * @methodOf game.GameService
+         * @name reset
          * @description Performs a variety of actions to reset the game
-         * @private
          */
         function _reset() {
 
@@ -191,9 +206,11 @@
 
 
         /**
-         * @name _updateUserSelection
-         * @description Performs the necessary operations once the user updatets their selection of tiles
-         * @param tiles
+         * @ngdoc method
+         * @name updateUserSelection
+         * @methodOf game.GameService
+         * @description Performs the necessary operations once the user updates their selection of tiles
+         * @param {array} tiles An Array of Tiles
          * @private
          */
         function _updateUserSelection(tiles) {
@@ -325,11 +342,20 @@
         }
 
         // evaluates if a word exists in the Dictionary
+
+        /**
+         *
+         * @param word
+         * @returns {boolean}
+         * @private
+         */
         function _wordExists(word) {
             if (typeof word === Array) {
                 $log.info('Whoops I`m an array!');
             }
             return service.wordList.indexOf(word) >= 0;
+
+
         }
     }
 

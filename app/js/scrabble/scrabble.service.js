@@ -4,9 +4,13 @@
     /**
      * @ngdoc service
      * @name scrabble.ScrabbleService
-     * @description A Service for Scrabble operations
+     * @description A Service for Scrabble operations  <br><br>
+     • Provides a dictionary of legal words  <br>
+     • Provides the Scrabble letter distribution and the score for each letter <br>
+     • Provides a `Letter Bag` of Scrabble Tiles  <br>
+     • Provides a method to evaluate a word's score  <br>
+     • Provides a method to evaluate the best possible word from a set of Tiles  <br>
      */
-
     angular.module('ScrabbleService', ['dataApi'])
 
         .service('ScrabbleService', scrabbleService);
@@ -16,7 +20,7 @@
      * @ngdoc method
      * @name scrabbleService
      * @methodOf scrabble.ScrabbleService
-     * @description The Constructor
+     * @description The Constructor <br>
      */
     function scrabbleService($log, dataApi, _) {
 
@@ -105,6 +109,14 @@
 
         // == TILE OBJECT ========
 
+        /**
+         * @ngdoc object
+         * @name Tile
+         * @description A Class which holds a Letter and Scrore properties
+         * @param {string} letter The Tiles letter A-Z
+         * @param {number} score The Scrabble score for the Letter
+         * @constructor
+         */
         function Tile(letter, score) {
             this.letter = letter;
             this.score = score;
@@ -112,12 +124,12 @@
         }
 
 
-    // == MAP OF FUNCTIONS ========
+        // == MAP OF FUNCTIONS ========
 
 
         /**
          * @ngdoc method
-         * @name _createLetterBag
+         * @name createLetterBag
          * @methodOf scrabble.ScrabbleService
          * @description Creates a complete set of Scrabble Tiles
          */
@@ -146,12 +158,14 @@
         }
 
 
+        // TODO Evaluate action to perform when the letter bag has been depleted.
         /**
          * @ngdoc method
-         * @name _getHand
+         * @name getHand
          * @methodOf scrabble.ScrabbleService
+         * @description Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection I'm not sure what happens! (As the hand will be populated with undefined objects)
          * @param {number} number The number of Tiles to pick
-         * @returns {Array} An array of type Tile
+         * @returns {array} An array of type Tile
          */
         function _getHand(number) {
             var hand = [];
@@ -164,7 +178,7 @@
 
         /**
          * @ngdoc method
-         * @name _getTileScore
+         * @name getTileScore
          * @methodOf scrabble.ScrabbleService
          * @param {string} letter The letter to evaluate
          * @returns {number} The letter's score
@@ -184,7 +198,7 @@
 
         /**
          * @ngdoc method
-         * @name _getWordScore
+         * @name getWordScore
          * @methodOf scrabble.ScrabbleService
          * @param {string} word A word
          * @returns {number} The word's score in Scrabble
@@ -193,7 +207,7 @@
         function _getWordScore(word) {
             var score = 0;
             // TODO use map/reduce
-            for(var i = 0, j = word.length; i < j; i++) {
+            for (var i = 0, j = word.length; i < j; i++) {
                 score += _getTileScore(word[i]);
             }
             return score;
@@ -206,7 +220,7 @@
                 bestScore = 0,
                 score;
 
-            for(var i = 0, j = words.length; i < j; i++) {
+            for (var i = 0, j = words.length; i < j; i++) {
                 word = words[i];
                 score = service.getWordScore(word);
                 if (score > bestScore) {
@@ -217,18 +231,17 @@
             }
             return bestWord;
             // TODO make new Object type?
-           // return {word:bestWord, score: bestScore};
+            // return {word:bestWord, score: bestScore};
         }
 
 
-        // Finds and returns a Tile Object with the supllied letter
+        // Finds and returns a Tile Object with the supplied letter
         function _createTile(letter) {
             var tile = _.find(letterDistribution, function(tile) {
                 return tile.letter === letter;
             });
             return tile;
         }
-
 
 
         function _shake() {
