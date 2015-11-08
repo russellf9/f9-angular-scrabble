@@ -11,14 +11,20 @@
 • Provides a method to evaluate a word&#39;s score  <br>
 • Provides a method to evaluate the best possible word from a set of Tiles  <br></p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="api/api.dataApi">dataApi</a></code>
+</li>
+</ul>
 <div class="member method"><h2 id="methods">Methods</h2>
 <ul class="methods"><li><h3 id="methods_createletterbag">createLetterBag()</h3>
 <div class="createletterbag"><div class="createletterbag-page"><p>Creates a complete set of Scrabble Tiles</p>
 </div></div>
 </li>
 <li><h3 id="methods_getdictionary">getDictionary()</h3>
-<div class="getdictionary"><div class="getdictionary-page"><p>Instantiates the dictionary</p>
-</div></div>
+<div class="getdictionary"><div class="getdictionary-page"><p>Instantiates the dictionary
+Gets the data from: <a href="api/api.dataApi">dataApi</a></p>
+</div><h5 id="methods_getdictionary_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">Promise</a></td><td><div class="getdictionary-page"><p>Returns a promise the result of the $http GET</p>
+</div></td></tr></table></div>
 </li>
 <li><h3 id="methods_gethand">getHand(number)</h3>
 <div class="gethand"><div class="gethand-page"><p>Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection I&#39;m not sure what happens! (As the hand will be populated with undefined objects)</p>

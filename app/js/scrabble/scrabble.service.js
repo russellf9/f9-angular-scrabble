@@ -10,6 +10,7 @@
      • Provides a `Letter Bag` of Scrabble Tiles  <br>
      • Provides a method to evaluate a word's score  <br>
      • Provides a method to evaluate the best possible word from a set of Tiles  <br>
+     * @requires api.dataApi
      */
     angular.module('ScrabbleService', ['dataApi'])
 
@@ -36,7 +37,10 @@
          * @name getDictionary
          * @description
          * Instantiates the dictionary
+         * Gets the data from: {@link api.dataApi dataApi}
          * @methodOf scrabble.ScrabbleService
+         * @returns {Promise} Returns a promise the result of the $http GET
+         *
          */
         service.getDictionary = function() {
             return dataApi.getData()

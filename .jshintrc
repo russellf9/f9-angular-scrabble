@@ -5,6 +5,7 @@
     "angular": true,
     "Firebase": true,
     "Modernizr": true,
+    "HttpPromise": true,
     "moment" : true,
     "tool" : true,
     "performance" : true,

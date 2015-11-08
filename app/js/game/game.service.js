@@ -13,6 +13,8 @@
     /**
      * @ngdoc object
      * @name game.rules
+     * @param {number} BINGO THE number of tiles to use to achive the bingo score
+     * @param {number} BINGO_SCORE The score when a player uses all seven tiles
      * @description
      *  A constant which holds 'Game values'
      * <pre>
