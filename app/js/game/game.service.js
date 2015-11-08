@@ -64,6 +64,8 @@
 
         service.showBestWord = _showBestWord;
 
+        service.replay = _replay;
+
         service.updateUserSelection = _updateUserSelection;
 
         service.evaluateDisplayUserScore = _evaluateDisplayUserScore;
@@ -76,13 +78,14 @@
         return service;
 
         // returns a Promise, so we delay the ready state to when the data has been correctly got
+        
+
         function _init() {
 
             var deferred = $q.defer();
-
-            service.letterBag = ScrabbleService.createLetterBag();
-            ScrabbleService.shake();
-
+            
+            _setUpLetterBag();
+            
             DictionaryService.getDictionary()
                 .then(function() {
                     service.wordList = DictionaryService.dictionary;
@@ -106,6 +109,15 @@
         }
 
         /**
+         *
+         * @private
+         */
+        function _setUpLetterBag() {
+            service.letterBag = ScrabbleService.createLetterBag();
+            ScrabbleService.shake();
+        }
+
+        /**
          * @ngdoc method
          * @methodOf game.GameService
          * @name getHand
@@ -116,6 +128,19 @@
          * @private
          */
         function _getHand(number) {
+
+            $log.info('+++ get hand');
+
+            if(ScrabbleService.letterBagIsEmpty()) {
+                // will have to set another State!
+                // should have been spotted before!
+
+                $log.info('getHand -> STATE ', StateMachineService.current());
+
+                $log.info('GAME OVER!');
+
+                return [];
+            }
             number = number || 7;
             var hand = ScrabbleService.getHand(number);
 
@@ -184,12 +209,21 @@
          */
         function _showBestWord() {
 
-            // sets state
-            StateMachineService.finish();
+            $log.info('SHOW-BEST-WORD ', StateMachineService.current());
+
+            if(ScrabbleService.letterBagIsEmpty()) {
+                // TODO we need another State
+                $log.info('GAME OVER!');
+                StateMachineService.end();
+            } else {
+                // sets state
+                StateMachineService.finish();
+            }
 
             // guard
             if (!service.currentHand) {
                 $log.error('GameService.showBestWord | no currentHand');
+                // TODO - have to handle this better
                 return;
             }
             var result = _getResult(service.currentHand);
@@ -204,6 +238,26 @@
             // {word:bestWord, score: bestScore}
 
             flux.dispatch(actions.BESTWORD_SET, {word: bestWord, score: bestScore});
+        }
+
+
+        /**
+         * @ngdoc method
+         * @name replay
+         * @methodOf game.GameService
+         * @description Sets up the required functions to reset the game
+         * @private
+         */
+        function _replay() {
+            $log.info('GameService.replay!');
+
+            // need to create a new letter bag and shuffle it
+
+            _setUpLetterBag();
+
+            $log.info('replay -> STATE ', StateMachineService.current());
+
+            _reset();
         }
 
 

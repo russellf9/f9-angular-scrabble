@@ -9,8 +9,11 @@
         <button class="button button-stable" ng-disabled="controls.stateData.state!=='paused'" ng-click="controls.showBestWord()">
             show best
         </button>
-        <button class="button button-stable" ng-disabled="controls.stateData.state!=='done'" ng-click="controls.reset()">
+        <button ng-if="controls.displayResetButton()" class="button button-stable" ng-disabled="controls.stateData.state!=='done'" ng-click="controls.reset()">
             reset
+        </button>
+        <button ng-if="controls.displayReplayButton()" class="button button-stable" ng-disabled="controls.stateData.state!=='ended'" ng-click="controls.replay()">
+            replay
         </button>
     </div>
 </div>

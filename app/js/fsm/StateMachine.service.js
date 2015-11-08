@@ -14,8 +14,9 @@
          * 2. ready -> play()
          * 3. playing -> stop()
          * 4. paused ( show best word ) -> finish()
-         * 5. done -> reset()
-         * 6. resetting -> initialise()
+         * 5. paused ( show best word && no tils ) -> end()
+         * 6. done -> reset()
+         * 7. resetting -> initialise()
          */
 
         var fsm = StateMachine.create({
@@ -25,7 +26,8 @@
                 {name: 'play', from: 'ready', to: 'playing'},
                 {name: 'stop', from: 'playing', to: 'paused'},
                 {name: 'finish', from: 'paused', to: 'done'},
-                {name: 'reset', from: 'done', to: 'resetting'},
+                {name: 'end', from: 'paused', to: 'ended'},
+                {name: 'reset', from: ['done','ended'], to: 'resetting'},
                 {name: 'initialise', from: 'resetting', to: 'initial'}
             ],
             callbacks: {
@@ -60,6 +62,8 @@
 
         service.finish = _finish;
 
+        service.end = _end;
+
         service.reset = _reset;
 
         service.initialise = _initialise;
@@ -85,6 +89,10 @@
 
         function _finish() {
             fsm.finish();
+        }
+
+        function _end() {
+            fsm.end();
         }
 
         function _reset() {

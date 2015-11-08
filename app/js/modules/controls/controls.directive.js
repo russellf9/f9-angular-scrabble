@@ -44,5 +44,19 @@
         controls.reset = function() {
             GameService.reset();
         };
+
+        controls.replay = function() {
+            GameService.replay();
+        };
+
+        // Business logic
+
+        controls.displayResetButton = function() {
+            return controls.stateData.state !== 'ended';
+        };
+
+        controls.displayReplayButton = function() {
+            return controls.stateData.state === 'ended';
+        };
     }
 })();

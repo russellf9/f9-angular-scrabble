@@ -37,7 +37,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
-      "keywords": "$http api array bag best collection complete createletterbag creates data dataapi dictionary distribution evaluate getdictionary gethand gettilescore getwordscore hand instantiates legal letter method number objects operations pick populated promise requested result returns score scrabble scrabbleservice service set tile tiles type undefined word"
+      "keywords": "$http api array bag best collection complete createletterbag creates data dataapi dictionary distribution empty evaluate exist getdictionary gethand gettilescore getwordscore instantiates legal letter letterbagisempty letters method number operations pick promise remaining requested result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
     },
     {
       "section": "api",

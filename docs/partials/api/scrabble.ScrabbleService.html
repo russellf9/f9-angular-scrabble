@@ -27,7 +27,7 @@ Gets the data from: <a href="api/api.dataApi">dataApi</a></p>
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_gethand">getHand(number)</h3>
-<div class="gethand"><div class="gethand-page"><p>Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection I&#39;m not sure what happens! (As the hand will be populated with undefined objects)</p>
+<div class="gethand"><div class="gethand-page"><p>Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection, will return all the remaining tiles.</p>
 </div><h5 id="methods_gethand_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>number</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="gethand-page"><p>The number of Tiles to pick</p>
 </div></td></tr></tbody></table><h5 id="methods_gethand_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="gethand-page"><p>An array of type Tile</p>
 </div></td></tr></table></div>
@@ -40,6 +40,11 @@ Gets the data from: <a href="api/api.dataApi">dataApi</a></p>
 <li><h3 id="methods_getwordscore">getWordScore(word)</h3>
 <div class="getwordscore"><h5 id="methods_getwordscore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>word</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getwordscore-page"><p>A word</p>
 </div></td></tr></tbody></table><h5 id="methods_getwordscore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="getwordscore-page"><p>The word&#39;s score in Scrabble</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_letterbagisempty">letterBagIsEmpty()</h3>
+<div class="letterbagisempty"><div class="letterbagisempty-page"><p>Simply returns true if there are no letters in the bag, or the bag does not yet exist</p>
+</div><h5 id="methods_letterbagisempty_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="letterbagisempty-page"><p>true if empty</p>
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_scrabbleservice">scrabbleService()</h3>

@@ -56,6 +56,8 @@
         // also, use the return to set a value
         service.createLetterBag = _createLetterBag;
 
+        service.letterBagIsEmpty = _letterBagIsEmpty;
+
         service.getTileScore = _getTileScore;
 
         service.getLetterScore = _getLetterScore;
@@ -144,7 +146,13 @@
 
             var tile;
 
-            for (var i = 0; i < letterDistribution.length; ++i) {
+            var test = false; // make the bag smaller so we can investigate the no tiles state
+
+            var len = (test) ? 5 : (letterDistribution.length);
+
+            $log.info('len: ', len);
+
+            for (var i = 0; i < len; ++i) {
                 var letterDefinition = letterDistribution[i];
 
                 tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
@@ -152,7 +160,9 @@
                     service.letterBag.legalLetters += letterDefinition.letter;
                 }
 
-                for (var n = 0; n < letterDefinition.count; ++n) {
+                var count = test ? 1 : letterDefinition.count;
+
+                for (var n = 0; n < count; ++n) {
                     tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
                     service.letterBag.tiles.push(tile);
                 }
@@ -161,13 +171,25 @@
             return service.letterBag;
         }
 
+        /**
+         * @ngdoc method
+         * @name letterBagIsEmpty
+         * @methodOf scrabble.ScrabbleService
+         * @description Simply returns true if there are no letters in the bag, or the bag does not yet exist
+         * @returns {boolean} true if empty
+         * @private
+         */
+        function _letterBagIsEmpty() {
+            return (service.letterBag && service.letterBag.tiles) ? (!service.letterBag.tiles.length) : (true);
+        }
+
 
         // TODO Evaluate action to perform when the letter bag has been depleted.
         /**
          * @ngdoc method
          * @name getHand
          * @methodOf scrabble.ScrabbleService
-         * @description Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection I'm not sure what happens! (As the hand will be populated with undefined objects)
+         * @description Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection, will return all the remaining tiles.
          * @param {number} number The number of Tiles to pick
          * @returns {array} An array of type Tile
          */
@@ -175,7 +197,12 @@
             var hand = [];
 
             for (var i = 0; i < number; i++) {
-                hand.push(service.letterBag.tiles.pop());
+                if(service.letterBag.tiles.length) {
+                    hand.push(service.letterBag.tiles.pop());
+                } else {
+                    $log.info('ScrabbleService.getHand | all tiles have been used!');
+                    break;
+                }
             }
             return hand;
         }
