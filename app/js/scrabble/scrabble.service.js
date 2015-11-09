@@ -40,7 +40,6 @@
          * Gets the data from: {@link api.dataApi dataApi}
          * @methodOf scrabble.ScrabbleService
          * @returns {Promise} Returns a promise the result of the $http GET
-         *
          */
         service.getDictionary = function() {
             return dataApi.getData()
@@ -137,7 +136,8 @@
          * @ngdoc method
          * @name createLetterBag
          * @methodOf scrabble.ScrabbleService
-         * @description Creates a complete set of Scrabble Tiles
+         * @description Creates a complete set of Scrabble Tiles <br>
+         * See: {@link Tile Tile}
          */
         function _createLetterBag() {
             service.letterBag = {};
@@ -184,14 +184,13 @@
         }
 
 
-        // TODO Evaluate action to perform when the letter bag has been depleted.
         /**
          * @ngdoc method
          * @name getHand
          * @methodOf scrabble.ScrabbleService
-         * @description Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection, will return all the remaining tiles.
+         * @description Returns a set of Tiles from the collection. <br> If there are less Tiles than requested in the collection, will return all the remaining tiles. <br> It will be the responsibility of another Actor to deal with an empty collection.
          * @param {number} number The number of Tiles to pick
-         * @returns {array} An array of type Tile
+         * @returns {Array} An array of type Tile
          */
         function _getHand(number) {
             var hand = [];
@@ -200,7 +199,6 @@
                 if(service.letterBag.tiles.length) {
                     hand.push(service.letterBag.tiles.pop());
                 } else {
-                    $log.info('ScrabbleService.getHand | all tiles have been used!');
                     break;
                 }
             }

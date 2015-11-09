@@ -19,7 +19,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "game",
       "shortDescription": "A Service for the Game Related operations",
-      "keywords": "actions amount api array collection game gameservice gethand method number operations performs removes reset returns scrabble scrabbleservice selection service tiles updates updateuserselection user variety"
+      "keywords": "actions amount api array collection functions game gameservice gethand method number operations performs removes replay required reset returns scrabble scrabbleservice selection service sets tiles updates updateuserselection user variety"
     },
     {
       "section": "api",
@@ -32,12 +32,20 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "modules.controls:f9Controls",
+      "shortName": "f9Controls",
+      "type": "directive",
+      "moduleName": "modules",
+      "keywords": "ae api controls directive modules"
+    },
+    {
+      "section": "api",
       "id": "scrabble.ScrabbleService",
       "shortName": "scrabble.ScrabbleService",
       "type": "service",
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
-      "keywords": "$http api array bag best collection complete createletterbag creates data dataapi dictionary distribution empty evaluate exist getdictionary gethand gettilescore getwordscore instantiates legal letter letterbagisempty letters method number operations pick promise remaining requested result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
+      "keywords": "$http actor api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist getdictionary gethand gettilescore getwordscore instantiates legal letter letterbagisempty letters method number operations pick promise remaining requested responsibility result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
     },
     {
       "section": "api",

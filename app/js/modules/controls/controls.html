@@ -1,18 +1,18 @@
 <div class="wrapper-container">
     <div class="controls-container">
-        <button class="button button-stable" ng-disabled="controls.stateData.state!=='ready'" ng-click="controls.play()">
+        <button class="button button-stable" ng-disabled="controls.disablePlayButton()" ng-click="controls.play()">
             play
         </button>
-        <button class="button button-stable" ng-disabled="controls.stateData.state!=='playing'" ng-click="controls.stop()">
+        <button class="button button-stable" ng-disabled="controls.disableStopButton()" ng-click="controls.stop()">
             stop
         </button>
-        <button class="button button-stable" ng-disabled="controls.stateData.state!=='paused'" ng-click="controls.showBestWord()">
+        <button class="button button-stable" ng-disabled="controls.disableBestWordButton()" ng-click="controls.showBestWord()">
             show best
         </button>
-        <button ng-if="controls.displayResetButton()" class="button button-stable" ng-disabled="controls.stateData.state!=='done'" ng-click="controls.reset()">
+        <button ng-if="controls.displayResetButton()" class="button button-stable" ng-disabled="controls.disableResetButton()" ng-click="controls.reset()">
             reset
         </button>
-        <button ng-if="controls.displayReplayButton()" class="button button-stable" ng-disabled="controls.stateData.state!=='ended'" ng-click="controls.replay()">
+        <button ng-if="controls.displayReplayButton()" class="button button-stable" ng-disabled="" ng-click="controls.replay()">
             replay
         </button>
     </div>

@@ -209,8 +209,6 @@
          */
         function _showBestWord() {
 
-            $log.info('SHOW-BEST-WORD ', StateMachineService.current());
-
             if(ScrabbleService.letterBagIsEmpty()) {
                 // TODO we need another State
                 $log.info('GAME OVER!');
@@ -230,7 +228,7 @@
 
             var bestWord = ScrabbleService.findBestWord(result);
 
-            // TODO Need to test if a zero score is returned if no best word is possible
+            // If no best word possible return 0 score
             var bestScore = bestWord ? _getScoreFromWord(bestWord) : 0;
 
 

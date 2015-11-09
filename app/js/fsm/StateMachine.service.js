@@ -3,9 +3,19 @@
 
     angular.module('fsm', [])
 
-        .service('StateMachineService', _stateMachine);
+        .service('StateMachineService', _stateMachine)
 
-    function _stateMachine($log) {
+        .constant('states', {
+            'INITIAL': 'initial',
+            'READY': 'ready',
+            'PLAYING' : 'playing',
+            'PAUSED' : 'paused',
+            'DONE' : 'done',
+            'ENDED' : 'ended',
+            'RESETTING' : 'resetting'
+        });
+
+    function _stateMachine($log, states) {
 
         /**
          * States
@@ -14,7 +24,7 @@
          * 2. ready -> play()
          * 3. playing -> stop()
          * 4. paused ( show best word ) -> finish()
-         * 5. paused ( show best word && no tils ) -> end()
+         * 5. paused ( show best word && no tiles ) -> end()
          * 6. done -> reset()
          * 7. resetting -> initialise()
          */
@@ -22,13 +32,13 @@
         var fsm = StateMachine.create({
             initial: 'initial',
             events: [
-                {name: 'makeReady', from: 'initial', to: 'ready'},
-                {name: 'play', from: 'ready', to: 'playing'},
-                {name: 'stop', from: 'playing', to: 'paused'},
-                {name: 'finish', from: 'paused', to: 'done'},
-                {name: 'end', from: 'paused', to: 'ended'},
-                {name: 'reset', from: ['done','ended'], to: 'resetting'},
-                {name: 'initialise', from: 'resetting', to: 'initial'}
+                {name: 'makeReady', from: states.INITIAL, to: states.READY},
+                {name: 'play', from: states.READY, to: states.PLAYING},
+                {name: 'stop', from: states.PLAYING, to: states.PAUSED},
+                {name: 'finish', from: states.PAUSED, to: states.DONE},
+                {name: 'end', from: states.PAUSED, to: states.ENDED},
+                {name: 'reset', from: [states.DONE, states.ENDED], to: states.RESETTING},
+                {name: 'initialise', from: states.RESETTING, to: states.INITIAL}
             ],
             callbacks: {
                 onmakeReady: function(event, from, to, msg) {
@@ -104,7 +114,7 @@
         }
 
         function _current() {
-            return (fsm && fsm.current) ? fsm.current : 'initial';
+            return (fsm && fsm.current) ? fsm.current : states.INITIAL;
         }
 
         function _setState() {
