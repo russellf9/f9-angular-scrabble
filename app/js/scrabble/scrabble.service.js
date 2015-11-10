@@ -22,15 +22,13 @@
      * @name scrabbleService
      * @methodOf scrabble.ScrabbleService
      * @description The Constructor <br>
+     *  Data from: {@link https://github.com/hanshuebner/html-scrabble/blob/master/client/javascript/scrabble.js/ html-scrabble}
      */
     function scrabbleService($log, dataApi, _) {
 
         var service = {};
 
         service.language = 'English';
-
-        // data from: https://github.com/hanshuebner/html-scrabble/blob/master/client/javascript/scrabble.js
-
 
         /**
          * @ngdoc method
@@ -58,8 +56,6 @@
         service.letterBagIsEmpty = _letterBagIsEmpty;
 
         service.getTileScore = _getTileScore;
-
-        service.getLetterScore = _getLetterScore;
 
         service.getWordScore = _getWordScore;
 
@@ -150,8 +146,6 @@
 
             var len = (test) ? 5 : (letterDistribution.length);
 
-            $log.info('len: ', len);
-
             for (var i = 0; i < len; ++i) {
                 var letterDefinition = letterDistribution[i];
 
@@ -221,9 +215,6 @@
             return tile.score;
         }
 
-        function _getLetterScore(letter) {
-            return 1;
-        }
 
         /**
          * @ngdoc method

@@ -77,9 +77,24 @@
 
         return service;
 
-        // returns a Promise, so we delay the ready state to when the data has been correctly got
-        
 
+        /**
+         * @ngdoc method
+         * @name init
+         * @methodOf game.GameService
+         * @description Makes operations to initialise Scrabble <br>
+         * • Sets up the letter bag
+         * • Sets up the Dictionary
+         * Returns a Promise to ensure the Callee that the required items will be ready
+         * <pre>
+         * GameService.init()
+         *     .then(function() {
+         *         _setUp();
+         *     }, function(error) {
+         *         $log.error('Init -> Error: ', error);
+         *     });
+         * </pre>
+         */
         function _init() {
 
             var deferred = $q.defer();
@@ -109,7 +124,11 @@
         }
 
         /**
-         *
+         * @ngdoc method
+         * @name setUpLetterBag
+         * @methodOf game.GameService
+         * @description Creates the letter bag
+         * Also, randomises the order if the letters
          * @private
          */
         function _setUpLetterBag() {
@@ -128,8 +147,6 @@
          * @private
          */
         function _getHand(number) {
-
-            $log.info('+++ get hand');
 
             if(ScrabbleService.letterBagIsEmpty()) {
                 // will have to set another State!
@@ -335,7 +352,6 @@
                 .reduce(function(a, b) {
                     return a + b;
                 });
-
             return word;
         }
 
@@ -366,7 +382,6 @@
             // check for bingo all letters being used
             if (tiles.length === rules.BINGO) {
                 score = score + rules.BINGO_SCORE;
-                $log.info('BINGO!');
             }
             return score;
         }

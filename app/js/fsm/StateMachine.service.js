@@ -1,25 +1,43 @@
 (function() {
     'use strict';
 
+
+    /**
+     * @ngdoc service
+     * @name fsm.StateMachineService
+     * @description A Service for a Finite State Machine  <br>
+     *     Wrapper for {@link https://github.com/jakesgordon/javascript-state-machine/ javascript-state-machine}  <br>
+     */
     angular.module('fsm', [])
 
         .service('StateMachineService', _stateMachine)
 
+    /**
+     * @ngdoc object
+     * @name fsm.states
+     * @param {String} INITIAL The initial State
+     * @description
+     *  A constant which holds 'FSM states'
+     */
         .constant('states', {
             'INITIAL': 'initial',
             'READY': 'ready',
-            'PLAYING' : 'playing',
-            'PAUSED' : 'paused',
-            'DONE' : 'done',
-            'ENDED' : 'ended',
-            'RESETTING' : 'resetting'
+            'PLAYING': 'playing',
+            'PAUSED': 'paused',
+            'DONE': 'done',
+            'ENDED': 'ended',
+            'RESETTING': 'resetting'
         });
 
     function _stateMachine($log, states) {
 
+
         /**
-         * States
-         *
+         * @ngdoc method
+         * @name StateMachine.create
+         * @methodOf fsm.StateMachineService
+         * @description Sets up the FSM
+         * States <br>
          * 1. initial -> makeReady()
          * 2. ready -> play()
          * 3. playing -> stop()
@@ -28,7 +46,6 @@
          * 6. done -> reset()
          * 7. resetting -> initialise()
          */
-
         var fsm = StateMachine.create({
             initial: 'initial',
             events: [
@@ -118,7 +135,7 @@
         }
 
         function _setState() {
-            if(!service) {
+            if (!service) {
                 $log.error('service not yet defined!');
                 return;
             }

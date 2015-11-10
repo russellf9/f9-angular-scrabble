@@ -21,12 +21,32 @@
 </div></td></tr></tbody></table><h5 id="methods_gethand_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="gethand-page"><p>an Array of Tiles</p>
 </div></td></tr></table></div>
 </li>
+<li><h3 id="methods_init">init()</h3>
+<div class="init"><div class="init-page"><p>Makes operations to initialise Scrabble <br>
+• Sets up the letter bag
+• Sets up the Dictionary
+Returns a Promise to ensure the Callee that the required items will be ready
+<pre class="prettyprint linenums">
+GameService.init()
+    .then(function() {
+        _setUp();
+    }, function(error) {
+        $log.error('Init -&gt; Error: ', error);
+    });
+</pre>
+</div></div>
+</li>
 <li><h3 id="methods_replay">replay()</h3>
 <div class="replay"><div class="replay-page"><p>Sets up the required functions to reset the game</p>
 </div></div>
 </li>
 <li><h3 id="methods_reset">reset()</h3>
 <div class="reset"><div class="reset-page"><p>Performs a variety of actions to reset the game</p>
+</div></div>
+</li>
+<li><h3 id="methods_setupletterbag">setUpLetterBag()</h3>
+<div class="setupletterbag"><div class="setupletterbag-page"><p>Creates the letter bag
+Also, randomises the order if the letters</p>
 </div></div>
 </li>
 <li><h3 id="methods_updateuserselection">updateUserSelection(tiles)</h3>
