@@ -1,6 +1,13 @@
 (function() {
     'use strict';
 
+
+    /**
+     * @name model.store.model
+     * @ngdoc service
+     * @description A Flux Data Store<br>
+     */
+
     angular.module('store', [])
         .constant('actions', {
             'TILE_ADD': 'addTile',

@@ -2,7 +2,11 @@
     'use strict';
 
     /**
-     * An Angular Wrapper for https://github.com/mrchimp/Tock
+     * @ngdoc service
+     * @name modules.timer:f9TimerService
+     * @description
+        A Service for a Clock or Timer <br>
+        Is a wrapper for {@link https://github.com/mrchimp/Tock/ Tock}  <br>
      */
 
     angular.module('f9TimerService', [])

@@ -3,7 +3,17 @@
 </span>
 </div>
 </h1>
-<div><h2 id="usage">Usage</h2>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="modules-controls-page modules-controls-f9controls-page"><p>A Directive responsible for the Game Controls <br>
+Control Buttons are shown or hidden according to the State of the Game <br></p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="api/game.GameService">GameService</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="api/fsm.StateMachineService">StateMachineService</a></code>
+</li>
+</ul>
+<h2 id="usage">Usage</h2>
 <div class="usage">as element:<pre class="prettyprint linenums">&lt;f9-controls&gt;
 &lt;/f9-controls&gt;</pre>
 as attribute<pre class="prettyprint linenums">&lt;ANY f9-controls&gt;
@@ -13,5 +23,17 @@ as attribute<pre class="prettyprint linenums">&lt;ANY f9-controls&gt;
 <div class="directive-info"><ul><li>This directive creates new scope.</li>
 </ul>
 </div>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_controlscontroller">ControlsController($log, GameService, StateMachineService, states)</h3>
+<div class="controlscontroller"><div class="controlscontroller-page"><p>The Directives Controller <br>
+Provides methods to control the flow of the Game <br></p>
+</div><h5 id="methods_controlscontroller_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>$log</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="controlscontroller-page"><p>For Angular logging</p>
+</div></td></tr><tr><td>GameService</td><td><a href="" class="label type-hint type-hint-service">service</a></td><td><div class="controlscontroller-page"><p>The Service for game operations</p>
+</div></td></tr><tr><td>StateMachineService</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="controlscontroller-page"><p>The Service for FSM operations</p>
+</div></td></tr><tr><td>states</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="controlscontroller-page"><p>The Static which provides all the FSM States</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
 </div>
 </div>

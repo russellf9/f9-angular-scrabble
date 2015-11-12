@@ -1,5 +1,14 @@
 (function() {
+
     'use strict';
+
+    /**
+     * @name dictionary.DictionaryService
+     * @ngdoc service
+     * @description A Service for a Dictionary <br>
+     *     Loads a CSV dictionary, and turns it into an Array
+     * @requires api.dataApi
+     */
 
     angular.module('Dictionary', ['dataApi'])
 

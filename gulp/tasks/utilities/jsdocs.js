@@ -8,6 +8,8 @@ var gulp = require('gulp'),
 
 
 gulp.task('ngdocs', [], function() {
+
+
     return gulp.src(config.paths.scripts)
         .pipe(gulpDocs.process())
         .pipe(gulp.dest(config.paths.docs));

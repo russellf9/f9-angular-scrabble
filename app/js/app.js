@@ -1,5 +1,14 @@
 'use strict';
 
+
+/**
+ * @ngdoc overview
+ * @name f9-angular-scrabble
+ * @description
+ *  An Ionic Application for Scrabble Word Finding
+ * @requires ionic
+ * @requires flux
+ */
 angular.module('f9-angular-scrabble', ['ionic',
     'flux',
     'ngDragDrop',

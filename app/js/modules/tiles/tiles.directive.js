@@ -1,6 +1,17 @@
 (function() {
     'use strict';
 
+
+    /**
+     * @ngdoc directive
+     * @name modules.tiles:f9Tiles
+     * @restrict 'AE'
+     * @scope
+     * @description
+        Displays a set of Scrabble tiles, which can be dragged to create a chosen word <br>
+     * @requires game.GameService
+     * @requires fsm.StateMachineService
+     */
     angular.module('f9tiles', [])
 
         .directive('f9Tiles', tiles);
@@ -94,7 +105,14 @@
 
             // == SERVICE CALLS ========
 
-            // updates the users selection
+            /**
+             * @ngdoc method
+             * @name update
+             * @methodOf modules.tiles:f9Tiles
+             * @description
+                Informs a Service what items have been selected
+             *
+             */
             function _update() {
                 GameService.updateUserSelection(dragDrop.dropItems);
             }

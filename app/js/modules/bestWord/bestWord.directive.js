@@ -1,6 +1,18 @@
 (function() {
     'use strict';
 
+
+    /**
+     * @ngdoc directive
+     * @name modules.bestWord:f9BestWord
+     * @restrict 'AE'
+     * @scope
+     * @description
+     * Responsible for displaying the Scrabble word with the highest score
+     * @requires game.GameService
+     * @requires scrabble.ScrabbleService
+     * @requires fsm.StateMachineService
+     */
     angular.module('f9BestWord', [])
 
         .directive('f9BestWord', bestWord);
@@ -45,6 +57,7 @@
             function _createTiles(array) {
                 var tiles = [];
                 var tile;
+                // TODO use map/reduce
                 for (var i = 0, j = array.length; i < j; i++) {
                     tile = ScrabbleService.createTile(array[i]);
                     tiles.push(tile);

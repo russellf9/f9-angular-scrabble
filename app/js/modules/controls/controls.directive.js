@@ -7,8 +7,12 @@
      * @name modules.controls:f9Controls
      * @restrict 'AE'
      * @scope
+     * @description
+     *  A Directive responsible for the Game Controls <br>
+     *  Control Buttons are shown or hidden according to the State of the Game <br>
+     * @requires game.GameService
+     * @requires fsm.StateMachineService
      **/
-
     angular.module('f9Controls', ['GameService', 'fsm'])
 
         .directive('f9Controls', controls);
@@ -18,7 +22,6 @@
         return {
             restrict: 'AE',
             scope: {
-
             },
             controller: ControlsController,
             controllerAs: 'controls',
@@ -27,6 +30,20 @@
         };
     }
 
+    /**
+     * @ngdoc method
+     * @name ControlsController
+     * @methodOf modules.controls:f9Controls
+     * @description
+     *  The Directives Controller <br>
+     *  Provides methods to control the flow of the Game <br>
+     *
+     * @param {object} $log For Angular logging
+     * @param {service} GameService The Service for game operations
+     * @param {object} StateMachineService The Service for FSM operations
+     * @param {object} states The Static which provides all the FSM States
+     * @constructor
+     */
     function ControlsController($log, GameService, StateMachineService, states) {
 
         var controls = this;

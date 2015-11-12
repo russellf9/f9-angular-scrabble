@@ -1,6 +1,15 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc directive
+     * @name modules.timer:f9Timer
+     * @restrict 'AE'
+     * @scope
+     * @description
+        Displays a Count Down Timer
+     * @requires
+     */
     angular.module('f9Timer', [])
 
         .directive('f9Timer', timer);
