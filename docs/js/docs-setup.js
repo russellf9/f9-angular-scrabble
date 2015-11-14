@@ -68,6 +68,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "lodash.f9-angular-scrabble._",
+      "shortName": "lodash.f9-angular-scrabble._",
+      "type": "service",
+      "moduleName": "lodash.f9-angular-scrabble",
+      "shortDescription": "Wrapper and extension for the Lodash Library",
+      "keywords": "api extension f9-angular-scrabble library lodash service wrapper"
+    },
+    {
+      "section": "api",
       "id": "model.store:MyStore",
       "shortName": "MyStore",
       "type": "service",
@@ -136,7 +145,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
-      "keywords": "$http actor api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist getdictionary gethand gettilescore getwordscore html-scrabble https instantiates js legal letter letterbagisempty letters method number operations pick promise remaining requested responsibility result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
+      "keywords": "$http actor api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist f9-angular-scrabble getdictionary gethand gettilescore getwordscore html-scrabble https instantiates js legal letter letterbagisempty letters lodash method number operations pick promise remaining requested responsibility result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
     },
     {
       "section": "api",

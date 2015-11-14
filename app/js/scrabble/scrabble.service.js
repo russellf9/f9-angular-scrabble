@@ -11,6 +11,7 @@
      • Provides a method to evaluate a word's score  <br>
      • Provides a method to evaluate the best possible word from a set of Tiles  <br>
      * @requires api.dataApi
+     * @requires lodash.f9-angular-scrabble._
      */
     angular.module('ScrabbleService', ['dataApi'])
 
@@ -23,6 +24,7 @@
      * @methodOf scrabble.ScrabbleService
      * @description The Constructor <br>
      *  Data from: {@link https://github.com/hanshuebner/html-scrabble/blob/master/client/javascript/scrabble.js/ html-scrabble}
+     * @requires lodash.f9-angular-scrabble._
      */
     function scrabbleService($log, dataApi, _) {
 
@@ -203,6 +205,7 @@
          * @ngdoc method
          * @name getTileScore
          * @methodOf scrabble.ScrabbleService
+         * @description Returns the Scrabble score for the supplied letter
          * @param {string} letter The letter to evaluate
          * @returns {number} The letter's score
          * @private
@@ -220,6 +223,7 @@
          * @ngdoc method
          * @name getWordScore
          * @methodOf scrabble.ScrabbleService
+         * @description Returns the aggregated score of each letter of the supplied word
          * @param {string} word A word
          * @returns {number} The word's score in Scrabble
          * @private
