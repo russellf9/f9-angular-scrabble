@@ -12,7 +12,7 @@
 
     /**
      * @ngdoc object
-     * @name game.rules
+     * @name game.GameService:rules
      * @param {number} BINGO THE number of tiles to use to achive the bingo score
      * @param {number} BINGO_SCORE The score when a player uses all seven tiles
      * @description
@@ -74,18 +74,16 @@
 
         service.evaluateIsDraggable = _evaluateIsDraggable;
 
-
         return service;
-
 
         /**
          * @ngdoc method
          * @name init
          * @methodOf game.GameService
          * @description Makes operations to initialise Scrabble <br>
-         * • Sets up the letter bag
-         * • Sets up the Dictionary
-         * Returns a Promise to ensure the Callee that the required items will be ready
+         * • Sets up the letter bag <br>
+         * • Sets up the Dictionary  <br>
+         * • Returns a Promise to ensure the Callee that the required items will be ready
          * <pre>
          * GameService.init()
          *     .then(function() {
@@ -127,8 +125,9 @@
          * @ngdoc method
          * @name setUpLetterBag
          * @methodOf game.GameService
-         * @description Creates the letter bag
-         * Also, randomises the order if the letters
+         * @description
+         * Creates the letter bag <br>
+         * Also, randomises the order if the letters <br>
          * @private
          */
         function _setUpLetterBag() {
@@ -324,6 +323,7 @@
         /**
          * @description Returns the highest scoring word from the supplied set of tiles
          * @name _getResult
+         * @methodOf game.GameService
          * @param hand A set of Tiles
          * @returns {*} The Word with the highest possible scores
          * @private

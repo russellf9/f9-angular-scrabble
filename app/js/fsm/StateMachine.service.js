@@ -14,7 +14,7 @@
 
     /**
      * @ngdoc object
-     * @name fsm.states
+     * @name fsm.StateMachineService:states
      * @param {String} INITIAL The initial State
      * @description
      *  A constant which holds 'FSM states'

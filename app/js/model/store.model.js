@@ -3,11 +3,10 @@
 
 
     /**
-     * @name model.store.model
+     * @name model.store:MyStore
      * @ngdoc service
      * @description A Flux Data Store<br>
      */
-
     angular.module('store', [])
         .constant('actions', {
             'TILE_ADD': 'addTile',

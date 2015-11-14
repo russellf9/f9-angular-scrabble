@@ -112,8 +112,8 @@
 
         /**
          * @ngdoc object
-         * @name Tile
-         * @description A Class which holds a Letter and Scrore properties
+         * @name scrabble.ScrabbleService:Tile
+         * @description A Class which holds a Letter and Score properties
          * @param {string} letter The Tiles letter A-Z
          * @param {number} score The Scrabble score for the Letter
          * @constructor
@@ -133,7 +133,7 @@
          * @name createLetterBag
          * @methodOf scrabble.ScrabbleService
          * @description Creates a complete set of Scrabble Tiles <br>
-         * See: {@link Tile Tile}
+         * See: {@link scrabble.ScrabbleService:Tile Tile}
          */
         function _createLetterBag() {
             service.letterBag = {};

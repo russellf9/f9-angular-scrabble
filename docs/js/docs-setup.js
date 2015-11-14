@@ -27,8 +27,8 @@ NG_DOCS={
       "shortName": "f9-angular-scrabble",
       "type": "overview",
       "moduleName": "f9-angular-scrabble",
-      "shortDescription": "An Ionic Application for to pracise findding the best word from a set of tiles",
-      "keywords": "api application best f9-angular-scrabble findding flux ionic overview pracise set tiles word"
+      "shortDescription": "An Ionic Application for to practise finding the best word from a set of tiles ",
+      "keywords": "angular api application best f9-angular-scrabble finding flux ionic overview practise set tiles word"
     },
     {
       "section": "api",
@@ -41,12 +41,12 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "fsm.states",
-      "shortName": "fsm.states",
+      "id": "fsm.StateMachineService:states",
+      "shortName": "states",
       "type": "object",
       "moduleName": "fsm",
       "shortDescription": "A constant which holds &#39;FSM states&#39;",
-      "keywords": "api constant fsm holds initial object"
+      "keywords": "api constant fsm holds initial object statemachineservice"
     },
     {
       "section": "api",
@@ -59,19 +59,19 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "game.rules",
-      "shortName": "game.rules",
+      "id": "game.GameService:rules",
+      "shortName": "rules",
       "type": "object",
       "moduleName": "game",
       "shortDescription": "A constant which holds &#39;Game values&#39;",
-      "keywords": "achive api bingo bingo_score constant game holds length number object player rules score tiles values"
+      "keywords": "achive api bingo bingo_score constant game gameservice holds length number object player rules score tiles values"
     },
     {
       "section": "api",
-      "id": "model.store.model",
-      "shortName": "model.store.model",
+      "id": "model.store:MyStore",
+      "shortName": "MyStore",
       "type": "service",
-      "moduleName": "model.store",
+      "moduleName": "model",
       "shortDescription": "A Flux Data Store",
       "keywords": "api data flux model service store"
     },
@@ -140,21 +140,21 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "scrabble.ScrabbleService:Tile",
+      "shortName": "Tile",
+      "type": "object",
+      "moduleName": "scrabble",
+      "shortDescription": "A Class which holds a Letter and Score properties",
+      "keywords": "a-z api class holds letter object properties score scrabble scrabbleservice tiles"
+    },
+    {
+      "section": "api",
       "id": "scrabblewords.Scrabble:WordFinderService",
       "shortName": "WordFinderService",
       "type": "service",
       "moduleName": "scrabblewords",
       "shortDescription": "A Service responsible for finding the possible words ",
       "keywords": "_getwords api calls collection finding finds hand initialises letters list lodash makewordfinder method responsible return returns scrabble scrabblewords selection service underscore valid wordfinderservice wordlist"
-    },
-    {
-      "section": "api",
-      "id": "Tile",
-      "shortName": "Tile",
-      "type": "object",
-      "moduleName": "Tile",
-      "shortDescription": "A Class which holds a Letter and Scrore properties",
-      "keywords": "a-z api class holds letter object properties score scrabble scrore tile tiles"
     }
   ],
   "apis": {
