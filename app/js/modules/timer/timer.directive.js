@@ -8,7 +8,8 @@
      * @scope
      * @description
         Displays a Count Down Timer
-     * @requires
+     * @requires modules.timer:f9TimerService
+     * @requires game.GameService
      */
     angular.module('f9Timer', [])
 

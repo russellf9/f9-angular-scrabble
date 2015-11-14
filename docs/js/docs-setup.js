@@ -1,6 +1,6 @@
 NG_DOCS={
   "sections": {
-    "api": "API Documentation"
+    "api": "F9 Angular Scrabble API"
   },
   "pages": [
     {
@@ -27,8 +27,8 @@ NG_DOCS={
       "shortName": "f9-angular-scrabble",
       "type": "overview",
       "moduleName": "f9-angular-scrabble",
-      "shortDescription": "An Ionic Application for Scrabble Word Finding",
-      "keywords": "api application f9-angular-scrabble finding flux ionic overview scrabble word"
+      "shortDescription": "An Ionic Application for to pracise findding the best word from a set of tiles",
+      "keywords": "api application best f9-angular-scrabble findding flux ionic overview pracise set tiles word"
     },
     {
       "section": "api",
@@ -118,7 +118,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "modules",
       "shortDescription": "Displays a Count Down Timer",
-      "keywords": "ae api count directive displays modules timer"
+      "keywords": "ae api count directive displays game gameservice modules timer"
     },
     {
       "section": "api",
@@ -127,7 +127,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "modules",
       "shortDescription": "A Service for a Clock or Timer ",
-      "keywords": "api clock https modules service timer tock wrapper"
+      "keywords": "$log _inittimer _oncomplete _ontick actions angular api callbacks clock complete creates event flux good handles https instantiates interval large list logger method methods__oncomplete methods__ontick modules redraw relaying relays returns service sets static tick time timer times tock wrapper"
     },
     {
       "section": "api",
@@ -137,6 +137,15 @@ NG_DOCS={
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
       "keywords": "$http actor api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist getdictionary gethand gettilescore getwordscore html-scrabble https instantiates js legal letter letterbagisempty letters method number operations pick promise remaining requested responsibility result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
+    },
+    {
+      "section": "api",
+      "id": "scrabblewords.Scrabble:WordFinderService",
+      "shortName": "WordFinderService",
+      "type": "service",
+      "moduleName": "scrabblewords",
+      "shortDescription": "A Service responsible for finding the possible words ",
+      "keywords": "_getwords api calls collection finding finds hand initialises letters list lodash makewordfinder method responsible return returns scrabble scrabblewords selection service underscore valid wordfinderservice wordlist"
     },
     {
       "section": "api",
@@ -153,14 +162,17 @@ NG_DOCS={
   },
   "__file": "_FAKE_DEST_/js/docs-setup.js",
   "__options": {
-    "startPage": "/api",
+    "startPage": "/api/f9-angular-scrabble",
     "scripts": [
       "js/angular.min.js",
       "js/angular-animate.min.js",
-      "js/marked.js"
+      "js/marked.js",
+      "js/bower_components/flux-angular/release/flux-angular.js",
+      "js/bower_components/tock/tock.min.js",
+      "js/jakesgordon/state-machine.js"
     ],
     "styles": [],
-    "title": "API Documentation",
+    "title": "F9 Angular Scrabble API",
     "html5Mode": true,
     "editExample": true,
     "navTemplate": false,
@@ -174,10 +186,13 @@ NG_DOCS={
   },
   "html5Mode": true,
   "editExample": true,
-  "startPage": "/api",
+  "startPage": "/api/f9-angular-scrabble",
   "scripts": [
     "js/angular.min.js",
     "js/angular-animate.min.js",
-    "js/marked.js"
+    "js/marked.js",
+    "js/bower_components/flux-angular/release/flux-angular.js",
+    "js/bower_components/tock/tock.min.js",
+    "js/jakesgordon/state-machine.js"
   ]
 };

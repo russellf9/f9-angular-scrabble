@@ -1,19 +1,49 @@
 (function() {
     'use strict';
 
+
+    /**
+     * @ngdoc service
+     * @name scrabblewords.Scrabble:WordFinderService
+     * @description
+     * A Service responsible for finding the possible words <br>
+     * Uses Underscore
+     */
     angular.module('Scrabble', [])
 
-    .service('WordFinderService', wordFinderService);
+        .service('WordFinderService', wordFinderService);
 
+    /**
+     * @ngdoc method
+     * @name wordFinderService
+     * @methodOf scrabblewords.Scrabble:WordFinderService
+     * @description
+     * Initialises and returns a new WordFinderService
+     * @param {object} _ The Lodash Service
+     * @returns {object} WordFinderService The Service with it's method calls
+     */
     function wordFinderService(_) {
 
         var service = {};
 
         service.makeWordFinder = _getWords;
 
-
-        return  service;
+        return service;
     }
+
+    /**
+     * @ngdoc method
+     * @name _getWords
+     * @methodOf scrabblewords.Scrabble:WordFinderService
+     * @description
+     * Finds the possible words from a selection of letters
+     * @param {Array} hand A collection of letters
+     * @param {Array} wordList A list of valid words
+     * @example
+        <pre>
+        return WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);
+        </pre>
+     */
 
     function _getWords(hand, wordList) {
         return makeWordFinder(hand, wordList).findWords().__wrapped__;
@@ -38,13 +68,13 @@
         };
     };
 
-    var getPermutations = function (array) {
+    var getPermutations = function(array) {
         var result = [];
-        for (var i = 0; i < array.length; i ++) {
+        for (var i = 0; i < array.length; i++) {
             var element = array[i];
             result.push([element]);
 
-            var subPermutations = getPermutations(array.slice(0, i).concat(array.slice(i+1)));
+            var subPermutations = getPermutations(array.slice(0, i).concat(array.slice(i + 1)));
             for (var j = 0; j < subPermutations.length; j++) {
                 result.push([element].concat(subPermutations[j]));
             }
@@ -70,10 +100,10 @@
         return hashTable;
     };
 
-    var hashItem = function(str){
+    var hashItem = function(str) {
         var hash = 0;
         for (var i = 0; i < str.length; i++) {
-            hash = (hash<<5) + hash + str.charCodeAt(i);
+            hash = (hash << 5) + hash + str.charCodeAt(i);
             hash = hash & hash; // Convert to 32bit integer
             hash = Math.abs(hash);
         }

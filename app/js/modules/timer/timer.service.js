@@ -5,8 +5,8 @@
      * @ngdoc service
      * @name modules.timer:f9TimerService
      * @description
-        A Service for a Clock or Timer <br>
-        Is a wrapper for {@link https://github.com/mrchimp/Tock/ Tock}  <br>
+     A Service for a Clock or Timer <br>
+     Is a wrapper for {@link https://github.com/mrchimp/Tock/ Tock}  <br>
      */
 
     angular.module('f9TimerService', [])
@@ -18,6 +18,17 @@
             'FIVE_SECONDS': '00:05'
         });
 
+    /**
+     * @ngdoc method
+     * @name timer
+     * @methodOf modules.timer:f9TimerService
+     * @description
+     * Creates and returns a Service
+     * @param {object} $log The Angular Logger
+     * @param {object} flux The Flux Service
+     * @param {object} actions The list of possible States
+     * @param {object} times Times Static
+     */
     function timer($log, flux, actions, times) {
         // Constants for Time formatting
         var MS_PER_HOUR = 3600000,
@@ -39,9 +50,18 @@
 
         // == IMPLEMENTATION OF PUBLIC FUNCTIONS ========
 
-
+        /**
+         * @ngdoc method
+         * @name _initTimer
+         * @methodOf modules.timer:f9TimerService
+         * @description
+         Instantiates the Tock <br>
+         Sets a large interval of 100ms which is good for the Angular redraw <br>
+         Sets up the Callbacks <br>
+         see: {@link modules.timer:f9TimerService#methods__onTick _onTick} <br>
+         see: {@link modules.timer:f9TimerService#methods__onComplete _onComplete}
+         */
         function _initTimer() {
-            // the larger interval of 100 is good for the Angular redraw
             service.timer = new Tock({
                 countdown: true, interval: 100,
                 callback: _onTick, complete: _onComplete
@@ -63,11 +83,29 @@
 
         // == IMPLEMENTATION OF TIMER EVENTS ========
 
+        /**
+         * @ngdoc method
+         * @name _onTick
+         * @methodOf modules.timer:f9TimerService
+         * @description
+            Handles the Timer Tick Event <br>
+            Relays the Time within a Flux Event <br>
+         * @param {Object} event The Tick Event
+         */
         function _onTick(event) {
             var currentTime = service.timer.timeToMS(service.timer.lap());
             flux.dispatch(actions.TIME_SET, _returnTimeCode(currentTime));
         }
 
+
+        /**
+         * @ngdoc method
+         * @name _onComplete
+         * @methodOf modules.timer:f9TimerService
+         * @description
+            Handles the Timer Complete Event by relaying a Flux Event <br>
+         * @param {Object} event The Tick Event
+         */
         function _onComplete(event) {
             flux.dispatch(actions.TIME_END);
         }
@@ -76,6 +114,8 @@
         // == UTILITIES ========
 
         // A utility function which returns the time in minutes and seconds
+
+
         function _returnTimeCode(ms) {
             if (ms <= 0) {
                 return '00:00';

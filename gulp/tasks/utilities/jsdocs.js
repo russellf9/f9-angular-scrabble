@@ -9,8 +9,17 @@ var gulp = require('gulp'),
 
 gulp.task('ngdocs', [], function() {
 
+    var options = {
+        html5Mode: true,
+        startPage: config.docs.startPage,
+        title: config.docs.title,
+        scripts: ['./bower_components/flux-angular/release/flux-angular.js',
+            './bower_components/tock/tock.min.js',
+            './jakesgordon/state-machine.js'
+        ]
+    };
 
     return gulp.src(config.paths.scripts)
-        .pipe(gulpDocs.process())
+        .pipe(gulpDocs.process(options))
         .pipe(gulp.dest(config.paths.docs));
 });

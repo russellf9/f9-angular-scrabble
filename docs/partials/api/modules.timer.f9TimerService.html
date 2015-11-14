@@ -7,4 +7,34 @@
 <div class="description"><div class="modules-timer-page modules-timer-f9timerservice-page"><p>A Service for a Clock or Timer <br>
 Is a wrapper for <a href="https://github.com/mrchimp/Tock/">Tock</a>  <br></p>
 </div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods__inittimer">_initTimer()</h3>
+<div class="_inittimer"><div class="-inittimer-page"><p>Instantiates the Tock <br>
+Sets a large interval of 100ms which is good for the Angular redraw <br>
+Sets up the Callbacks <br>
+see: <a href="api/modules.timer:f9TimerService#methods__ontick">_onTick</a> <br>
+see: <a href="api/modules.timer:f9TimerService#methods__oncomplete">_onComplete</a></p>
+</div></div>
+</li>
+<li><h3 id="methods__oncomplete">_onComplete(event)</h3>
+<div class="_oncomplete"><div class="-oncomplete-page"><p>Handles the Timer Complete Event by relaying a Flux Event <br></p>
+</div><h5 id="methods__oncomplete_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-oncomplete-page"><p>The Tick Event</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods__ontick">_onTick(event)</h3>
+<div class="_ontick"><div class="-ontick-page"><p>Handles the Timer Tick Event <br>
+Relays the Time within a Flux Event <br></p>
+</div><h5 id="methods__ontick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="-ontick-page"><p>The Tick Event</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_timer">timer($log, flux, actions, times)</h3>
+<div class="timer"><div class="timer-page"><p>Creates and returns a Service</p>
+</div><h5 id="methods_timer_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>$log</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="timer-page"><p>The Angular Logger</p>
+</div></td></tr><tr><td>flux</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="timer-page"><p>The Flux Service</p>
+</div></td></tr><tr><td>actions</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="timer-page"><p>The list of possible States</p>
+</div></td></tr><tr><td>times</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="timer-page"><p>Times Static</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
 </div>

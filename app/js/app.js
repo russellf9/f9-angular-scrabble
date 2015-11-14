@@ -5,7 +5,8 @@
  * @ngdoc overview
  * @name f9-angular-scrabble
  * @description
- *  An Ionic Application for Scrabble Word Finding
+ *  An Ionic Application for to practise finding the best word from a set of tiles <br>
+ * Uses Angular Flux <br>
  * @requires ionic
  * @requires flux
  */

@@ -27,6 +27,10 @@ module.exports = {
         bowerDist: './bower-dist.json',
         docs: './docs'
     },
+    docs: {
+        title: 'F9 Angular Scrabble API',
+        startPage: '/api/f9-angular-scrabble'
+    },
     json: {
         package: './package.json',
         bower: './bower.json',
