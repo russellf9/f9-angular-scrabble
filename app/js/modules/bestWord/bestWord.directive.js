@@ -42,9 +42,10 @@
                 var tile;
                 if (MyStore.bestWord) {
                     bestWord.best = MyStore.bestWord;
-                    bestWord.wordArray = bestWord.best.word.split('');
-                    bestWord.score = bestWord.best.score;
-                    bestWord.tiles = _createTiles(bestWord.wordArray);
+                    console.log('C bestWord: ',bestWord.best);
+                    bestWord.wordArray = MyStore.bestWord.word.split('');
+                    bestWord.score = bestWord.score;
+                    bestWord.tiles = _createTiles(bestWord.best);
                 } else {
                     bestWord.best = '';
                     bestWord.wordArray = [];
@@ -53,8 +54,29 @@
                 }
             });
 
-            // Creates the collection of Tiles given an Array of letters
-            function _createTiles(array) {
+            /**
+             * @ngdoc method
+             * @name _createTiles
+             * @methodOf modules.bestWord:f9BestWord
+             * @description Creates a set of Tile objects from the supplied Word
+             * @param {Word} word A word object
+             * @returns {Array} An array of Tiles
+             */
+            function _createTiles(word) {
+
+                // perform some type checking!
+                if(word.constructor.name !== 'Word') {
+                    $log.error('Supplied parameter is not a Word!');
+                    return [];
+                }
+
+                $log.info('Word is an Object: ' , isObject2(word));
+                $log.info('Word is Word: ' , isObject2(word));
+
+
+
+                //$log.info('is a Word: ', (word instanceof Word))
+                var array = word.word.split('');
                 var tiles = [];
                 var tile;
                 // TODO use map/reduce
@@ -63,6 +85,10 @@
                     tiles.push(tile);
                 }
                 return tiles;
+            }
+
+            function isObject2(x) {
+                return x === Object(x);
             }
         }
     }

@@ -126,6 +126,22 @@
             this.drag = true;
         }
 
+        // == WORD  OBJECT ========
+
+
+        /**
+         * @ngdoc object
+         * @name scrabble.ScrabbleService:Word
+         * @description An object containing a Scrabble word and it's score
+         * @param {string} word A valid word
+         * @param {number} score The words scrabble score
+         * @constructor
+         */
+        function Word(word, score) {
+            this.word = word;
+            this.score = score;
+        }
+
 
         // == MAP OF FUNCTIONS ========
 
@@ -214,7 +230,6 @@
             var tile = _.find(letterDistribution, function(tile) {
                 return tile.letter === letter;
             });
-
             return tile.score;
         }
 
@@ -223,39 +238,52 @@
          * @ngdoc method
          * @name getWordScore
          * @methodOf scrabble.ScrabbleService
-         * @description Returns the aggregated score of each letter of the supplied word
+         * @description Returns the aggregated score of each letter of the supplied word <br>
          * @param {string} word A word
          * @returns {number} The word's score in Scrabble
          * @private
          */
         function _getWordScore(word) {
-            var score = 0;
-            // TODO use map/reduce
-            for (var i = 0, j = word.length; i < j; i++) {
-                score += _getTileScore(word[i]);
-            }
-            return score;
+            return word.split('')
+                .map(function(letter) {
+                    return _getTileScore(letter);
+                })
+                .reduce(function(a, b) {
+                    return a + b;
+                });
         }
 
-
+        /**
+         * @ngdoc method
+         * @name _findBestWord
+         * @methodOf scrabble.ScrabbleService
+         * @description Finds the highest scoring words within the supplied collection <br>
+         * @param {array} words The collection to search
+         * @returns {array} The collection of words with the highest score
+         */
         function _findBestWord(words) {
             var word,
-                bestWord = '',
-                bestScore = 0,
-                score;
+                bestWords = [],
+                bestScore = 0;
 
             for (var i = 0, j = words.length; i < j; i++) {
-                word = words[i];
-                score = service.getWordScore(word);
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestWord = word;
-                    // TODO add repeats
+                word = new Word(words[i], service.getWordScore(words[i])) ;
+                if (word.score >= bestScore) {
+                    bestScore = word.score;
+                    bestWords.push(word);
                 }
             }
-            return bestWord;
-            // TODO make new Object type?
-            // return {word:bestWord, score: bestScore};
+            // we have pushed all the previous best words into the array!
+            // so run through the array and just get the best!
+            bestWords = bestWords
+                .filter(function(word) {
+                    return word.score >= bestScore;
+                });
+
+            // what about the bingo score???
+
+            return bestWords;
+
         }
 
 

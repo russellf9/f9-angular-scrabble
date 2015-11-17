@@ -18,7 +18,13 @@
 </li>
 </ul>
 <div class="member method"><h2 id="methods">Methods</h2>
-<ul class="methods"><li><h3 id="methods_createletterbag">createLetterBag()</h3>
+<ul class="methods"><li><h3 id="methods__findbestword">_findBestWord(words)</h3>
+<div class="_findbestword"><div class="-findbestword-page"><p>Finds the highest scoring words within the supplied collection <br></p>
+</div><h5 id="methods__findbestword_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>words</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="-findbestword-page"><p>The collection to search</p>
+</div></td></tr></tbody></table><h5 id="methods__findbestword_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="-findbestword-page"><p>The collection of words with the highest score</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_createletterbag">createLetterBag()</h3>
 <div class="createletterbag"><div class="createletterbag-page"><p>Creates a complete set of Scrabble Tiles <br>
 See: <a href="api/scrabble.ScrabbleService:Tile">Tile</a></p>
 </div></div>
@@ -36,12 +42,14 @@ Gets the data from: <a href="api/api.dataApi">dataApi</a></p>
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_gettilescore">getTileScore(letter)</h3>
-<div class="gettilescore"><h5 id="methods_gettilescore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>letter</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettilescore-page"><p>The letter to evaluate</p>
+<div class="gettilescore"><div class="gettilescore-page"><p>Returns the Scrabble score for the supplied letter</p>
+</div><h5 id="methods_gettilescore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>letter</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettilescore-page"><p>The letter to evaluate</p>
 </div></td></tr></tbody></table><h5 id="methods_gettilescore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="gettilescore-page"><p>The letter&#39;s score</p>
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_getwordscore">getWordScore(word)</h3>
-<div class="getwordscore"><h5 id="methods_getwordscore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>word</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getwordscore-page"><p>A word</p>
+<div class="getwordscore"><div class="getwordscore-page"><p>Returns the aggregated score of each letter of the supplied word <br></p>
+</div><h5 id="methods_getwordscore_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>word</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getwordscore-page"><p>A word</p>
 </div></td></tr></tbody></table><h5 id="methods_getwordscore_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="getwordscore-page"><p>The word&#39;s score in Scrabble</p>
 </div></td></tr></table></div>
 </li>

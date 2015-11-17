@@ -242,16 +242,27 @@
             }
             var result = _getResult(service.currentHand);
 
-            var bestWord = ScrabbleService.findBestWord(result);
+            var bestWords = ScrabbleService.findBestWord(result);
+
+            $log.info('best words: ', bestWords);
 
             // If no best word possible return 0 score
-            var bestScore = bestWord ? _getScoreFromWord(bestWord) : 0;
+            var bestScore = bestWords.length ? bestWords[0].score : 0;
 
-
+            console.log('best word: ', bestWords[0]);
             // TODO create a Class object?
             // {word:bestWord, score: bestScore}
 
-            flux.dispatch(actions.BESTWORD_SET, {word: bestWord, score: bestScore});
+            var bestWord = (bestWords.length) ? (bestWords[0]) : (null);
+
+            // check for bingo here
+
+            // check for bingo all letters being used
+            if (bestWord.word.length === rules.BINGO) {
+                (bestWord.word.score = bestWord.word.score + rules.BINGO_SCORE);
+            }
+
+            flux.dispatch(actions.BESTWORD_SET, bestWord);
         }
 
 
@@ -387,22 +398,19 @@
         }
 
         // gets the total score from a given word
+        /**
+         *
+         * @param word
+         * @returns {number|*}
+         * @private
+         */
         function _getScoreFromWord(word) {
 
-            // create an array
-            var letterArray = word.split('');
-
-            // Nice! -  Use a map and a reduce function
-            var score = letterArray
-                .map(function(letter) {
-                    return ScrabbleService.getTileScore(letter);
-                })
-                .reduce(function(a, b) {
-                    return a + b;
-                });
+            // get the initial score from the service
+            var score = ScrabbleService.getWordScore(word);
 
             // check if the maximum number of letters has been used
-            if (letterArray.length === rules.BINGO) {
+            if (word.length === rules.BINGO) {
                 score = score + rules.BINGO_SCORE;
                 $log.info('BINGO!');
             }
@@ -410,21 +418,21 @@
             return score;
         }
 
-        // evaluates if a word exists in the Dictionary
 
         /**
-         *
-         * @param word
-         * @returns {boolean}
+         * @description Evaluates if a word exists in the Dictionary
+         * @name _wordExists
+         * @methodOf game.GameService
+         * @param {string} word The word to look up
+         * @returns {boolean} True if the supplied word exits
          * @private
          */
         function _wordExists(word) {
             if (typeof word === Array) {
                 $log.info('Whoops I`m an array!');
+                return false;
             }
             return service.wordList.indexOf(word) >= 0;
-
-
         }
     }
 

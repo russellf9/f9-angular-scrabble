@@ -91,7 +91,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "modules",
       "shortDescription": "Responsible for displaying the Scrabble word with the highest score",
-      "keywords": "ae api bestword directive displaying fsm game gameservice highest modules responsible score scrabble scrabbleservice statemachineservice word"
+      "keywords": "_createtiles ae api array bestword creates directive displaying fsm game gameservice highest method modules object objects responsible score scrabble scrabbleservice set statemachineservice supplied tile tiles word"
     },
     {
       "section": "api",
@@ -145,7 +145,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
-      "keywords": "$http actor api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist f9-angular-scrabble getdictionary gethand gettilescore getwordscore html-scrabble https instantiates js legal letter letterbagisempty letters lodash method number operations pick promise remaining requested responsibility result return returns score scrabble scrabbleservice service set simply tile tiles true type word"
+      "keywords": "$http _findbestword actor aggregated api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist f9-angular-scrabble finds getdictionary gethand gettilescore getwordscore highest html-scrabble https instantiates js legal letter letterbagisempty letters lodash method number operations pick promise remaining requested responsibility result return returns score scoring scrabble scrabbleservice search service set simply supplied tile tiles true type word"
     },
     {
       "section": "api",
@@ -155,6 +155,15 @@ NG_DOCS={
       "moduleName": "scrabble",
       "shortDescription": "A Class which holds a Letter and Score properties",
       "keywords": "a-z api class holds letter object properties score scrabble scrabbleservice tiles"
+    },
+    {
+      "section": "api",
+      "id": "scrabble.ScrabbleService:Word",
+      "shortName": "Word",
+      "type": "object",
+      "moduleName": "scrabble",
+      "shortDescription": "An object containing a Scrabble word and it&#39;s score",
+      "keywords": "api object score scrabble scrabbleservice valid word"
     },
     {
       "section": "api",
