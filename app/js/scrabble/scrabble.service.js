@@ -69,6 +69,8 @@
 
         service.shake = _shake;
 
+        service.Word = Word;
+
 
         // == OBJECTS ========
 
@@ -110,37 +112,37 @@
         return service;
 
 
-        // == TILE OBJECT ========
+        //// == TILE OBJECT ========
+        //
+        ///**
+        // * @ngdoc object
+        // * @name scrabble.ScrabbleService:Tile
+        // * @description A Class which holds a Letter and Score properties
+        // * @param {string} letter The Tiles letter A-Z
+        // * @param {number} score The Scrabble score for the Letter
+        // * @constructor
+        // */
+        //function Tile(letter, score) {
+        //    this.letter = letter;
+        //    this.score = score;
+        //    this.drag = true;
+        //}
 
-        /**
-         * @ngdoc object
-         * @name scrabble.ScrabbleService:Tile
-         * @description A Class which holds a Letter and Score properties
-         * @param {string} letter The Tiles letter A-Z
-         * @param {number} score The Scrabble score for the Letter
-         * @constructor
-         */
-        function Tile(letter, score) {
-            this.letter = letter;
-            this.score = score;
-            this.drag = true;
-        }
-
-        // == WORD  OBJECT ========
-
-
-        /**
-         * @ngdoc object
-         * @name scrabble.ScrabbleService:Word
-         * @description An object containing a Scrabble word and it's score
-         * @param {string} word A valid word
-         * @param {number} score The words scrabble score
-         * @constructor
-         */
-        function Word(word, score) {
-            this.word = word;
-            this.score = score;
-        }
+        //// == WORD  OBJECT ========
+        //
+        //
+        ///**
+        // * @ngdoc object
+        // * @name scrabble.ScrabbleService:Word
+        // * @description An object containing a Scrabble word and it's score
+        // * @param {string} word A valid word
+        // * @param {number} score The words scrabble score
+        // * @constructor
+        // */
+        //function Word (word, score) {
+        //    this.word = word;
+        //    this.score = score;
+        //}
 
 
         // == MAP OF FUNCTIONS ========
@@ -258,8 +260,8 @@
          * @name _findBestWord
          * @methodOf scrabble.ScrabbleService
          * @description Finds the highest scoring words within the supplied collection <br>
-         * @param {array} words The collection to search
-         * @returns {array} The collection of words with the highest score
+         * @param {Array} words The collection to search
+         * @returns {Array} The collection of words with the highest score
          */
         function _findBestWord(words) {
             var word,
@@ -280,7 +282,7 @@
                     return word.score >= bestScore;
                 });
 
-            // what about the bingo score???
+            // let the GameService set the Bingo score
 
             return bestWords;
 
@@ -289,10 +291,9 @@
 
         // Finds and returns a Tile Object with the supplied letter
         function _createTile(letter) {
-            var tile = _.find(letterDistribution, function(tile) {
+            return _.find(letterDistribution, function(tile) {
                 return tile.letter === letter;
             });
-            return tile;
         }
 
 

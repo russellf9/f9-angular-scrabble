@@ -45,16 +45,14 @@
             $scope.$listenTo(MyStore, 'bestword.*', function () {
                 if (MyStore.bestWord) {
                     scores.best = MyStore.bestWord;
-                    scores.wordArray = scores.best.word.split('');
                     scores.bestWord = scores.best.score;
                 } else {
                     scores.best = '';
-                    scores.wordArray = [];
                     scores.bestWord = 0;
                 }
             });
 
-            // for the users score
+            // for the User's score
             $scope.$listenTo(MyStore, 'score.*', function() {
                 scores.userScore = MyStore.userScore;
             });

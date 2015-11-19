@@ -240,7 +240,11 @@
                 // TODO - have to handle this better
                 return;
             }
-            var result = _getResult(service.currentHand);
+            var result = _getResult(service.currentHand); // is an Array
+
+            $log.info('GameService.showBestWord | result: ', (typeof result));
+            $log.info('GameService.showBestWord | result is Array: ', (Array.isArray(result)));
+
 
             var bestWords = ScrabbleService.findBestWord(result);
 
@@ -255,10 +259,8 @@
 
             var bestWord = (bestWords.length) ? (bestWords[0]) : (null);
 
-            // check for bingo here
-
-            // check for bingo all letters being used
-            if (bestWord.word.length === rules.BINGO) {
+            // check for Bingo here if all letters being used
+            if (bestWord && bestWord.word.length === rules.BINGO) {
                 (bestWord.word.score = bestWord.word.score + rules.BINGO_SCORE);
             }
 
@@ -336,19 +338,19 @@
          * @name _getResult
          * @methodOf game.GameService
          * @param hand A set of Tiles
-         * @returns {*} The Word with the highest possible scores
+         * @returns {Array} The Words with the highest possible scores
          * @private
          */
         function _getResult(hand) {
 
             if (!hand || !hand.length) {
                 $log.error('GameService.getResult - No Hand supplied!');
-                return;
+                return [];
             }
 
             if (!service.wordList || !service.wordList.length) {
                 $log.error('GameService.getResult - Dictionary has not been instantiated!');
-                return;
+                return [];
             }
 
             return WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);

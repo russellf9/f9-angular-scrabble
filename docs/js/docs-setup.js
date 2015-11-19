@@ -14,6 +14,24 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "components.Tile",
+      "shortName": "components.Tile",
+      "type": "object",
+      "moduleName": "components",
+      "shortDescription": "A Class which holds a Letter and Score properties",
+      "keywords": "a-z api class components holds letter object properties score scrabble tile tiles"
+    },
+    {
+      "section": "api",
+      "id": "components.Word",
+      "shortName": "components.Word",
+      "type": "object",
+      "moduleName": "components",
+      "shortDescription": "An object containing a Scrabble word and it&#39;s score",
+      "keywords": "api components object score scrabble valid word"
+    },
+    {
+      "section": "api",
       "id": "dictionary.DictionaryService",
       "shortName": "dictionary.DictionaryService",
       "type": "service",
@@ -146,24 +164,6 @@ NG_DOCS={
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
       "keywords": "$http _findbestword actor aggregated api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist f9-angular-scrabble finds getdictionary gethand gettilescore getwordscore highest html-scrabble https instantiates js legal letter letterbagisempty letters lodash method number operations pick promise remaining requested responsibility result return returns score scoring scrabble scrabbleservice search service set simply supplied tile tiles true type word"
-    },
-    {
-      "section": "api",
-      "id": "scrabble.ScrabbleService:Tile",
-      "shortName": "Tile",
-      "type": "object",
-      "moduleName": "scrabble",
-      "shortDescription": "A Class which holds a Letter and Score properties",
-      "keywords": "a-z api class holds letter object properties score scrabble scrabbleservice tiles"
-    },
-    {
-      "section": "api",
-      "id": "scrabble.ScrabbleService:Word",
-      "shortName": "Word",
-      "type": "object",
-      "moduleName": "scrabble",
-      "shortDescription": "An object containing a Scrabble word and it&#39;s score",
-      "keywords": "api object score scrabble scrabbleservice valid word"
     },
     {
       "section": "api",

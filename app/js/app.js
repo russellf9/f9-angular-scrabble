@@ -49,6 +49,22 @@ angular.module('f9-angular-scrabble', ['ionic',
         $urlRouterProvider.otherwise('/app/main');
     })
 
+
+    .provider({
+
+        $exceptionHandler: function($injector) {
+            var handler = function(exception, cause) {
+                alert(exception);
+                var $log =  angular.injector(['ng']).get('$log');
+                $log.error(exception, cause);
+            };
+
+            this.$get = function() {
+                return handler;
+            };
+        }
+    })
+
     .run(function(_, $ionicPlatform) {
         $ionicPlatform.ready(function() {
             StatusBar.hide();

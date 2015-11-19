@@ -27,7 +27,7 @@
             template: $templateCache.get('modules/bestWord/best-word.html')
         };
 
-        function BestWordController($scope, $log, StateMachineService, ScrabbleService, MyStore) {
+        function BestWordController($scope, $log, $exceptionHandler, StateMachineService, ScrabbleService, MyStore) {
 
             var bestWord = this;
 
@@ -42,8 +42,6 @@
                 var tile;
                 if (MyStore.bestWord) {
                     bestWord.best = MyStore.bestWord;
-                    console.log('C bestWord: ',bestWord.best);
-                    bestWord.wordArray = MyStore.bestWord.word.split('');
                     bestWord.score = bestWord.score;
                     bestWord.tiles = _createTiles(bestWord.best);
                 } else {
@@ -64,31 +62,20 @@
              */
             function _createTiles(word) {
 
-                // perform some type checking!
-                if(word.constructor.name !== 'Word') {
-                    $log.error('Supplied parameter is not a Word!');
-                    return [];
+                // we can do type checking of the argument
+                if(!(word instanceof Word)) {
+                    throw ('Invalid argument - Not a Word Object');
+                } else {
+                    var array = word.word.split('');
+                    var tiles = [];
+                    var tile;
+                    // TODO use map/reduce
+                    for (var i = 0, j = array.length; i < j; i++) {
+                        tile = ScrabbleService.createTile(array[i]);
+                        tiles.push(tile);
+                    }
+                    return tiles;
                 }
-
-                $log.info('Word is an Object: ' , isObject2(word));
-                $log.info('Word is Word: ' , isObject2(word));
-
-
-
-                //$log.info('is a Word: ', (word instanceof Word))
-                var array = word.word.split('');
-                var tiles = [];
-                var tile;
-                // TODO use map/reduce
-                for (var i = 0, j = array.length; i < j; i++) {
-                    tile = ScrabbleService.createTile(array[i]);
-                    tiles.push(tile);
-                }
-                return tiles;
-            }
-
-            function isObject2(x) {
-                return x === Object(x);
             }
         }
     }
