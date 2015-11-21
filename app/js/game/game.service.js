@@ -25,6 +25,7 @@
      */
         .constant('rules', {
             'BINGO': 7,
+            'MAX_TILES' : 7,
             'BINGO_SCORE': 50
         })
 
@@ -157,7 +158,7 @@
 
                 return [];
             }
-            number = number || 7;
+            number = number || rules.MAX_TILES;
             var hand = ScrabbleService.getHand(number);
 
             for (var i = 0, j = hand.length; i < j; i++) {
@@ -238,28 +239,23 @@
             if (!service.currentHand) {
                 throw('GameService.showBestWord | no currentHand');
             }
-            var result = _getResult(service.currentHand); // is an Array
 
-            $log.info('GameService.showBestWord | result: ', (typeof result));
-            $log.info('GameService.showBestWord | result is Array: ', (Array.isArray(result)));
+            // get the possible collection of Words as an Array
+            var result = _getResult(service.currentHand);
 
 
+            // gets the Words with the highest score from the result
             var bestWords = ScrabbleService.findBestWord(result);
 
-            $log.info('best words: ', bestWords);
 
-            // If no best word possible return 0 score
-            var bestScore = bestWords.length ? bestWords[0].score : 0;
-
-            console.log('best word: ', bestWords[0]);
-            // TODO create a Class object?
-            // {word:bestWord, score: bestScore}
-
+            // currently we just return the first highest scoring Word
+            // or none if no word was found
             var bestWord = (bestWords.length) ? (bestWords[0]) : (null);
 
+
             // check for Bingo here if all letters being used
-            if (bestWord && bestWord.word.length === rules.BINGO) {
-                (bestWord.word.score = bestWord.word.score + rules.BINGO_SCORE);
+            if (bestWord && bestWord.word.length >= rules.BINGO) {
+                (bestWord.score = bestWord.score + rules.BINGO_SCORE);
             }
 
             flux.dispatch(actions.BESTWORD_SET, bestWord);
