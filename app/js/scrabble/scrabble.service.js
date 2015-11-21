@@ -12,6 +12,7 @@
      • Provides a method to evaluate the best possible word from a set of Tiles  <br>
      * @requires api.dataApi
      * @requires lodash.f9-angular-scrabble._
+     * @requires components.Word
      */
     angular.module('ScrabbleService', ['dataApi'])
 
@@ -112,39 +113,6 @@
         return service;
 
 
-        //// == TILE OBJECT ========
-        //
-        ///**
-        // * @ngdoc object
-        // * @name scrabble.ScrabbleService:Tile
-        // * @description A Class which holds a Letter and Score properties
-        // * @param {string} letter The Tiles letter A-Z
-        // * @param {number} score The Scrabble score for the Letter
-        // * @constructor
-        // */
-        //function Tile(letter, score) {
-        //    this.letter = letter;
-        //    this.score = score;
-        //    this.drag = true;
-        //}
-
-        //// == WORD  OBJECT ========
-        //
-        //
-        ///**
-        // * @ngdoc object
-        // * @name scrabble.ScrabbleService:Word
-        // * @description An object containing a Scrabble word and it's score
-        // * @param {string} word A valid word
-        // * @param {number} score The words scrabble score
-        // * @constructor
-        // */
-        //function Word (word, score) {
-        //    this.word = word;
-        //    this.score = score;
-        //}
-
-
         // == MAP OF FUNCTIONS ========
 
 
@@ -153,7 +121,7 @@
          * @name createLetterBag
          * @methodOf scrabble.ScrabbleService
          * @description Creates a complete set of Scrabble Tiles <br>
-         * See: {@link scrabble.ScrabbleService:Tile Tile}
+         * See: {@link components.Tile Tile}
          */
         function _createLetterBag() {
             service.letterBag = {};
@@ -208,13 +176,8 @@
          */
         function _getHand(number) {
             var hand = [];
-
-            for (var i = 0; i < number; i++) {
-                if(service.letterBag.tiles.length) {
-                    hand.push(service.letterBag.tiles.pop());
-                } else {
-                    break;
-                }
+            while (number-- && service.letterBag.tiles.length) {
+                hand.push(service.letterBag.tiles.pop());
             }
             return hand;
         }
@@ -259,7 +222,7 @@
          * @ngdoc method
          * @name _findBestWord
          * @methodOf scrabble.ScrabbleService
-         * @description Finds the highest scoring words within the supplied collection <br>
+         * @description Finds the highest scoring words within the supplied collection<br>
          * @param {Array} words The collection to search
          * @returns {Array} The collection of words with the highest score
          */
@@ -269,7 +232,7 @@
                 bestScore = 0;
 
             for (var i = 0, j = words.length; i < j; i++) {
-                word = new Word(words[i], service.getWordScore(words[i])) ;
+                word = new Word(words[i], service.getWordScore(words[i]));
                 if (word.score >= bestScore) {
                     bestScore = word.score;
                     bestWords.push(word);

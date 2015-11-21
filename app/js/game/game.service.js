@@ -236,9 +236,7 @@
 
             // guard
             if (!service.currentHand) {
-                $log.error('GameService.showBestWord | no currentHand');
-                // TODO - have to handle this better
-                return;
+                throw('GameService.showBestWord | no currentHand');
             }
             var result = _getResult(service.currentHand); // is an Array
 

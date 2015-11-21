@@ -163,7 +163,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "scrabble",
       "shortDescription": "A Service for Scrabble operations  ",
-      "keywords": "$http _findbestword actor aggregated api array bag best collection complete createletterbag creates data dataapi deal dictionary distribution empty evaluate exist f9-angular-scrabble finds getdictionary gethand gettilescore getwordscore highest html-scrabble https instantiates js legal letter letterbagisempty letters lodash method number operations pick promise remaining requested responsibility result return returns score scoring scrabble scrabbleservice search service set simply supplied tile tiles true type word"
+      "keywords": "$http _findbestword actor aggregated api array bag best collection complete components createletterbag creates data dataapi deal dictionary distribution empty evaluate exist f9-angular-scrabble finds getdictionary gethand gettilescore getwordscore highest html-scrabble https instantiates js legal letter letterbagisempty letters lodash method number operations pick promise remaining requested responsibility result return returns score scoring scrabble scrabbleservice search service set simply supplied tile tiles true type word"
     },
     {
       "section": "api",

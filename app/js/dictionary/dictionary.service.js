@@ -6,7 +6,7 @@
      * @name dictionary.DictionaryService
      * @ngdoc service
      * @description A Service for a Dictionary <br>
-     *     Loads a CSV dictionary, and turns it into an Array
+     * Loads a CSV dictionary, and turns it into an Array
      * @requires api.dataApi
      */
 
@@ -27,7 +27,7 @@
                     service.dictionary = result.split(',');
                 })
                 .error(function(error) {
-                    // TODO
+                    throw('Get Data Error ' + error);
                 });
 
         };
