@@ -10,6 +10,10 @@
 
         this.stateData = StateMachineService.data;
 
+        var main = this;
+
+        main.loading = true;
+
 
         GameService.init()
             .then(function() {
@@ -20,6 +24,7 @@
 
 
         function _setUp() {
+            main.loading = false;
             $log.info('MainCtrl From Promise!!!');
 
         }

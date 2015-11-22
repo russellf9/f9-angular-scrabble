@@ -1,9 +1,14 @@
 <ion-view title="Main">
-    <i class="icon ion-loading-c progress-bar-icon" ng-if="loading"></i>
+
+
 
     <ion-content>
+        <div class="fill" ng-if="main.loading">
+            <i class="icon ion-loading-c progress-bar-icon"></i>
+        </div>
 
-        <div class="game-container" ng-hide="loading">
+
+        <div class="game-container" ng-if="!main.loading">
 
             <div class="wrapper-container">
                 <div class="title-container">
