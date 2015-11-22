@@ -55,13 +55,14 @@
             handPermutations: getPermutations(hand),
             findWords: function() {
                 var foundWords = [];
-                for (var i = 0; i < this.handPermutations.length; i++) {
+                var i = 0, len = this.handPermutations.length;
+                while(i < len) {
                     var testWord = this.handPermutations[i];
                     var bucket = this.wordHashTable[hashItem(testWord)];
-
                     if (bucket && bucket.indexOf(testWord) !== -1) {
                         foundWords.push(testWord);
                     }
+                    i++;
                 }
                 return _(foundWords).uniq();
             }
