@@ -132,9 +132,9 @@
 
             var test = false; // make the bag smaller so we can investigate the no tiles state
 
-            var len = (test) ? 5 : (letterDistribution.length);
+            var i = (test) ? 5 : (letterDistribution.length);
 
-            for (var i = 0; i < len; ++i) {
+            while (i--) {
                 var letterDefinition = letterDistribution[i];
 
                 tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
@@ -144,7 +144,7 @@
 
                 var count = test ? 1 : letterDefinition.count;
 
-                for (var n = 0; n < count; ++n) {
+                while(count--) {
                     tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
                     service.letterBag.tiles.push(tile);
                 }
@@ -231,7 +231,9 @@
                 bestWords = [],
                 bestScore = 0;
 
-            for (var i = 0, j = words.length; i < j; i++) {
+            var i = words.length;
+
+            while(i--) {
                 word = new Word(words[i], service.getWordScore(words[i]));
                 if (word.score >= bestScore) {
                     bestScore = word.score;

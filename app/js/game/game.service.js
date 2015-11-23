@@ -326,9 +326,11 @@
 
 
         // TODO differentiate between the this 'getResult()` and result from the user's set of tiles
-        //
+
+        // TODO rename
         /**
-         * @description Returns the highest scoring word from the supplied set of tiles
+         * @description
+         * Returns all possible Words from the collection of letters <br>
          * @name _getResult
          * @methodOf game.GameService
          * @param hand A set of Tiles
@@ -347,7 +349,15 @@
                 return [];
             }
 
-            return WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);
+            var a = performance.now();
+
+            var words =  WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);
+
+            var b = performance.now();
+
+            $log.info('GameService.getResult() took ' + (b - a) + ' ms.');
+
+            return  words;
         }
 
         // gets the word as a String from a given set of tiles

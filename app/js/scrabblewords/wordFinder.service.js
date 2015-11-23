@@ -55,14 +55,13 @@
             handPermutations: getPermutations(hand),
             findWords: function() {
                 var foundWords = [];
-                var i = 0, len = this.handPermutations.length;
-                while(i < len) {
+                var i = this.handPermutations.length;
+                while(i--) {
                     var testWord = this.handPermutations[i];
                     var bucket = this.wordHashTable[hashItem(testWord)];
                     if (bucket && bucket.indexOf(testWord) !== -1) {
                         foundWords.push(testWord);
                     }
-                    i++;
                 }
                 return _(foundWords).uniq();
             }
@@ -71,16 +70,19 @@
 
     var getPermutations = function(array) {
         var result = [];
-        for (var i = 0; i < array.length; i++) {
+        var i = array.length;
+        while (i--) {
             var element = array[i];
             result.push([element]);
 
             var subPermutations = getPermutations(array.slice(0, i).concat(array.slice(i + 1)));
-            for (var j = 0; j < subPermutations.length; j++) {
+            var j = subPermutations.length;
+            while (j--) {
                 result.push([element].concat(subPermutations[j]));
             }
         }
-        for (var k = 0; k < result.length; k++) {
+        var k = result.length;
+        while (k--) {
             result[k] = result[k].join('');
         }
         return result;
@@ -89,7 +91,8 @@
 
     var hashArray = function(array) {
         var hashTable = [];
-        for (var i = 0, len = array.length; i < len; i++) {
+        var i = array.length;
+        while (i--) {
             var word = array[i];
             var hashCode = hashItem(word);
             if (hashTable[hashCode]) {
@@ -103,7 +106,8 @@
 
     var hashItem = function(str) {
         var hash = 0;
-        for (var i = 0; i < str.length; i++) {
+        var i = str.length;
+        while (i--) {
             hash = (hash << 5) + hash + str.charCodeAt(i);
             hash = hash & hash; // Convert to 32bit integer
             hash = Math.abs(hash);
