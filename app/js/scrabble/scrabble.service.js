@@ -144,7 +144,7 @@
 
                 var count = test ? 1 : letterDefinition.count;
 
-                while(count--) {
+                while (count--) {
                     tile = new Tile(letterDefinition.letter || " ", letterDefinition.score);
                     service.letterBag.tiles.push(tile);
                 }
@@ -227,13 +227,20 @@
          * @returns {Array} The collection of words with the highest score
          */
         function _findBestWord(words) {
+
             var word,
                 bestWords = [],
-                bestScore = 0;
+                bestScore = 0,
+                a, b,
+                debug = false;
+
+            if (debug) {
+                a = performance.now();
+            }
 
             var i = words.length;
 
-            while(i--) {
+            while (i--) {
                 word = new Word(words[i], service.getWordScore(words[i]));
                 if (word.score >= bestScore) {
                     bestScore = word.score;
@@ -249,8 +256,15 @@
 
             // let the GameService set the Bingo score
 
-            return bestWords;
+            if (debug) {
+                b = performance.now();
 
+                $log.info('best word: ', bestWords);
+
+                $log.info('ScrabbleService.findBestWord() took ' + (b - a) + ' ms.');
+            }
+
+            return bestWords;
         }
 
 

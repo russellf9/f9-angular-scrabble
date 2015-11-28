@@ -82,7 +82,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "game",
       "shortDescription": "A constant which holds &#39;Game values&#39;",
-      "keywords": "achive api bingo bingo_score constant game gameservice holds length number object player rules score tiles values"
+      "keywords": "achive api bingo bingo_score constant full game gameservice holds length max_tiles number object player rules score set tiles values"
     },
     {
       "section": "api",

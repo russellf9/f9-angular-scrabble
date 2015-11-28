@@ -22,7 +22,7 @@
      * @param {object} _ The Lodash Service
      * @returns {object} WordFinderService The Service with it's method calls
      */
-    function wordFinderService(_) {
+    function wordFinderService(_, $log) {
 
         var service = {};
 

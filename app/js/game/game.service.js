@@ -10,22 +10,23 @@
      */
     angular.module('GameService', ['ScrabbleService'])
 
-    /**
-     * @ngdoc object
-     * @name game.GameService:rules
-     * @param {number} BINGO THE number of tiles to use to achive the bingo score
-     * @param {number} BINGO_SCORE The score when a player uses all seven tiles
-     * @description
-     *  A constant which holds 'Game values'
-     * <pre>
-     *  if (tiles.length === rules.BINGO) {
+        /**
+         * @ngdoc object
+         * @name game.GameService:rules
+         * @param {number} BINGO THE number of tiles to use to achive the bingo score
+         * @param {number} MAX_TILES The number of tiles which make a full set
+         * @param {number} BINGO_SCORE The score when a player uses all seven tiles
+         * @description
+         *  A constant which holds 'Game values'
+         * <pre>
+         *  if (tiles.length === rules.BINGO) {
      *      score = score + rules.BINGO_SCORE;
      *  }
-     * </pre>
-     */
+         * </pre>
+         */
         .constant('rules', {
             'BINGO': 7,
-            'MAX_TILES' : 7,
+            'MAX_TILES': 7,
             'BINGO_SCORE': 50
         })
 
@@ -97,9 +98,9 @@
         function _init() {
 
             var deferred = $q.defer();
-            
+
             _setUpLetterBag();
-            
+
             DictionaryService.getDictionary()
                 .then(function() {
                     service.wordList = DictionaryService.dictionary;
@@ -141,14 +142,14 @@
          * @methodOf game.GameService
          * @name getHand
          * @description
-            Removes a number of Tiles from the collection and returns them as an Array
+         Removes a number of Tiles from the collection and returns them as an Array
          * @param {number} number The amount of Tiles to get
          * @returns {Array} an Array of Tiles
          * @private
          */
         function _getHand(number) {
 
-            if(ScrabbleService.letterBagIsEmpty()) {
+            if (ScrabbleService.letterBagIsEmpty()) {
                 // will have to set another State!
                 // should have been spotted before!
 
@@ -159,9 +160,12 @@
                 return [];
             }
             number = number || rules.MAX_TILES;
+
             var hand = ScrabbleService.getHand(number);
 
-            for (var i = 0, j = hand.length; i < j; i++) {
+            var i = hand.length;
+
+            while (i--) {
                 flux.dispatch(actions.TILE_ADD, hand[i]);
             }
             service.currentHand = hand;
@@ -226,7 +230,7 @@
          */
         function _showBestWord() {
 
-            if(ScrabbleService.letterBagIsEmpty()) {
+            if (ScrabbleService.letterBagIsEmpty()) {
                 // TODO we need another State
                 $log.info('GAME OVER!');
                 StateMachineService.end();
@@ -339,6 +343,9 @@
          */
         function _getResult(hand) {
 
+            var debug = false,
+                a, b;
+
             if (!hand || !hand.length) {
                 $log.error('GameService.getResult - No Hand supplied!');
                 return [];
@@ -349,15 +356,19 @@
                 return [];
             }
 
-            var a = performance.now();
+            if (debug) {
+                a = performance.now();
+            }
 
-            var words =  WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);
 
-            var b = performance.now();
+            var words = WordFinderService.makeWordFinder(_getLetters(hand), service.wordList);
 
-            $log.info('GameService.getResult() took ' + (b - a) + ' ms.');
+            if (debug) {
+                b = performance.now();
+                $log.info('GameService.getResult() took ' + (b - a) + ' ms.');
+            }
 
-            return  words;
+            return words;
         }
 
         // gets the word as a String from a given set of tiles
@@ -403,9 +414,9 @@
             return score;
         }
 
-        // gets the total score from a given word
         /**
-         *
+         * @description
+         * Gets the total score from a given word
          * @param word
          * @returns {number|*}
          * @private
