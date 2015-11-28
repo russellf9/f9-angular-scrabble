@@ -129,11 +129,12 @@
          * @methodOf game.GameService
          * @description
          * Creates the letter bag <br>
-         * Also, randomises the order if the letters <br>
+         * Also, randomises the order of the letters <br>
          * @private
          */
         function _setUpLetterBag() {
             service.letterBag = ScrabbleService.createLetterBag();
+            // TODO Check this is actually randomising the correct Letter Bag
             ScrabbleService.shake();
         }
 
@@ -142,7 +143,7 @@
          * @methodOf game.GameService
          * @name getHand
          * @description
-         Removes a number of Tiles from the collection and returns them as an Array
+         * Removes a number of Tiles from the collection and returns them as an Array
          * @param {number} number The amount of Tiles to get
          * @returns {Array} an Array of Tiles
          * @private
@@ -177,7 +178,8 @@
          * @ngdoc method
          * @methodOf game.GameService
          * @name reset
-         * @description Performs a variety of actions to reset the game
+         * @description
+         * Performs a variety of actions to reset the game
          */
         function _reset() {
 
@@ -225,7 +227,8 @@
         // TODO Rename as we have a side-effect
         /**
          * @name _showBestWord
-         * @description Finds the word with the highest score
+         * @description
+         * Finds the word with the highest score
          * @private
          */
         function _showBestWord() {
@@ -270,7 +273,8 @@
          * @ngdoc method
          * @name replay
          * @methodOf game.GameService
-         * @description Sets up the required functions to reset the game
+         * @description
+         * Sets up the required functions to reset the game
          * @private
          */
         function _replay() {
@@ -290,7 +294,8 @@
          * @ngdoc method
          * @name updateUserSelection
          * @methodOf game.GameService
-         * @description Performs the necessary operations once the user updates their selection of tiles
+         * @description
+         * Performs the necessary operations once the user updates their selection of tiles
          * @param {array} tiles An Array of Tiles
          * @private
          */
